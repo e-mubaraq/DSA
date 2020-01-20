@@ -120,7 +120,6 @@ int main() {
 	fscanf(fp_in, "%d", &number_of_test_cases); //note the &
 	//printf("Number of test cases: %d\n", number_of_test_cases);
 
-	//i = 1;
 	/* read the location data from a file */
 	fscanf(fp_in, "%f %f %f", &t, &x, &y);
 	
@@ -130,9 +129,12 @@ int main() {
 		//fprintf(fp_out, "Test case %d\n", i); // print test case number
 		while(t != -1.00)
 		{
-			id = store_location(t, x, y); // NB x and y are integer values
-			//id = store_location(t, (int)x, (int)y);
-			printf("%3d %6.3f %4d %4d\n", id, t, x, y);
+			//printf("%6.3f %6.3f %6.3f\n", t, x, y);
+			//id = store_location(t, x, y); // NB x and y are integer values
+			id = store_location(t, (int)x, (int)y);
+			//printf("%3d %6.3f %4d %4d\n", id, t, x, y);
+			printf("%3d %6.3f %4d %4d\n", id, t, (int)x, (int)y);
+
 			/* echo the input data to the screen */
 			//printf("Location data: %6.3f %6.3f %6.3f\n", t, x, y);
 
