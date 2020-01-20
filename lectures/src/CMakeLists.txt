@@ -1,0 +1,7 @@
+ADD_SUBDIRECTORY(towerOfHanoi)
+ADD_SUBDIRECTORY(quicksortIntegers)
+ADD_SUBDIRECTORY(quicksortStrings)
+ADD_SUBDIRECTORY(arrayList)
+ADD_SUBDIRECTORY(linkedList)
+ADD_SUBDIRECTORY(binaryTree)
+ADD_SUBDIRECTORY(graph)
