@@ -1,16 +1,14 @@
 /* 
 
-   exampleApplication.cpp - application file for a program named example
-   =====================================================================
+   assignment1Application.cpp - application file for a program named assignment1
+   =============================================================================
 
-   This program is for Assignment No. 0, Course 04-630 Data Structures and Algorithms for Engineers. 
+   This program is for Assignment No. 1, Course 04-630 Data Structures and Algorithms for Engineers. 
 
    The functionality of the program is defined as follows.
    
-   Read a single-line message from an input file, write it to the terminal, and also write a version of it to an output file.
-   The message to be written to file should be prepended with the following text:
-
-   "The message is: "
+   Read location data and time from an input file, process it, and assign unique id for each unique location.
+   The output file will contain a block of unique ids with corresponding time, x and y-coordinates.
 
    A function is used to prepend the text and write the message to the output file.
 
@@ -20,70 +18,72 @@
 
    Output for the test case is written to an output file "../data/output.txt"
 
-   There are a maximum of eighty of characters in the message.  If message has more than eighty characters, only the first eighty are read.
-
 
    Input
    -----
 
-   - A single line of text no longer than 80 characters.
+   - A block of numbers representing the time, x and y coordinates of the Ant's movement.
 
 
    Output
    ------
 
-   - A single line of text, beginning "The message is: "
+   - A block of numbers representing the unique id, t and unique x and y coordinates.
  
 
    Sample Input
    ------------
    
-   Hello World!
-
+    2
+	0.000 0.000 0.000
+	0.100 0.050 0.000
+	0.200 0.100 0.000
+	0.300 0.190 0.000
 
    Sample Output
    -------------
-
-   The message is: Hello World!
-
+    mmikail
+	1 0.000 0 0
+	2 1.100 0 1
+	3 1.400 0 2
+	4 1.600 0 4
+	5 1.800 0 5
 
    Solution Strategy
    -----------------
 
-   This is just an example program so there is no real computational problem to solve.  In other cases, you would describe here
-   the principle computational theories used in solving the problem, along with the main data structures and algorithms used.
-
+   The data was read in and stored in variables. An array of struct was defined which was used to store the data read in from the file.
+   A unique id was assigned by checking that no two lines have the same x and y values after the x and y values have been converted
+   to int.
 
    Test Strategy
    -------------
 
    The program has been tested with a variety of test data sets that reflect all valid conditions, including boundary conditions:
 
-   - message with no character
-   - message with number of characters in the range 1-80
-   - message with more than eighty characters
+   - 
 
 
 
    File organization
    -----------------
 
-   example.h                  interface file:      
-                              contains the declarations required to use the functions that implement the solution to this problem
-                              typically, these will include the definitions of the abstract data types used in the implementation
+    assignment1Interface.h          interface file:      
+									contains the declarations required to use the functions that implement the solution to this problem
+									typically, these will include the definitions of the abstract data types used in the implementation
 
-   exampleImplementation.cpp  implementation file: 
-                              contains the definitions of the functions that implement the algorithms used in the implementation
+   assignment1Implementation.cpp	implementation file: 
+									contains the definitions of the functions that implement the algorithms used in the implementation
  
-   exampleApplication.cpp     application file:    
-                              contains the code that instantiates the abstract data types and calls the associated functions
-                              in order to effect the required functionality for this application
+   assignment1Application.cpp		application file:    
+									contains the code that instantiates the abstract data types and calls the associated functions
+									in order to effect the required functionality for this application
 
 
    Author
    ------
 
-   David Vernon, Carnegie Mellon University Africa
+   Mubarak Mikail, Carnegie Mellon University Africa
    05/01/2019
 
 

@@ -1,31 +1,31 @@
 /* 
 
-   example.h - interface file for a program named example
-   ======================================================
+   assignment1Interface.h - interface file for a program named assignment1
+   =======================================================================
 
    This program is for Assignment No. 1, Course 04-630 Data Structures and Algorithms for Engineers. 
 
-   Please refer to the application file - exampleApplication.cpp - for details of the functionality of this program
+   Please refer to the application file - assignment1Application.cpp - for details of the functionality of this program
 
       
    File organization
    -----------------
 
-   example.h                  interface file:      
-                              contains the declarations required to use the functions that implement the solution to this problem
-                              typically, these will include the definitions of the abstract data types used in the implementation
+    assignment1Interface.h          interface file:      
+									contains the declarations required to use the functions that implement the solution to this problem
+									typically, these will include the definitions of the abstract data types used in the implementation
 
-   exampleImplementation.cpp  implementation file: 
-                              contains the definitions of the functions that implement the algorithms used in the implementation
+   assignment1Implementation.cpp	implementation file: 
+									contains the definitions of the functions that implement the algorithms used in the implementation
  
-   exampleApplication.cpp     application file:    
-                              contains the code that instantiates the abstract data types and calls the associated functions
-                              in order to effect the required functionality for this application
+   assignment1Application.cpp		application file:    
+									contains the code that instantiates the abstract data types and calls the associated functions
+									in order to effect the required functionality for this application
                                                     
    Author
    ------
 
-   David Vernon, Carnegie Mellon University Africa
+   Mubarak Mikail, Carnegie Mellon University Africa
    05/01/2019
 
 
