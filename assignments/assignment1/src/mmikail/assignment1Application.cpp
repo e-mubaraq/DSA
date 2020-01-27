@@ -98,12 +98,23 @@
  
 int main() {
 	int number_of_test_cases;
-	int i, id;
+	int i, j, id;
 	float t, x, y;
 	int debug = TRUE;
 
    FILE *fp_in, *fp_out;
 
+	struct location_type location[MAX_NUMBER_OF_POINTS];
+	struct location_type temp;
+
+
+	for (j=0; j<MAX_NUMBER_OF_POINTS; j++) {
+		location[j].t = 0.0;
+		location[j].x = 0;
+		location[j].y = 0;
+		location[j].id_number = 0;
+	}
+	/* this is how you swap elements 0 and 1 in an array of structures */
 
    if ((fp_in = fopen("../data/input.txt","r")) == 0) {
 	  printf("Error can't open input input.txt\n");
@@ -118,28 +129,20 @@ int main() {
    fprintf(fp_out, "mmikail\n");
    	/* read the number of test cases from a file */
 	fscanf(fp_in, "%d", &number_of_test_cases); //note the &
-	//printf("Number of test cases: %d\n", number_of_test_cases);
 
 	/* read the location data from a file */
 	fscanf(fp_in, "%f %f %f", &t, &x, &y);
 	
 	for(i = 1; i <= number_of_test_cases; i++)
 	{
-		/* write the test case number to file */
-		//fprintf(fp_out, "Test case %d\n", i); // print test case number
-		while(t != -1.00)
+		while(t >= 0.00)
 		{
-			//printf("%6.3f %6.3f %6.3f\n", t, x, y);
-			//id = store_location(t, x, y); // NB x and y are integer values
-			id = store_location(t, (int)x, (int)y);
-			//printf("%3d %6.3f %4d %4d\n", id, t, x, y);
+			// I need to populate the location matrix with the x, y and t values
+			id = store_location(location, t, (int)x, (int)y);
 			printf("%3d %6.3f %4d %4d\n", id, t, (int)x, (int)y);
 
-			/* echo the input data to the screen */
-			//printf("Location data: %6.3f %6.3f %6.3f\n", t, x, y);
-
 			/* write the input data to the output file */
-			fprintf(fp_out, "Location data: %6.3f %6.3f %6.3f\n", t, x, y);
+			fprintf(fp_out, "%3d %6.3f %4d %4d\n", id, t, (int)x, (int)y);
 			fscanf(fp_in, "%f %f %f", &t, &x, &y); //note the &
 		}
 		fprintf(fp_out, "--------------\n");

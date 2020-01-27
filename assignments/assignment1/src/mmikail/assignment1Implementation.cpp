@@ -41,6 +41,7 @@
  
 #include "assignment1Interface.h"
 
+
 void prompt_and_exit(int status) {
    printf("Press any key to continue and close terminal\n");
    getchar();
@@ -52,8 +53,17 @@ void print_message_to_file(FILE *fp, char message[]) {
    fprintf(fp,"The message is: %s\n", message);
 }
 
-int store_location(float t, int x, int y){
-	/* this is just a stub */
-	printf("store_location: time %6.3f (%4d, %4d) \n", t, x, y);
-	return(0); // eventually, return a unique location id. number
+int store_location(struct location_type location[], float t, int x, int y){
+	int i, id = 1;
+	/* this is how you access fields in an array of structures */
+	for (i=0; i<MAX_NUMBER_OF_POINTS; i++) {
+		if ((location[i].x == x) && (location[i].y == y)){
+			return id;
+		}
+		else{
+			return id += 1;
+		}
+	}
+
+	//return(id); // eventually, return a unique location id. number
 };

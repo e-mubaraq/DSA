@@ -45,9 +45,15 @@
 #define TRUE 1
 #define FALSE 0
 #define MAX_MESSAGE_LENGTH 81
+#define MAX_NUMBER_OF_POINTS 27000
 
 /* function prototypes go here */
-
+struct location_type {
+		float t;
+		int x;
+		int y;
+		int id_number;
+};
 void prompt_and_exit(int status);
 void print_message_to_file(FILE *fp, char message[]);
-int store_location(float t, int x, int y); // NB x and y are integer values
+int store_location(struct location_type location[], float t, int x, int y); // NB x and y are integer values
