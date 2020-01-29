@@ -57,3 +57,4 @@ struct location_type {
 void prompt_and_exit(int status);
 void print_message_to_file(FILE *fp, char message[]);
 int store_location(struct location_type location[], float t, int x, int y); // NB x and y are integer values
+int reset_id();

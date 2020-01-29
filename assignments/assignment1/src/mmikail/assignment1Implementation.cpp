@@ -38,10 +38,9 @@
 */
 
  
- 
 #include "assignment1Interface.h"
 
-
+static int id = 1;
 void prompt_and_exit(int status) {
    printf("Press any key to continue and close terminal\n");
    getchar();
@@ -54,16 +53,25 @@ void print_message_to_file(FILE *fp, char message[]) {
 }
 
 int store_location(struct location_type location[], float t, int x, int y){
-	int i, id = 1;
-	/* this is how you access fields in an array of structures */
-	for (i=0; i<MAX_NUMBER_OF_POINTS; i++) {
-		if ((location[i].x == x) && (location[i].y == y)){
-			return id;
-		}
-		else{
-			return id += 1;
-		}
+	int i;
+	
+	/* Check if the location already exists in the structure */
+	for (i = 0; i < id; i++) {
+		if ((x == location[i].x ) && (y == location[i].y)){
+			return location[i].id_number;
+		}		
 	}
 
-	//return(id); // eventually, return a unique location id. number
+	location[i].t = t;
+	location[i].x = x;
+	location[i].y = y;
+	location[i].id_number = id;
+	id++;
+
+	return(location[i].id_number); // eventually, return a unique location id. number
 };
+
+int reset_id(){
+	id = 0;
+	return id;
+}
