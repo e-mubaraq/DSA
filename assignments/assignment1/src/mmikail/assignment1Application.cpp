@@ -147,8 +147,9 @@ int main() {
 			fscanf(fp_in, "%f %f %f", &t, &x, &y); //note the &
 		}
 		fprintf(fp_out, "--------------\n");
+		count = 0;
 		reset_id();
-
+		
 		fscanf(fp_in, "%f %f %f", &t, &x, &y); //note the &
 	}
    fclose(fp_in);

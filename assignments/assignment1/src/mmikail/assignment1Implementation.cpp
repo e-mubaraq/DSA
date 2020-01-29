@@ -72,6 +72,6 @@ int store_location(struct location_type location[], float t, int x, int y){
 };
 
 int reset_id(){
-	id = 0;
+	id = 1;
 	return id;
 }

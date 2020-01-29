@@ -1,4 +1,4 @@
-﻿Build started 29/01/2020 12:19:59.
+﻿Build started 29/01/2020 14:30:57.
      1>Project "C:\DSA\assignments\assignment1\build\INSTALL.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Win32\Release\INSTALL\INSTALL.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -14,7 +14,7 @@
          if %errorlevel% neq 0 goto :VCEnd
          :VCEnd
          -- Install configuration: "Release"
-         -- Installing: C:/DSA/assignments/assignment1/bin/mmikail.exe
+         -- Up-to-date: C:/DSA/assignments/assignment1/bin/mmikail.exe
        FinalizeBuildStatus:
          Deleting file "Win32\Release\INSTALL\INSTALL.unsuccessfulbuild".
          Touching "Win32\Release\INSTALL\INSTALL.lastbuildstate".
@@ -22,4 +22,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.51
+Time Elapsed 00:00:00.50
