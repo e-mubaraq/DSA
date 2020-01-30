@@ -27,20 +27,22 @@
    ------
 
    Mubarak Mikail, Carnegie Mellon University Africa
-   05/01/2019
+   17/01/2019
 
 
    Audit Trail
    -----------
 
    - Added prompt_and_exit() to allow users to read the terminal messages before it is closed.  David Vernon, 06/01/2019.
+   - Added store_location() to return a unique id for each location the ants passed through.	Mubarak Mikail	21/01/2019.
+   - Added reset_id() to reset the id to 1 at the end of every test case before processing another test case.	Mubarak Mikail 29/01/2019
 
 */
 
  
 #include "assignment1Interface.h"
 
-static int id = 1;
+static int id = 1;		// id was declared static so that we can keep track of the changes to the variable.
 void prompt_and_exit(int status) {
    printf("Press any key to continue and close terminal\n");
    getchar();
@@ -61,12 +63,12 @@ int store_location(struct location_type location[], float t, int x, int y){
 			return location[i].id_number;
 		}		
 	}
-
+	/* Every location entry that doesn't exist already is added to the data structure*/
 	location[i].t = t;
 	location[i].x = x;
 	location[i].y = y;
 	location[i].id_number = id;
-	id++;
+	id++;		//id is incremented after every instantiating any field(s) of the data structure
 
 	return(location[i].id_number); // eventually, return a unique location id. number
 };

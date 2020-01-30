@@ -26,13 +26,16 @@
    ------
 
    Mubarak Mikail, Carnegie Mellon University Africa
-   05/01/2019
+   17/01/2019
 
 
    Audit Trail
    -----------
 
    - Added prompt_and_exit() to allow users to read the terminal messages before it is closed.  David Vernon, 06/01/2019.
+   - Added store_location() to return a unique id for each location the ants passed through.	Mubarak Mikail	21/01/2019.
+   - Added reset_id() to reset the id to 1 at the end of every test case before processing another test case.	Mubarak Mikail 29/01/2019
+
 
 */
 

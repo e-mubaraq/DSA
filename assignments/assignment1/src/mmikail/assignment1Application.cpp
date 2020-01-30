@@ -5,6 +5,8 @@
 
    This program is for Assignment No. 1, Course 04-630 Data Structures and Algorithms for Engineers. 
 
+   Assigning Unique Identification Numbers to Locations in Ant Paths.
+
    The functionality of the program is defined as follows.
    
    Read location data and time from an input file, process it, and assign unique id for each unique location.
@@ -12,7 +14,9 @@
 
    A function is used to prepend the text and write the message to the output file.
 
-   Input data with a test case message is provided in an input file named input.txt.  
+   Input data with the total number of test cases is provided in an input file named input.txt.
+   It is followed by n sets of locations. Each location was composed of the time, the x coordinate and the y coordinate of the location. 
+   All three are real numbers. The last location in each set is signified by a time value less than zero, e.g. -1.0. 
    This input file is located in the data directory. Since this directory is a sibling directory of the bin directory 
    where the example .exe file resides, the filename used when opening the file is "../data/input.txt".
 
@@ -34,27 +38,48 @@
    Sample Input
    ------------
    
-    2
+	5
 	0.000 0.000 0.000
 	0.100 0.050 0.000
 	0.200 0.100 0.000
 	0.300 0.190 0.000
+	0.400 0.300 0.000
+	0.500 0.400 0.000
+	0.600 0.500 0.000
+	0.700 0.600 0.000
+	0.800 0.700 0.000
+	0.900 0.800 0.000
+	1.000 0.900 0.000
+	1.100 0.000 1.000
+	1.200 0.000 1.010
+	1.300 0.000 1.020
+	1.400 0.000 2.000
+	1.500 0.000 2.000
+	1.600 0.000 4.000
+	1.700 0.000 4.090
+	1.800 0.000 5.000
+	1.900 0.000 4.000
+	2.000 0.000 2.000
+	-1.00 0.000 0.000
 
    Sample Output
    -------------
-    mmikail
-	1 0.000 0 0
-	2 1.100 0 1
-	3 1.400 0 2
-	4 1.600 0 4
-	5 1.800 0 5
+	mmikail
+	  1  0.000    0    0
+	  2  1.100    0    1
+	  3  1.400    0    2
+	  4  1.600    0    4
+	  5  1.800    0    5
+	--------------
 
    Solution Strategy
    -----------------
 
-   The data was read in and stored in variables. An array of struct was defined which was used to store the data read in from the file.
+   The data was read in and stored in variables. An array of struct was defined which was used to store the data read in from the 
+   file after processing each location.
    A unique id was assigned by checking that no two lines have the same x and y values after the x and y values have been converted
-   to int.
+   to int. For every x and y values, check that they are not already in the array of structs, if they are just return the id and 
+   if they are not add that record to the data structure and give it a uniue id.
 
    Test Strategy
    -------------
@@ -84,13 +109,15 @@
    ------
 
    Mubarak Mikail, Carnegie Mellon University Africa
-   05/01/2019
+   17/01/2019
 
 
    Audit Trail
    -----------
 
    - Added prompt_and_exit() to allow users to read the terminal messages before it is closed.  David Vernon, 06/01/2019.
+   - Added store_location() to return a unique id for each location the ants passed through.	Mubarak Mikail	21/01/2019.
+   - Added reset_id() to reset the id to 1 at the end of every test case before processing another test case.	Mubarak Mikail 29/01/2019
 
 */
  
@@ -147,8 +174,8 @@ int main() {
 			fscanf(fp_in, "%f %f %f", &t, &x, &y); //note the &
 		}
 		fprintf(fp_out, "--------------\n");
-		count = 0;
-		reset_id();
+		count = 0;	//reset the counter to 0
+		reset_id();	//reset the id to 1
 		
 		fscanf(fp_in, "%f %f %f", &t, &x, &y); //note the &
 	}
