@@ -1,0 +1,7 @@
+C:/DSA/exercises/bubblesort/build/CMakeFiles/INSTALL.dir
+C:/DSA/exercises/bubblesort/build/CMakeFiles/ALL_BUILD.dir
+C:/DSA/exercises/bubblesort/build/CMakeFiles/ZERO_CHECK.dir
+C:/DSA/exercises/bubblesort/build/src/CMakeFiles/INSTALL.dir
+C:/DSA/exercises/bubblesort/build/src/mmikail/CMakeFiles/mmikail.dir
+C:/DSA/exercises/bubblesort/build/src/mmikail/CMakeFiles/INSTALL.dir
+C:/DSA/exercises/bubblesort/build/src/mmikail/CMakeFiles/ALL_BUILD.dir

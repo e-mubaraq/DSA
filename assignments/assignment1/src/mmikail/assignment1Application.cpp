@@ -77,9 +77,17 @@
 
    The data was read in and stored in variables. An array of struct was defined which was used to store the data read in from the 
    file after processing each location.
-   A unique id was assigned by checking that no two lines have the same x and y values after the x and y values have been converted
-   to int. For every x and y values, check that they are not already in the array of structs, if they are just return the id and 
-   if they are not add that record to the data structure and give it a uniue id.
+   A unique id was assigned by checking that no two lines have the same x and y values that is after the x and y values have been converted
+   to int. For every x and y values, check that they are not already in the array of structs, if they are, just return the id and 
+   if they are not add that record to the data structure and give it a unique id.
+
+   Decalre an array of struct to store each location, id and time data after processing.
+   Instantiate x and y with an invalid value since those values will never be supplied as part of the input data
+   read_in(x,y,t)
+   check if (x and y already exists in the data structure)
+		return the id;
+	else
+		return a unique id and add the x, y, t and id to the data structure. Increment the id
 
    Test Strategy
    -------------
@@ -135,11 +143,14 @@ int main() {
 
 	for (j=0; j<MAX_NUMBER_OF_POINTS; j++) {
 		location[j].t = 0.0;
-		location[j].x = -451;
-		location[j].y = 451;
+		location[j].x = -451; //instantiate x and y with an invalid value since those values will never be supplied as part of the input data
+		location[j].y = 451;	//it helps with checking for x and y values in our data structure
 		location[j].id_number = 0;
 	}
 	
+	/**
+	Check if the input and output data file exists, so that it can fail gracefully without crashing the program.
+	**/
    if ((fp_in = fopen("../data/input.txt","r")) == 0) {
 	  printf("Error can't open input input.txt\n");
      prompt_and_exit(1);
@@ -174,6 +185,7 @@ int main() {
 			fscanf(fp_in, "%f %f %f", &t, &x, &y); //note the &
 		}
 		fprintf(fp_out, "--------------\n");
+		printf("--------------\n");
 		count = 0;	//reset the counter to 0
 		reset_id();	//reset the id to 1
 		

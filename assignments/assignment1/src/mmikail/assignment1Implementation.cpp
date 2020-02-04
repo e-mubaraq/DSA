@@ -50,7 +50,7 @@ void prompt_and_exit(int status) {
 }
 
 void print_message_to_file(FILE *fp, char message[]) {
- 
+	
    fprintf(fp,"The message is: %s\n", message);
 }
 
@@ -68,7 +68,7 @@ int store_location(struct location_type location[], float t, int x, int y){
 	location[i].x = x;
 	location[i].y = y;
 	location[i].id_number = id;
-	id++;		//id is incremented after every instantiating any field(s) of the data structure
+	id++;		//id is incremented after instantiating every field(s) of the data structure
 
 	return(location[i].id_number); // eventually, return a unique location id. number
 };
