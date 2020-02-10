@@ -58,3 +58,64 @@ void swap(int a, int b){
 	b = a;
 	a = temp;
 }
+
+void swap2(int arr[], int i, int j){
+	int temp;
+
+	temp = arr[j];
+	arr[j] = arr[i];
+	arr[i] = temp;
+}
+
+int bubble_sort(int *a, int size) { // int a[]
+	int i,j, temp;
+	for (i=0; i < size-1; i++) { // why?
+		for (j=i; j >= 0; j--) { // Because initially j=i
+			if (a[j] > a[j+1]) { // and we access element j+1
+			/* swap */
+			temp = a[j+1];
+			a[j+1] = a[j];
+			a[j] = temp;
+			//swap2(a, j, j+1);
+			}
+		}
+	}
+
+	return (0);
+}
+
+int bubble_sort_eff(int *a, int size) { // int a[]
+	int i,j;
+	
+	for (i = 0; i < size-1; i++) {
+		j = i;
+		while ((a[j] > a[j+1]) &&  (j >= 0)){
+			/* swap */
+			swap2(a, j, j+1);
+			j--;
+		}
+	}
+
+   return (0);
+}
+
+int insertion_sort(int a[], int size) { // int a[]
+	int i,j;
+	
+	for (i = 1; i < size; i++) {
+		j = i;
+		while ((a[j] < a[j-1]) &&  (j > 0)){
+			/* swap */
+			swap2(a, j-1, j);
+			j--;
+		}
+	}
+
+   return (0);
+}
+
+void printArray(int *arr, int size){
+		for (int i = 0; i < size; i++){
+		printf("%3d  ", arr[i]);
+	}
+}

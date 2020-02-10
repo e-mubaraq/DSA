@@ -131,62 +131,34 @@ int main() {
 #include <conio.h>
 
 
-
-int bubble_sort(int *a, int size) { // int a[]
-	int i,j, temp;
-	for (i=0; i < size-1; i++) { // why?
-		for (j=i; j >= 0; j--) { // Because initially j=i
-			if (a[j] > a[j+1]) { // and we access element j+1
-			/* swap */
-			temp = a[j+1];
-			a[j+1] = a[j];
-			a[j] = temp;
-			}
-		}
-	}
-
-	printf("\nPress any key to continue\n");
-   _getch();
-   return 0;
-}
-
 int main(){
 	int arr[SIZE];
-	int i;
 
 	arr[0] = 10;
 	arr[1] = 9;
 	arr[2] = 11;
 	arr[3] = 8;
 	arr[4] = 4;
-	//for (i = 0; i < SIZE; i++){
 
-	//}
+	printf("Unsorted array: \n");
+	printArray(arr, SIZE);
 
 	bubble_sort(arr, SIZE);
-	printf("Sorted array: \n");
-	for (i = 0; i < SIZE; i++){
-		printf("%3d, ", arr[i]);
-		printf("Sorted array: \n");
-	}
+	printf("\n\nSorted array using BUBBLE sort: \n");
+	printArray(arr, SIZE);
 
-	return (0);
+	bubble_sort_eff(arr, SIZE);
+	printf("\n\nSorted array using efficient BUBBLE sort: \n");
+	printArray(arr, SIZE);
+
+	insertion_sort(arr, SIZE);
+	printf("\n\nSorted array using INSERTION sort: \n");
+	printArray(arr, SIZE);
+
+	printf("\nPress any key to continue\n");
+   _getch();
+   return 0;
 }
 
-//int bubble_sort(int *a, int size) { // int a[]
-//	int i,j, temp;
-//	for (j=1; j < size-1; j++) { // why?
-//		while (a[j] > a[j-1]){
-//			/* swap */
-//			temp = a[j+1];
-//			a[j+1] = a[j];
-//			a[j] = temp;
-//			}
-//		}
-//	}
-//
-//	printf("\nPress any key to continue\n");
-//   _getch();
-//   return 0;
-//}
+
 

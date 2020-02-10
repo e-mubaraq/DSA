@@ -103,7 +103,7 @@
     <CustomBuild Include="CMakeFiles\c5a7ae35b5daa1433d9e873614124f7e\generate.stamp.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/DSA/exercises/bubblesort -BC:/DSA/exercises/bubblesort/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/DSA/exercises/bubblesort/build/example3.sln
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/DSA/exercises/bubblesort -BC:/DSA/exercises/bubblesort/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/DSA/exercises/bubblesort/build/bubblesort.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -115,7 +115,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">C:\DSA\exercises\bubblesort\build\CMakeFiles\generate.stamp;C:\DSA\exercises\bubblesort\build\src\CMakeFiles\generate.stamp;C:\DSA\exercises\bubblesort\build\src\mmikail\CMakeFiles\generate.stamp</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/DSA/exercises/bubblesort -BC:/DSA/exercises/bubblesort/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/DSA/exercises/bubblesort/build/example3.sln
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/DSA/exercises/bubblesort -BC:/DSA/exercises/bubblesort/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/DSA/exercises/bubblesort/build/bubblesort.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -127,7 +127,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">C:\DSA\exercises\bubblesort\build\CMakeFiles\generate.stamp;C:\DSA\exercises\bubblesort\build\src\CMakeFiles\generate.stamp;C:\DSA\exercises\bubblesort\build\src\mmikail\CMakeFiles\generate.stamp</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/DSA/exercises/bubblesort -BC:/DSA/exercises/bubblesort/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/DSA/exercises/bubblesort/build/example3.sln
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/DSA/exercises/bubblesort -BC:/DSA/exercises/bubblesort/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/DSA/exercises/bubblesort/build/bubblesort.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -139,7 +139,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|Win32'">C:\DSA\exercises\bubblesort\build\CMakeFiles\generate.stamp;C:\DSA\exercises\bubblesort\build\src\CMakeFiles\generate.stamp;C:\DSA\exercises\bubblesort\build\src\mmikail\CMakeFiles\generate.stamp</Outputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">Checking Build System</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|Win32'">setlocal
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/DSA/exercises/bubblesort -BC:/DSA/exercises/bubblesort/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/DSA/exercises/bubblesort/build/example3.sln
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -SC:/DSA/exercises/bubblesort -BC:/DSA/exercises/bubblesort/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/DSA/exercises/bubblesort/build/bubblesort.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone

@@ -52,4 +52,8 @@
 void prompt_and_exit(int status);
 void print_message_to_file(FILE *fp, char message[]);
 int bubble_sort(int *a, int size);
+int bubble_sort_eff(int *a, int size);
 void swap(int a, int b);
+void swap2(int arr[], int i, int j);
+int insertion_sort(int a[], int size);
+void printArray(int *a, int size);

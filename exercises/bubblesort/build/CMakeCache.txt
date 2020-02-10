@@ -106,7 +106,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=example3
+CMAKE_PROJECT_NAME:STATIC=bubblesort
 
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=rc
@@ -180,10 +180,10 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 CMAKE_VERBOSE_MAKEFILE:BOOL=OFF
 
 //Value Computed by CMake
-example3_BINARY_DIR:STATIC=C:/DSA/exercises/bubblesort/build
+bubblesort_BINARY_DIR:STATIC=C:/DSA/exercises/bubblesort/build
 
 //Value Computed by CMake
-example3_SOURCE_DIR:STATIC=C:/DSA/exercises/bubblesort
+bubblesort_SOURCE_DIR:STATIC=C:/DSA/exercises/bubblesort
 
 //Value Computed by CMake
 mmikail_BINARY_DIR:STATIC=C:/DSA/exercises/bubblesort/build/src/mmikail
