@@ -173,16 +173,28 @@ int main() {
 		{
 			id = store_location(location, t, (int)x, (int)y);
 			printf("%3d ", id);
-			in_sort(location, id + 1);
+			//in_sort(location, id + 1);
 			/* write the output data to the output file */
 			printf("%6.3f %4d %4d\n", t, (int)x, (int)y);
-			fprintf(fp_out, "%6.3f %4d %4d\n", location[id].t,
-								location[id].x, location[id].y);
+			//fprintf(fp_out, "%6.3f %4d %4d\n", location[id].t,
+			//					location[id].x, location[id].y);
 
 			fscanf(fp_in, "%f %f %f", &t, &x, &y); //note the &
 		}
+
+		//in_sort(location, id + 1);
+		in_sort(location, id + 1, 1);	//sort with t first
+		in_sort(location, id + 1, 3);	//sort with y 
+		in_sort(location, id + 1, 2);	//sort with x
+
+		for (j = 0; j <= id; j++) {
+			fprintf(fp_out, "%6.3f %4d %4d\n", location[j].t,
+									location[j].x, location[j].y);
+		}
 		fprintf(fp_out, "--------------\n");
 		printf("--------------\n");
+
+		reset_id();	//reset the id to 1
 
 		fscanf(fp_in, "%f %f %f", &t, &x, &y); //note the &
 	}

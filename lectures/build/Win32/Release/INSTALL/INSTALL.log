@@ -1,0 +1,31 @@
+﻿Build started 10/02/2020 09:53:43.
+     1>Project "C:\DSA\lectures\build\INSTALL.vcxproj" on node 7 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Win32\Release\INSTALL\INSTALL.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       PostBuildEvent:
+         setlocal
+         "C:\Program Files (x86)\CMake\bin\cmake.exe" -DBUILD_TYPE=Release -P cmake_install.cmake
+         if %errorlevel% neq 0 goto :cmEnd
+         :cmEnd
+         endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+         :cmErrorLevel
+         exit /b %1
+         :cmDone
+         if %errorlevel% neq 0 goto :VCEnd
+         :VCEnd
+         -- Install configuration: "Release"
+         -- Installing: C:/DSA/lectures/bin/towerOfHanoi.exe
+         -- Installing: C:/DSA/lectures/bin/quicksortIntegers.exe
+         -- Installing: C:/DSA/lectures/bin/quicksortStrings.exe
+         -- Installing: C:/DSA/lectures/bin/arrayList.exe
+         -- Installing: C:/DSA/lectures/bin/linkedList.exe
+         -- Installing: C:/DSA/lectures/bin/binaryTree.exe
+         -- Installing: C:/DSA/lectures/bin/graph.exe
+       FinalizeBuildStatus:
+         Deleting file "Win32\Release\INSTALL\INSTALL.unsuccessfulbuild".
+         Touching "Win32\Release\INSTALL\INSTALL.lastbuildstate".
+     1>Done Building Project "C:\DSA\lectures\build\INSTALL.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.57

@@ -1,0 +1,40 @@
+﻿Build started 10/02/2020 09:53:39.
+     1>Project "C:\DSA\lectures\build\src\quicksortStrings\quicksortStrings.vcxproj" on node 7 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "quicksortStrings.dir\Release\quicksortStrings.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       CustomBuild:
+         Building Custom Rule C:/DSA/lectures/src/quicksortStrings/CMakeLists.txt
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /nologo /W3 /WX- /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D _CRT_SECURE_NO_DEPRECATE /D "CMAKE_INTDIR=\"Release\"" /D _MBCS /Gm- /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"quicksortStrings.dir\Release\\" /Fd"quicksortStrings.dir\Release\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\..\src\quicksortStrings\quicksortStringsApplication.c ..\..\..\src\quicksortStrings\quicksortStringsImplementation.c
+         quicksortStringsApplication.c
+     1>..\..\..\src\quicksortStrings\quicksortStringsApplication.c(43): warning C4013: 'malloc' undefined; assuming extern returning int
+     1>..\..\..\src\quicksortStrings\quicksortStringsApplication.c(45): warning C4013: 'exit' undefined; assuming extern returning int
+     1>..\..\..\src\quicksortStrings\quicksortStringsApplication.c(93): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\conio.h(128) : see declaration of 'getch'
+     1>..\..\..\src\quicksortStrings\quicksortStringsApplication.c(17): warning C4101: 'fname' : unreferenced local variable
+     1>..\..\..\src\quicksortStrings\quicksortStringsApplication.c(16): warning C4101: 'num' : unreferenced local variable
+         quicksortStringsImplementation.c
+     1>..\..\..\src\quicksortStrings\quicksortStringsImplementation.c(42): warning C4047: '=' : 'int' differs in levels of indirection from 'char *'
+     1>..\..\..\src\quicksortStrings\quicksortStringsImplementation.c(46): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>..\..\..\src\quicksortStrings\quicksortStringsImplementation.c(46): warning C4024: 'strcmp' : different types for formal and actual parameter 2
+     1>..\..\..\src\quicksortStrings\quicksortStringsImplementation.c(49): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>..\..\..\src\quicksortStrings\quicksortStringsImplementation.c(49): warning C4024: 'strcmp' : different types for formal and actual parameter 2
+     1>..\..\..\src\quicksortStrings\quicksortStringsImplementation.c(21): warning C4101: 'temp' : unreferenced local variable
+         Generating Code...
+     1>c:\dsa\lectures\src\quicksortstrings\quicksortstringsimplementation.c(81): warning C4716: 'exchange_string' : must return a value
+     1>c:\dsa\lectures\src\quicksortstrings\quicksortstringsimplementation.c(95): warning C4716: 'print_list_string' : must return a value
+     1>c:\dsa\lectures\src\quicksortstrings\quicksortstringsimplementation.c(68): warning C4716: 'quicksort' : must return a value
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\DSA\lectures\build\Release\quicksortStrings.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /NODEFAULTLIB:"libc;libcmt.lib;libcmtd.lib" /MANIFEST /ManifestFile:"quicksortStrings.dir\Release\quicksortStrings.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"C:/DSA/lectures/build/Release/quicksortStrings.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/DSA/lectures/build/Release/quicksortStrings.lib" /MACHINE:X86 quicksortStrings.dir\Release\quicksortStringsApplication.obj
+         quicksortStrings.dir\Release\quicksortStringsImplementation.obj  /machine:X86
+         quicksortStrings.vcxproj -> C:\DSA\lectures\build\Release\quicksortStrings.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\DSA\lectures\build\Release\quicksortStrings.exe;#1" /manifest quicksortStrings.dir\Release\quicksortStrings.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "quicksortStrings.dir\Release\quicksortStrings.unsuccessfulbuild".
+         Touching "quicksortStrings.dir\Release\quicksortStrings.lastbuildstate".
+     1>Done Building Project "C:\DSA\lectures\build\src\quicksortStrings\quicksortStrings.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:04.08

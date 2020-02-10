@@ -1,0 +1,7 @@
+C:/DSA/lectures/bin/towerOfHanoi.exe
+C:/DSA/lectures/bin/quicksortIntegers.exe
+C:/DSA/lectures/bin/quicksortStrings.exe
+C:/DSA/lectures/bin/arrayList.exe
+C:/DSA/lectures/bin/linkedList.exe
+C:/DSA/lectures/bin/binaryTree.exe
+C:/DSA/lectures/bin/graph.exe

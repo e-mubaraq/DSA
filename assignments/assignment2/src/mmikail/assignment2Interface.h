@@ -62,4 +62,6 @@ int store_location(struct location_type location[], float t, int x, int y); // N
 void swap(int a, int b);
 void swap2(location_type arr[], int i, int j);
 void swapStruct(struct location_type location[], int i , int j);
+void in_sort(struct location_type location[], int n, int key);
 void in_sort(struct location_type location[], int n);
+int reset_id();

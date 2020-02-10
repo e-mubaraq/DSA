@@ -84,30 +84,55 @@ void swapStruct(struct location_type location[], int i , int j){
 	location[i] = temp;
 }
 
-void in_sort(struct location_type location[], int n){
-	int i, j;
-	for(i = 0; i < n-1; i++){
-		j = i;
-		while((j >= 0) && (location[j].x > location[j + 1].x)){
-			swapStruct(location, j, j+1);
-			j--;
-		}
-	}
-
-}
-
 //void in_sort(struct location_type location[], int n){
 //	int i, j;
-//	for(i = 1; i < n; i++){
+//	for(i = 0; i < n-1; i++){
 //		j = i;
-//		while((j > 0) && (location[j].x < location[j - 1].x)){
-//			//swap(location[j - 1].x, location[j].x);
-//			//swap(location[j - 1].y, location[j].y);
-//			//swap(location[j - 1].t, location[j].t);
-//			swap2(location, j-1, j);
-//
-//			j = j - 1;
+//		while((j >= 0) && (location[j].x > location[j + 1].x)){
+//			swapStruct(location, j, j+1);
+//			j--;
 //		}
 //	}
 //
 //}
+
+void in_sort(struct location_type location[], int n, int key){
+	int i, j;
+	for(i = 0; i < n-1; i++){
+		j = i;
+
+		if(key == 1)
+		{
+
+			while((j >= 0) && (location[j].t > location[j + 1].t)){
+				swapStruct(location, j, j+1);
+				j--;
+			}
+		}
+		
+		else if(key == 2)
+		{
+
+			while((j >= 0) && (location[j].x > location[j + 1].x)){
+				swapStruct(location, j, j+1);
+				j--;
+			}
+		}
+
+		else if(key == 3)
+		{
+
+			while((j >= 0) && (location[j].y > location[j + 1].y)){
+				swapStruct(location, j, j+1);
+				j--;
+			}
+		}
+
+	}
+
+}
+
+int reset_id(){
+	i = 0;
+	return i;
+}

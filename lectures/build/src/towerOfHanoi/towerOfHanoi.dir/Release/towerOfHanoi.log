@@ -1,0 +1,27 @@
+﻿Build started 10/02/2020 09:53:39.
+     1>Project "C:\DSA\lectures\build\src\towerOfHanoi\towerOfHanoi.vcxproj" on node 8 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "towerOfHanoi.dir\Release\towerOfHanoi.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       CustomBuild:
+         Building Custom Rule C:/DSA/lectures/src/towerOfHanoi/CMakeLists.txt
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /nologo /W3 /WX- /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D _CRT_SECURE_NO_DEPRECATE /D "CMAKE_INTDIR=\"Release\"" /D _MBCS /Gm- /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"towerOfHanoi.dir\Release\\" /Fd"towerOfHanoi.dir\Release\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\..\src\towerOfHanoi\towerOfHanoiApplication.c ..\..\..\src\towerOfHanoi\towerOfHanoiImplementation.c
+         towerOfHanoiApplication.c
+     1>..\..\..\src\towerOfHanoi\towerOfHanoiApplication.c(50): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\conio.h(128) : see declaration of 'getch'
+         towerOfHanoiImplementation.c
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\DSA\lectures\build\Release\towerOfHanoi.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /NODEFAULTLIB:"libc;libcmt.lib;libcmtd.lib" /MANIFEST /ManifestFile:"towerOfHanoi.dir\Release\towerOfHanoi.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"C:/DSA/lectures/build/Release/towerOfHanoi.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/DSA/lectures/build/Release/towerOfHanoi.lib" /MACHINE:X86 towerOfHanoi.dir\Release\towerOfHanoiApplication.obj
+         towerOfHanoi.dir\Release\towerOfHanoiImplementation.obj  /machine:X86
+         towerOfHanoi.vcxproj -> C:\DSA\lectures\build\Release\towerOfHanoi.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\DSA\lectures\build\Release\towerOfHanoi.exe;#1" /manifest towerOfHanoi.dir\Release\towerOfHanoi.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "towerOfHanoi.dir\Release\towerOfHanoi.unsuccessfulbuild".
+         Touching "towerOfHanoi.dir\Release\towerOfHanoi.lastbuildstate".
+     1>Done Building Project "C:\DSA\lectures\build\src\towerOfHanoi\towerOfHanoi.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.97
