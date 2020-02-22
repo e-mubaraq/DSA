@@ -1,4 +1,4 @@
-﻿Build started 10/02/2020 11:15:38.
+﻿Build started 17/02/2020 09:27:18.
      1>Project "C:\DSA\assignments\assignment2\build\src\mmikail\mmikail.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "mmikail.dir\Release\mmikail.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -20,4 +20,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.24
+Time Elapsed 00:00:00.70
