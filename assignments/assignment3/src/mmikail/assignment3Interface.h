@@ -32,8 +32,11 @@
    Audit Trail
    -----------
 
-   - Added prompt_and_exit() to allow users to read the terminal messages before it is closed.  David Vernon, 06/01/2019.
-
+   - Added int samplePoisson() to implement a Poisson distribution.	Mubarak Mikail 16/02/2019
+   - Added LIST_TYPE *enqueue() to enqueue a queue. Mubarak Mikail 21/02/2019
+   - Added ELEMENT_TYPE dequeue() to dequeue a  queue. Mubarak Mikail 21/02/2019
+   - Added swap() to swap an array element with another array element.	Mubarak Mikail 29/02/2019
+   - Added insertion_sort() to implement insertion sort for sorting the queue lengths. Mubarak Mikail 29/02/2019
 
 */
  
@@ -43,6 +46,7 @@
 #include <ctype.h>
 #include <time.h>
 #include <math.h>
+#include "linkedList.h"
 
 #define TRUE 1
 #define FALSE 0
@@ -54,3 +58,7 @@
 
 void prompt_and_exit(int status);
 int samplePoisson(double lambda);
+LIST_TYPE *enqueue(ELEMENT_TYPE e, LIST_TYPE l);
+ELEMENT_TYPE dequeue(LIST_TYPE l);
+int insertion_sort(int a[], int size);
+void swap(int arr[], int i, int j);

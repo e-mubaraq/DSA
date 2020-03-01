@@ -41,6 +41,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("C:/DSA/lectures/build/src/linkedList/cmake_install.cmake")
   include("C:/DSA/lectures/build/src/binaryTree/cmake_install.cmake")
   include("C:/DSA/lectures/build/src/graph/cmake_install.cmake")
+  include("C:/DSA/lectures/build/src/queue/cmake_install.cmake")
 
 endif()
 

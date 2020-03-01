@@ -1,5 +1,5 @@
-﻿Build started 10/02/2020 09:53:38.
-     1>Project "C:\DSA\lectures\build\src\arrayList\arrayList.vcxproj" on node 6 (build target(s)).
+﻿Build started 22/02/2020 19:38:25.
+     1>Project "C:\DSA\lectures\build\src\arrayList\arrayList.vcxproj" on node 7 (build target(s)).
      1>InitializeBuildStatus:
          Creating "arrayList.dir\Release\arrayList.unsuccessfulbuild" because "AlwaysCreate" was specified.
        CustomBuild:
@@ -22,4 +22,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.29
+Time Elapsed 00:00:05.50

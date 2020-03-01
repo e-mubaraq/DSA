@@ -7,9 +7,15 @@
     <ClCompile Include="..\..\..\src\mmikail\assignment3Implementation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\mmikail\linkedListImplementation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\mmikail\assignment3Interface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\mmikail\linkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

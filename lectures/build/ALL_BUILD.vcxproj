@@ -176,6 +176,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{5D958675-724E-3AED-B88A-952B98923FC0}</Project>
       <Name>linkedList</Name>
     </ProjectReference>
+    <ProjectReference Include="C:\DSA\lectures\build\src\queue\queue.vcxproj">
+      <Project>{6A261B29-7711-3044-A4C8-AE7B94939E78}</Project>
+      <Name>queue</Name>
+    </ProjectReference>
     <ProjectReference Include="C:\DSA\lectures\build\src\quicksortIntegers\quicksortIntegers.vcxproj">
       <Project>{AE4956DB-AF49-3BCF-8E47-A8C1DB7540BE}</Project>
       <Name>quicksortIntegers</Name>

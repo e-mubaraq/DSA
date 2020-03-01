@@ -1,4 +1,4 @@
-﻿Build started 16/02/2020 13:57:48.
+﻿Build started 28/02/2020 15:38:36.
      1>Project "C:\DSA\assignments\assignment3\build\ALL_BUILD.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Win32\Debug\ALL_BUILD\ALL_BUILD.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -11,4 +11,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.31
+Time Elapsed 00:00:00.23

@@ -1,5 +1,5 @@
-﻿Build started 10/02/2020 09:53:43.
-     1>Project "C:\DSA\lectures\build\ALL_BUILD.vcxproj" on node 6 (build target(s)).
+﻿Build started 22/02/2020 19:38:31.
+     1>Project "C:\DSA\lectures\build\ALL_BUILD.vcxproj" on node 8 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Win32\Release\ALL_BUILD\ALL_BUILD.unsuccessfulbuild" because "AlwaysCreate" was specified.
        CustomBuild:
@@ -11,4 +11,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.42
+Time Elapsed 00:00:00.47

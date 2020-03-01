@@ -10,7 +10,7 @@ Microsoft (R) Build Engine version 4.8.3761.0
 [Microsoft .NET Framework, version 4.0.30319.42000]
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 15/02/2020 07:14:49.
+Build started 24/02/2020 12:47:04.
 Project "C:\DSA\assignments\assignment3\build\CMakeFiles\3.16.2\CompilerIdC\CompilerIdC.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -37,7 +37,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.84
+Time Elapsed 00:00:01.43
 
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -57,7 +57,7 @@ Microsoft (R) Build Engine version 4.8.3761.0
 [Microsoft .NET Framework, version 4.0.30319.42000]
 Copyright (C) Microsoft Corporation. All rights reserved.
 
-Build started 15/02/2020 07:14:51.
+Build started 24/02/2020 12:47:06.
 Project "C:\DSA\assignments\assignment3\build\CMakeFiles\3.16.2\CompilerIdCXX\CompilerIdCXX.vcxproj" on node 1 (default targets).
 PrepareForBuild:
   Creating directory "Debug\".
@@ -84,7 +84,7 @@ Build succeeded.
     0 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.54
+Time Elapsed 00:00:00.90
 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -96,68 +96,68 @@ The CXX compiler identification is MSVC, found in "C:/DSA/assignments/assignment
 Determining if the C compiler works passed with the following output:
 Change Dir: C:/DSA/assignments/assignment3/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe cmTC_0edaa.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=10.0 /v:m && Microsoft (R) Build Engine version 4.8.3761.0
+Run Build Command(s):C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe cmTC_a808e.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=10.0 /v:m && Microsoft (R) Build Engine version 4.8.3761.0
 [Microsoft .NET Framework, version 4.0.30319.42000]
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 16.00.30319.01 for 80x86
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
-  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_0edaa.dir\Debug\\" /Fd"cmTC_0edaa.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue testCCompiler.c
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_a808e.dir\Debug\\" /Fd"cmTC_a808e.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue testCCompiler.c
   
   testCCompiler.c
-  cmTC_0edaa.vcxproj -> C:\DSA\assignments\assignment3\build\CMakeFiles\CMakeTmp\Debug\cmTC_0edaa.exe
+  cmTC_a808e.vcxproj -> C:\DSA\assignments\assignment3\build\CMakeFiles\CMakeTmp\Debug\cmTC_a808e.exe
 
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/DSA/assignments/assignment3/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe cmTC_29691.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=10.0 /v:m && Microsoft (R) Build Engine version 4.8.3761.0
+Run Build Command(s):C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe cmTC_800e8.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=10.0 /v:m && Microsoft (R) Build Engine version 4.8.3761.0
 [Microsoft .NET Framework, version 4.0.30319.42000]
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 16.00.30319.01 for 80x86
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
-  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_29691.dir\Debug\\" /Fd"cmTC_29691.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue "..\..\..\..\..\..\Program Files (x86)\CMake\share\cmake-3.16\Modules\CMakeCCompilerABI.c"
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"cmTC_800e8.dir\Debug\\" /Fd"cmTC_800e8.dir\Debug\vc100.pdb" /Gd /TC /analyze- /errorReport:queue "..\..\..\..\..\..\Program Files (x86)\CMake\share\cmake-3.16\Modules\CMakeCCompilerABI.c"
   
   CMakeCCompilerABI.c
-  cmTC_29691.vcxproj -> C:\DSA\assignments\assignment3\build\CMakeFiles\CMakeTmp\Debug\cmTC_29691.exe
+  cmTC_800e8.vcxproj -> C:\DSA\assignments\assignment3\build\CMakeFiles\CMakeTmp\Debug\cmTC_800e8.exe
 
 
 
 Determining if the CXX compiler works passed with the following output:
 Change Dir: C:/DSA/assignments/assignment3/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe cmTC_9436c.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=10.0 /v:m && Microsoft (R) Build Engine version 4.8.3761.0
+Run Build Command(s):C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe cmTC_5aebf.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=10.0 /v:m && Microsoft (R) Build Engine version 4.8.3761.0
 [Microsoft .NET Framework, version 4.0.30319.42000]
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 16.00.30319.01 for 80x86
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
-  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"cmTC_9436c.dir\Debug\\" /Fd"cmTC_9436c.dir\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:queue testCXXCompiler.cxx
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"cmTC_5aebf.dir\Debug\\" /Fd"cmTC_5aebf.dir\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:queue testCXXCompiler.cxx
   
   testCXXCompiler.cxx
-  cmTC_9436c.vcxproj -> C:\DSA\assignments\assignment3\build\CMakeFiles\CMakeTmp\Debug\cmTC_9436c.exe
+  cmTC_5aebf.vcxproj -> C:\DSA\assignments\assignment3\build\CMakeFiles\CMakeTmp\Debug\cmTC_5aebf.exe
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: C:/DSA/assignments/assignment3/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe cmTC_69b0c.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=10.0 /v:m && Microsoft (R) Build Engine version 4.8.3761.0
+Run Build Command(s):C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe cmTC_c0f30.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=10.0 /v:m && Microsoft (R) Build Engine version 4.8.3761.0
 [Microsoft .NET Framework, version 4.0.30319.42000]
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 16.00.30319.01 for 80x86
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
-  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"cmTC_69b0c.dir\Debug\\" /Fd"cmTC_69b0c.dir\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:queue "..\..\..\..\..\..\Program Files (x86)\CMake\share\cmake-3.16\Modules\CMakeCXXCompilerABI.cpp"
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"cmTC_c0f30.dir\Debug\\" /Fd"cmTC_c0f30.dir\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:queue "..\..\..\..\..\..\Program Files (x86)\CMake\share\cmake-3.16\Modules\CMakeCXXCompilerABI.cpp"
   
   CMakeCXXCompilerABI.cpp
-  cmTC_69b0c.vcxproj -> C:\DSA\assignments\assignment3\build\CMakeFiles\CMakeTmp\Debug\cmTC_69b0c.exe
+  cmTC_c0f30.vcxproj -> C:\DSA\assignments\assignment3\build\CMakeFiles\CMakeTmp\Debug\cmTC_c0f30.exe
 
 
 
@@ -166,17 +166,17 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 Detecting CXX [] compiler features compiled with the following output:
 Change Dir: C:/DSA/assignments/assignment3/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe cmTC_ea24b.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=10.0 /v:m && Microsoft (R) Build Engine version 4.8.3761.0
+Run Build Command(s):C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe cmTC_c92a6.vcxproj /p:Configuration=Debug /p:Platform=Win32 /p:VisualStudioVersion=10.0 /v:m && Microsoft (R) Build Engine version 4.8.3761.0
 [Microsoft .NET Framework, version 4.0.30319.42000]
 Copyright (C) Microsoft Corporation. All rights reserved.
 
   Microsoft (R) 32-bit C/C++ Optimizing Compiler Version 16.00.30319.01 for 80x86
   Copyright (C) Microsoft Corporation.  All rights reserved.
   
-  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"cmTC_ea24b.dir\Debug\\" /Fd"cmTC_ea24b.dir\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:queue ..\feature_tests.cxx
+  cl /c /Zi /W3 /WX- /Od /Ob0 /Oy- /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"cmTC_c92a6.dir\Debug\\" /Fd"cmTC_c92a6.dir\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:queue ..\feature_tests.cxx
   
   feature_tests.cxx
-  cmTC_ea24b.vcxproj -> C:\DSA\assignments\assignment3\build\CMakeFiles\CMakeTmp\Debug\cmTC_ea24b.exe
+  cmTC_c92a6.vcxproj -> C:\DSA\assignments\assignment3\build\CMakeFiles\CMakeTmp\Debug\cmTC_c92a6.exe
 
 
 

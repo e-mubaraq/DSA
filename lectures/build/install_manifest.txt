@@ -5,3 +5,4 @@ C:/DSA/lectures/bin/arrayList.exe
 C:/DSA/lectures/bin/linkedList.exe
 C:/DSA/lectures/bin/binaryTree.exe
 C:/DSA/lectures/bin/graph.exe
+C:/DSA/lectures/bin/queue.exe

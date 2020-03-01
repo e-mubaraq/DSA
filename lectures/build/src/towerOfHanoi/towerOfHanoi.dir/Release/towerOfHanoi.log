@@ -1,5 +1,5 @@
-﻿Build started 10/02/2020 09:53:39.
-     1>Project "C:\DSA\lectures\build\src\towerOfHanoi\towerOfHanoi.vcxproj" on node 8 (build target(s)).
+﻿Build started 22/02/2020 19:38:25.
+     1>Project "C:\DSA\lectures\build\src\towerOfHanoi\towerOfHanoi.vcxproj" on node 9 (build target(s)).
      1>InitializeBuildStatus:
          Creating "towerOfHanoi.dir\Release\towerOfHanoi.unsuccessfulbuild" because "AlwaysCreate" was specified.
        CustomBuild:
@@ -24,4 +24,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.97
+Time Elapsed 00:00:05.15

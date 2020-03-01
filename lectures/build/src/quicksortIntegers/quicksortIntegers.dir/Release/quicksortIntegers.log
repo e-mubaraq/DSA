@@ -1,5 +1,5 @@
-﻿Build started 10/02/2020 09:53:38.
-     1>Project "C:\DSA\lectures\build\src\quicksortIntegers\quicksortIntegers.vcxproj" on node 2 (build target(s)).
+﻿Build started 22/02/2020 19:38:24.
+     1>Project "C:\DSA\lectures\build\src\quicksortIntegers\quicksortIntegers.vcxproj" on node 3 (build target(s)).
      1>InitializeBuildStatus:
          Creating "quicksortIntegers.dir\Release\quicksortIntegers.unsuccessfulbuild" because "AlwaysCreate" was specified.
        CustomBuild:
@@ -31,4 +31,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.09
+Time Elapsed 00:00:06.47

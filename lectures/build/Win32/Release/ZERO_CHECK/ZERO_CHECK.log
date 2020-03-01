@@ -1,4 +1,4 @@
-﻿Build started 10/02/2020 09:53:37.
+﻿Build started 22/02/2020 19:38:23.
      1>Project "C:\DSA\lectures\build\ZERO_CHECK.vcxproj" on node 2 (build target(s)).
      1>PrepareForBuild:
          Creating directory "C:\DSA\lectures\build\Release\".
@@ -13,4 +13,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.81
+Time Elapsed 00:00:00.41

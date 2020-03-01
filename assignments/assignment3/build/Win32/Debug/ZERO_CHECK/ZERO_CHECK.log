@@ -1,4 +1,4 @@
-﻿Build started 16/02/2020 13:57:41.
+﻿Build started 28/02/2020 15:38:33.
      1>Project "C:\DSA\assignments\assignment3\build\ZERO_CHECK.vcxproj" on node 2 (build target(s)).
      1>PrepareForBuild:
          Creating directory "C:\DSA\assignments\assignment3\build\Debug\".
@@ -13,4 +13,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.34
+Time Elapsed 00:00:00.29

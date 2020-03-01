@@ -297,7 +297,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\mmikail\assignment3Application.cpp" />
     <ClCompile Include="..\..\..\src\mmikail\assignment3Implementation.cpp" />
+    <ClCompile Include="..\..\..\src\mmikail\linkedListImplementation.cpp" />
     <ClInclude Include="..\..\..\src\mmikail\assignment3Interface.h" />
+    <ClInclude Include="..\..\..\src\mmikail\linkedList.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\DSA\assignments\assignment3\build\ZERO_CHECK.vcxproj">

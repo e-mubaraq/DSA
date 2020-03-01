@@ -1,14 +1,16 @@
-﻿Build started 16/02/2020 17:51:31.
-     1>Project "C:\DSA\assignments\assignment3\build\ALL_BUILD.vcxproj" on node 2 (build target(s)).
-     1>InitializeBuildStatus:
+﻿Build started 28/02/2020 15:45:25.
+     1>Project "C:\DSA\assignments\assignment3\build\ALL_BUILD.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Win32\Release\ALL_BUILD\ALL_BUILD.lastbuildstate".
+       InitializeBuildStatus:
          Creating "Win32\Release\ALL_BUILD\ALL_BUILD.unsuccessfulbuild" because "AlwaysCreate" was specified.
        CustomBuild:
          Building Custom Rule C:/DSA/assignments/assignment3/CMakeLists.txt
        FinalizeBuildStatus:
          Deleting file "Win32\Release\ALL_BUILD\ALL_BUILD.unsuccessfulbuild".
          Touching "Win32\Release\ALL_BUILD\ALL_BUILD.lastbuildstate".
-     1>Done Building Project "C:\DSA\assignments\assignment3\build\ALL_BUILD.vcxproj" (build target(s)).
+     1>Done Building Project "C:\DSA\assignments\assignment3\build\ALL_BUILD.vcxproj" (rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.38
+Time Elapsed 00:00:00.20

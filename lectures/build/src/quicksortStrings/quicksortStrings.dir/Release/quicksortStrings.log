@@ -1,5 +1,5 @@
-﻿Build started 10/02/2020 09:53:39.
-     1>Project "C:\DSA\lectures\build\src\quicksortStrings\quicksortStrings.vcxproj" on node 7 (build target(s)).
+﻿Build started 22/02/2020 19:38:24.
+     1>Project "C:\DSA\lectures\build\src\quicksortStrings\quicksortStrings.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "quicksortStrings.dir\Release\quicksortStrings.unsuccessfulbuild" because "AlwaysCreate" was specified.
        CustomBuild:
@@ -37,4 +37,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:04.08
+Time Elapsed 00:00:06.85

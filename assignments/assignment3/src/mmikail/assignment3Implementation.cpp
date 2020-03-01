@@ -33,8 +33,11 @@
    Audit Trail
    -----------
 
-   - Added prompt_and_exit() to allow users to read the terminal messages before it is closed.  David Vernon, 06/01/2019.
-
+   - Added int samplePoisson() to implement a Poisson distribution.	Mubarak Mikail 16/02/2019
+   - Added LIST_TYPE *enqueue() to enqueue a queue. Mubarak Mikail 21/02/2019
+   - Added ELEMENT_TYPE dequeue() to dequeue a  queue. Mubarak Mikail 21/02/2019
+   - Added swap() to swap an array element with another array element.	Mubarak Mikail 29/02/2019
+   - Added insertion_sort() to implement insertion sort for sorting the queue lengths. Mubarak Mikail 29/02/2019
 
 */
 
@@ -68,4 +71,40 @@ int samplePoisson(double lambda) {
 		product = product * ((double) rand() / (double) RAND_MAX);
 	}
 	return(count);
+}
+
+
+LIST_TYPE *enqueue(ELEMENT_TYPE e, LIST_TYPE list) {
+	insert(e, end(&list), &list);
+	return (&list);
+}
+
+ELEMENT_TYPE dequeue(LIST_TYPE l) {
+	ELEMENT_TYPE e;
+	e = retrieve(first(&l), &l);
+	delete_element(first(&l), &l);
+	return e;
+}
+
+int insertion_sort(int a[], int size) { // int a[]
+	int i,j;
+	
+	for (i = 1; i < size; i++) {
+		j = i;
+		while ((a[j] < a[j-1]) &&  (j > 0)){
+			/* swap */
+			swap(a, j-1, j);
+			j--;
+		}
+	}
+
+   return (0);
+}
+
+void swap(int arr[], int i, int j) {
+	int temp;
+
+	temp = arr[j];
+	arr[j] = arr[i];
+	arr[i] = temp;
 }
