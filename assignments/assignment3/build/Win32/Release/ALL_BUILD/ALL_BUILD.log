@@ -1,4 +1,4 @@
-﻿Build started 28/02/2020 15:45:25.
+﻿Build started 02/03/2020 13:35:03.
      1>Project "C:\DSA\assignments\assignment3\build\ALL_BUILD.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Win32\Release\ALL_BUILD\ALL_BUILD.lastbuildstate".
@@ -13,4 +13,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.20
+Time Elapsed 00:00:00.30

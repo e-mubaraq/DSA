@@ -162,7 +162,7 @@
    3. Test with a red_time_duration of 0 and a high green_time_duration
    4. Test with a green_time_duration of 0
    5. Test with a low green_time_duration and a high red_time_duration
-   6. Test wih arrival rate of 0
+   6. Test with a runtime of 0
    - 
 
    The order of complexity
@@ -221,6 +221,25 @@ int main() {
 	long int increment       = 0;  // the period of each simulation interval in milliseconds
 
 
+	double arrival_rate      = 0;  // cars per millisecond
+	long int departure_time  = 0;  // milliseconds per car
+	long int runtime         = 0;  // milliseconds
+	long int red_duration    = 0;  // millisecond
+	long int green_duration  = 0;  // milliseconds
+	long int amber_duration  = 0;  // milliseconds
+	long int wait_time		 = 0;
+	long int total_wait_time = 0;
+	long int arrival_time	 = 0;
+	int max_wait_time		 = 0;	// Maximum wait
+	int avg_wait_time		 = 0;	// Average wait
+	int queue_length		 = 0;
+	int total_queue_length	 = 0;
+	int max_queue_length	 = 0;	// Maximum queue length
+	int avg_queue_length	 = 0;	// Average queue length
+	int median_queue_length	 = 0;
+	int num_of_queue_length	 = 0;
+
+
 	int count;			// the number of cars that arrive in any given
 						// simulation interval (i.e time increment)
 	int total_number_of_cars = 0; //total numbers of car that have arrived so far during the simulation
@@ -229,6 +248,7 @@ int main() {
 	int i, j, k, m, value;
 	long int n;
 	int debug = TRUE;
+	int qu_lengths[60000];
 
 	long int depature_timer, light_timer;
 	char* colour;
@@ -270,35 +290,12 @@ int main() {
 	
     fprintf(fp_out, "mmikail\n");
    	/* read the number of test cases from a file */
-	fgets(input_string, STRING_LENGTH, fp_in); // read a line from the input file
-	sscanf(input_string, "%d", &number_of_test_cases);
-	
-
-
+	fscanf(fp_in, "%d", &number_of_test_cases); //note the &
+	//fgets(input_string, STRING_LENGTH, fp_in); // read a line from the input file
+		
 	for(i = 1; i <= number_of_test_cases; i++)
-	{		
-		double arrival_rate      = 0;  // cars per millisecond
-		long int departure_time  = 0;  // milliseconds per car
-		long int runtime         = 0;  // milliseconds
-		long int red_duration    = 0;  // millisecond
-		long int green_duration  = 0;  // milliseconds
-		long int amber_duration  = 0;  // milliseconds
-		long int wait_time		 = 0;
-		long int total_wait_time = 0;
-		long int arrival_time	 = 0;
-		int max_wait_time		 = 0;	// Maximum wait
-		int avg_wait_time		 = 0;	// Average wait
-		int queue_length		 = 0;
-		int total_queue_length	 = 0;
-		int max_queue_length	 = 0;	// Maximum queue length
-		int avg_queue_length	 = 0;	// Average queue length
-		int median_queue_length	 = 0;
-		int num_of_queue_length  = 0;
-
-		int qu_lengths[60000];
-		for(j = 0; j < 60000; j++)
-			qu_lengths[j] = 0;
-
+	{
+		
 		for (k = 1; k <= 7; k++)
 		{
 			fgets(input_string, STRING_LENGTH, fp_in); // read a line from the input file
@@ -363,8 +360,8 @@ int main() {
 			if (depature_timer > departure_time && strcmp(colour, "Green") == 0 && !is_empty(&list)) {
 				deq_element = dequeue(list);
 				
-				wait_time = n - deq_element.arrival_time;
-				total_wait_time = total_wait_time + wait_time;
+				wait_time = n - deq_element.arrival_time;	// n is the current simulation time
+				total_wait_time += wait_time;
 				if (wait_time > max_wait_time)
 					max_wait_time = wait_time;
 				depature_timer = 0;
@@ -400,6 +397,7 @@ int main() {
 			if (wait_time > max_wait_time)
 				max_wait_time = wait_time;
 		}
+		
 		avg_wait_time = total_wait_time / total_number_of_cars;
 		avg_queue_length = total_queue_length / num_of_queue_length;
 
@@ -420,10 +418,9 @@ int main() {
 		fprintf(fp_out, "Average wait:   %d s\n", avg_wait_time / 1000);
 		fprintf(fp_out, "Maximum wait:   %d s\n", max_wait_time / 1000);
 		fprintf(fp_out, "\n");
-	
+
 	}
-	
-	
+
    fclose(fp_in);
    fclose(fp_out);
 
