@@ -1,0 +1,12 @@
+mmikail
+../data/textfile1.txt
+My heart is in the work
+My heart is in the wirk 
+Maximum number of probes: 0
+Average number of probes: 0.0
+--------------------
+../data/textfile2.txt
+heart in is My the work 
+Maximum number of probes: 0
+Average number of probes: 0.0
+--------------------
