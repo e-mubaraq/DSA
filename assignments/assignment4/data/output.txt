@@ -1,12 +1,17 @@
 mmikail
 ../data/textfile1.txt
-My heart is in the work
-My heart is in the wirk 
-Maximum number of probes: 0
+my heart is in the work
+my heart is in the wirk 
+Maximum number of probes: 4
 Average number of probes: 0.0
 --------------------
 ../data/textfile2.txt
-heart in is My the work 
-Maximum number of probes: 0
+heart in is my the work 
+Maximum number of probes: 6
+Average number of probes: 0.0
+--------------------
+../data/textfile3.txt
+the school  long-term motto is for learning and culture 
+Maximum number of probes: 7
 Average number of probes: 0.0
 --------------------

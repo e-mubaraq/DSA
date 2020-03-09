@@ -1,5 +1,5 @@
-﻿Build started 23/02/2020 17:41:25.
-     1>Project "C:\DSA\lectures\build\INSTALL.vcxproj" on node 2 (build target(s)).
+﻿Build started 07/03/2020 12:50:04.
+     1>Project "C:\DSA\lectures\build\INSTALL.vcxproj" on node 7 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Win32\Release\INSTALL\INSTALL.unsuccessfulbuild" because "AlwaysCreate" was specified.
        PostBuildEvent:
@@ -14,13 +14,13 @@
          if %errorlevel% neq 0 goto :VCEnd
          :VCEnd
          -- Install configuration: "Release"
-         -- Up-to-date: C:/DSA/lectures/bin/towerOfHanoi.exe
-         -- Up-to-date: C:/DSA/lectures/bin/quicksortIntegers.exe
-         -- Up-to-date: C:/DSA/lectures/bin/quicksortStrings.exe
-         -- Up-to-date: C:/DSA/lectures/bin/arrayList.exe
-         -- Up-to-date: C:/DSA/lectures/bin/linkedList.exe
-         -- Up-to-date: C:/DSA/lectures/bin/binaryTree.exe
-         -- Up-to-date: C:/DSA/lectures/bin/graph.exe
+         -- Installing: C:/DSA/lectures/bin/towerOfHanoi.exe
+         -- Installing: C:/DSA/lectures/bin/quicksortIntegers.exe
+         -- Installing: C:/DSA/lectures/bin/quicksortStrings.exe
+         -- Installing: C:/DSA/lectures/bin/arrayList.exe
+         -- Installing: C:/DSA/lectures/bin/linkedList.exe
+         -- Installing: C:/DSA/lectures/bin/binaryTree.exe
+         -- Installing: C:/DSA/lectures/bin/graph.exe
          -- Installing: C:/DSA/lectures/bin/queue.exe
        FinalizeBuildStatus:
          Deleting file "Win32\Release\INSTALL\INSTALL.unsuccessfulbuild".
@@ -29,4 +29,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.16
+Time Elapsed 00:00:00.44

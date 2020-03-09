@@ -1,26 +1,15 @@
-﻿Build started 22/02/2020 19:38:24.
+﻿Build started 07/03/2020 12:50:01.
      1>Project "C:\DSA\lectures\build\src\quicksortIntegers\quicksortIntegers.vcxproj" on node 3 (build target(s)).
      1>InitializeBuildStatus:
          Creating "quicksortIntegers.dir\Release\quicksortIntegers.unsuccessfulbuild" because "AlwaysCreate" was specified.
        CustomBuild:
-         Building Custom Rule C:/DSA/lectures/src/quicksortIntegers/CMakeLists.txt
+         All outputs are up-to-date.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /nologo /W3 /WX- /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D _CRT_SECURE_NO_DEPRECATE /D "CMAKE_INTDIR=\"Release\"" /D _MBCS /Gm- /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"quicksortIntegers.dir\Release\\" /Fd"quicksortIntegers.dir\Release\vc100.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\..\src\quicksortIntegers\quicksortIntegersApplication.c ..\..\..\src\quicksortIntegers\quicksortIntegersImplementation.c
-         quicksortIntegersApplication.c
-     1>..\..\..\src\quicksortIntegers\quicksortIntegersApplication.c(74): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getch. See online help for details.
-                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\conio.h(128) : see declaration of 'getch'
-     1>..\..\..\src\quicksortIntegers\quicksortIntegersApplication.c(17): warning C4101: 'fname' : unreferenced local variable
-     1>..\..\..\src\quicksortIntegers\quicksortIntegersApplication.c(18): warning C4101: 'o_fps' : unreferenced local variable
-     1>..\..\..\src\quicksortIntegers\quicksortIntegersApplication.c(18): warning C4101: 'i_fps' : unreferenced local variable
-         quicksortIntegersImplementation.c
-     1>..\..\..\src\quicksortIntegers\quicksortIntegersImplementation.c(20): warning C4101: 'temp' : unreferenced local variable
-         Generating Code...
-     1>c:\dsa\lectures\src\quicksortintegers\quicksortintegersimplementation.c(75): warning C4716: 'exchange_int' : must return a value
-     1>c:\dsa\lectures\src\quicksortintegers\quicksortintegersimplementation.c(87): warning C4716: 'print_list_int' : must return a value
-     1>c:\dsa\lectures\src\quicksortintegers\quicksortintegersimplementation.c(63): warning C4716: 'quicksort' : must return a value
+         All outputs are up-to-date.
        Link:
+         All outputs are up-to-date.
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\DSA\lectures\build\Release\quicksortIntegers.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /NODEFAULTLIB:"libc;libcmt.lib;libcmtd.lib" /MANIFEST /ManifestFile:"quicksortIntegers.dir\Release\quicksortIntegers.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"C:/DSA/lectures/build/Release/quicksortIntegers.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/DSA/lectures/build/Release/quicksortIntegers.lib" /MACHINE:X86 quicksortIntegers.dir\Release\quicksortIntegersApplication.obj
-         quicksortIntegers.dir\Release\quicksortIntegersImplementation.obj  /machine:X86
+         quicksortIntegers.dir\Release\quicksortIntegersImplementation.obj
          quicksortIntegers.vcxproj -> C:\DSA\lectures\build\Release\quicksortIntegers.exe
        Manifest:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\DSA\lectures\build\Release\quicksortIntegers.exe;#1" /manifest quicksortIntegers.dir\Release\quicksortIntegers.exe.intermediate.manifest
@@ -31,4 +20,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:06.47
+Time Elapsed 00:00:01.28

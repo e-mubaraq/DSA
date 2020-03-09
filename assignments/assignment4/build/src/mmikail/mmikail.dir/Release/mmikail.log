@@ -1,4 +1,4 @@
-﻿Build started 04/03/2020 19:25:00.
+﻿Build started 08/03/2020 19:14:29.
      1>Project "C:\DSA\assignments\assignment4\build\src\mmikail\mmikail.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "mmikail.dir\Release\mmikail.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -7,6 +7,7 @@
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /nologo /W3 /WX- /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D _CRT_SECURE_NO_DEPRECATE /D "CMAKE_INTDIR=\"Release\"" /D _MBCS /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"mmikail.dir\Release\\" /Fd"mmikail.dir\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\src\mmikail\assignment4Application.cpp
          assignment4Application.cpp
+     1>..\..\..\src\mmikail\assignment4Application.cpp(161): warning C4101: 'dictionary_tree' : unreferenced local variable
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\DSA\assignments\assignment4\build\Release\mmikail.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /NODEFAULTLIB:"libc;libcmt.lib;libcmtd.lib" /MANIFEST /ManifestFile:"mmikail.dir\Release\mmikail.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"C:/DSA/assignments/assignment4/build/Release/mmikail.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/DSA/assignments/assignment4/build/Release/mmikail.lib" /MACHINE:X86 mmikail.dir\Release\assignment4Application.obj
          mmikail.dir\Release\assignment4Implementation.obj
@@ -21,4 +22,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.80
+Time Elapsed 00:00:00.81

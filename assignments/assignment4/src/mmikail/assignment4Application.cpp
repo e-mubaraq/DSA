@@ -5,24 +5,19 @@
 
    This program is for Assignment No. 4, Course 04-630 Data Structures and Algorithms for Engineers. 
 
-   Simulation of Queueing Behaviour at Traffic Lights.
+   Text Analysis using Binary Search Trees.
 
    The functionality of the program is defined as follows.
 
-   Read in the sets of seven simulation parameters: arrival rate, departure rate, running time, time increment, red light duration, amber light
-   duration and green light duration from the input file. Ensure they are or converted to the correct units to be used for the simulation.
+   Read in the the words file which is the dictionary that contains all words and then read in the first testfile from the input file. 
 
-   Because this problem is a probabilistic problem, we modelled it using Poisson distribution by writing a function that uses the arrival_rate 
-   of a car to simulate the number of cars that arrive at every interval of our simulation. 
+   The Binary Search Tree(BST) ADT was  used in implementing this solution since, it has do with constructing 2 trees of words in the word file 
+   and test file, by implementing the BST functions of height and size, we were able to compute the height and size of the BST respectively.
 
-   The Queue ADT was also used in implementing this solution since, it has do with cars arriving and leaving a traffic light, by implementing 
-   the queue functions of enqueue and dequeue, we were able to add and remove a car from the back and the front of the queue respectively.
+   The output file will contain a set of data computed from the input text files we were given.
 
-   The output file will contain a set of statistical data computed from the input parameters we were given.
-
-   Input data with the total number of test cases is provided in an input file named input.txt.
-   The first line is the number of testcases or simulation scenarios. It is followed by N sets of seven key-value pairs, each pair specifying the 
-   input parameter and its value. The key-value pairs can appear in any order. There will be only one key-value pair for each parameter.
+   Input data with the words file and textfiles that will be used for testing is provided in an input file named input.txt.
+   The first line is the relative path of the words.txt file. It is followed by the location of the textfiles to be tested with, one line per textfiles.
 
    This input file is located in the data directory. Since this directory is a sibling directory of the bin directory 
    where the example .exe file resides, the filename used when opening the file is "../data/input.txt".
@@ -33,57 +28,46 @@
    Input
    -----
 
-   -  N sets of seven key-value pairs, each pair specifying the input parameter and its value. .
+   -  Dictionary file and text files that contains sentences or words to be checked from the dictionary.
 
    Output
    ------
 
-   - Statistics computed from the input parameeters.
+   - Statistics computed from the input textfiles.
  
    Sample Input
    ------------
    
-	2
-	Arrival 10
-	Departure 5
-	Runtime 5
-	Increment 10
-	Green 10
-	Amber 1
-	Red 30
-	Runtime 5
-	Arrival 20
-	Departure 2
-	Increment 100
-	Red 15
-	Green 5
-	Amber 1
+	../data/words.txt
+	../data/textfile1.txt
+	../data/textfile2.txt
 
    Sample Output
    -------------
 	mmikail
-	Arrival rate:   10 cars per min
-	Departure rate: 5 s per car
-	Runtime:		5 min
-	Time increment: 10 ms
-	Light sequence: Green 10 s; Amber 1 s; Red 30 s
-	Average length: 17 cars
-	Median length:  15 cars
-	Maximum length: 41 cars
-	Average wait:   115 s
-	Maximum wait:   299 s
-
-	Arrival rate:   20 cars per min
-	Departure rate: 2 s per car
-	Runtime:		5 min
-	Time increment: 100 ms
-	Light sequence: Green 5 s; Amber 1 s; Red 15 s
-	Average length: 20 cars
-	Median length:  16 cars
-	Maximum length: 109 cars
-	Average wait:   113 s
-	Maximum wait:   299 s
-	--------------
+	../data/textfile1.txt
+	My heart is in the work
+	My heart is in the WIRK
+	Maximum number of probes: 4
+	Average number of probes: 2.5
+	heart 2 (1)
+	in 2 (3)
+	is 2 (2)
+	my 2 (0)
+	the 2 (1)
+	work 1 (2)
+	--------------------
+	../data/textfile2.txt
+	heart in is My the work
+	Maximum number of probes: 6
+	Average number of probes: 3.5
+	heart 1 (0)
+	in 1 (1)
+	is 1 (2)
+	my 1 (3)
+	the 1 (4)
+	work 1 (5)
+	--------------------
 
    Solution Strategy
    -----------------
@@ -95,60 +79,12 @@
    Cars were added to the queue based on the count of cars returned by the samplePoisson() function, the total numbers of cars that arrived
    was tracked. 
    
-   Certain conditions were also checked by using a depature timer to see if a car can leave and then call the dequeue() function to remove a car from the queue. 
-   The waiting time of the car that was dequeued was noted which is the difference between the current simulation time and the arrival time
-   of the car as gotten from the queue element. The total of the waiting time was also kept track of. Everytime a car is dequeued or enqueued, a
-   counter (queue_length) was decremented or incremented so as to be able to keep track of the queue length during any simulation period.
-   
-   The queue length for each interval is stored in an array, so that I can be able to find the median queue length that will be 
-   written to the output file. In getting the maximum queue legth, the current queue length is compared with the maximum queue length, if it is greater,
-   it is used to replace the maximum queue length. The current queue length is added to a running total of the queue length, this will be used to
-   compute the average queue length for that simulation.
-
-   A light timer was also kept to check the times when the light is supposed to change colors and effect the change. Initial state of the light is red.
-   The timer is reset to zero after every change of state. 
-
-   Aftert the simualtion, the queue was checked to see if there are no cars waiting(that is still in the queue). If the queue is not empty, all the cars 
-   left on the queue are dequeued while keeping track of their waiting time and adding it to the running total.
-
-
    Decalre variables to store the input parameters.
    read_in(all input parameters) for each testcase/simulation
-   Loop through the simulation period:
-		call the samplePoisson() function
-		Loop through the returned value(count) of the samplePoisson() function
-			enqueue(e, list)
-			increment the queue length
-		increment the total_number_of_cars by count
-		Check if the depature_timer is greater than the depature_time per car and the light is green:
-			dequeue(list)
-			decrement the queue length
-			compute the waiting time of each of the car dequeued (wait_time = current time - arrival time stored in the queue)
-			add this waiting time to the running total of waiting time.
-			check if the current wait time is greater than the maximum wait time, replace it.
-			reset the depature_timer to zero
-		store the current queue length in an array and increment the number of queue length by 1
-		check if the current queue length is greater than the maximum queue length, replace it.
-		increment the total queue length by queue length
-		check the light state and light timer to be able to change the state of the light
-		if light is green and the light timer > than green duration:
-			set light to amber and reset light timer
-		if light is amber and the light timer > than amber duration:
-			set light to red and reset light timer
-		if light is red and the light timer > than red duration:
-			set light to amber and reset light timer and depature timer
-	check if there are cars left on the queue:
-		dequeue them and compute waiting time
-		add this waiting time to the running total of waiting time.
-	Compute the required statistics to be written to the output file.
-		avg_wait_time = total_wait_time / total_number_of_cars;
-		avg_queue_length = total_queue_length / num_of_queue_length;
 
-		sort the array of queue length in order to find the median queue length which is the middle element in the array
-		if ((num_of_queue_length % 2) != 0)
-		median_queue_length = qu_lengths[(num_of_queue_length / 2) + 1];
-		else 
-		median_queue_length = (qu_lengths[num_of_queue_length / 2] + qu_lengths[(num_of_queue_length / 2) + 1]) / 2;
+
+
+
 
 	write the output to the file
    Repeat the process from read_in() for another test case until there is no more test case to test with in the input file.
@@ -178,14 +114,14 @@
    File organization
    -----------------
 
-   assignment3Interface.h           interface file:      
+   assignment4Interface.h           interface file:      
 									contains the declarations required to use the functions that implement the solution to this problem
 									typically, these will include the definitions of the abstract data types used in the implementation
 
-   assignment3Implementation.cpp	implementation file: 
+   assignment4Implementation.cpp	implementation file: 
 									contains the definitions of the functions that implement the algorithms used in the implementation
  
-   assignment3Application.cpp		application file:    
+   assignment4Application.cpp		application file:    
 									contains the code that instantiates the abstract data types and calls the associated functions
 									in order to effect the required functionality for this application
 
@@ -194,7 +130,7 @@
    ------
 
    Mubarak Mikail, Carnegie Mellon University Africa
-   15/02/2019
+   03/03/2020
 
 
    Audit Trail
@@ -211,19 +147,25 @@ int main() {
 
    bool debug            = false; // print diagnostic information?
    bool input_dictionary = true;  // we begin by reading the dictionary
-   int end_of_file;
-   int end_of_file2;
+   int end_of_file, end_of_file2;
+   int frequency = 0;
    int max_num_of_probes = 0;
    double avg_num_of_probes = 0.0;
    char filename[MAX_STRING_LENGTH];
    char word[MAX_STRING_LENGTH];
    char original_word[MAX_STRING_LENGTH];
-   unsigned int i; 
+   unsigned int i;
    char ch;
+
+   ELEMENT_TYPE e;
+   BINARY_TREE_TYPE dictionary_tree;
+   BINARY_TREE_TYPE text_tree;
 
    FILE *fp_in;
    FILE *fp_out;
    FILE *fp_in2;
+
+   //initialize(&dictionary_tree);
 
    if ((fp_in = fopen("../data/input.txt","r")) == 0) {
 	  printf("Error can't open input input.txt\n");
@@ -241,6 +183,8 @@ int main() {
 
    end_of_file = fscanf(fp_in, "%s", filename);  // read a filename
 
+
+
    while (end_of_file != EOF) {
 
       if (!input_dictionary) {
@@ -254,6 +198,8 @@ int main() {
          prompt_and_exit(1);
       }
 
+	  initialize(&text_tree);
+	  //printf("height at the beginning = %d\n", height(dictionary_tree));
       end_of_file2 = fscanf(fp_in2, "%s", original_word);  // read a word from the file
 
 	  /* check the whitespace character after the word to see if it is a newline */
@@ -265,6 +211,7 @@ int main() {
 		 strcat(original_word," ");  // add the whitespace
       }
 
+	  
       while (end_of_file2 != EOF) {
              
 		 strcpy(word,original_word); // make a copy of the word so that we can process it
@@ -276,18 +223,28 @@ int main() {
             word[i] = tolower(word[i]);
          }
 		 
+		 removePunt(word);
+
+
+
          if (strlen(word) > 0) {
 
 			if (input_dictionary) {
 				
 				/*** building the dictionary ***/
-
+				
+				//assign_element_values(&e, frequency, word);
+				//insert(e, &dictionary_tree);
+				//print(dictionary_tree);
 			}
 			else {
 
 			   /*** analyzing text ***/
-
-		       fprintf(fp_out, "%s", original_word); // copy to output 
+				 assign_element_values(&e, frequency, word);
+				 insert(e, &text_tree);
+				 print(text_tree);
+				 printf("height = %d\n", height(text_tree));
+		         fprintf(fp_out, "%s", word); // copy to output 
 			}
          }
   
@@ -305,7 +262,7 @@ int main() {
       }
 
 	  if (!input_dictionary) {
-		 fprintf(fp_out, "\nMaximum number of probes: %d\n", max_num_of_probes);
+		 fprintf(fp_out, "\nMaximum number of probes: %d\n", height(text_tree));
          fprintf(fp_out, "Average number of probes: %3.1f\n", avg_num_of_probes);
 
          fprintf (fp_out,"--------------------\n");
@@ -320,4 +277,6 @@ int main() {
 
    fclose(fp_in);
    fclose(fp_out);
+
+   prompt_and_exit(1);
 }

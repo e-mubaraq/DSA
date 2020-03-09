@@ -18,7 +18,7 @@
 #define TRUE  1
 
 typedef  struct {
-            int number;
+            int frequency;
             char *string;
          } ELEMENT_TYPE;
 
@@ -65,7 +65,7 @@ int error(char *s);
 
 /*** assign values to an element ***/
 
-int assign_element_values(ELEMENT_TYPE *e, int number, char s[]);
+int assign_element_values(ELEMENT_TYPE *e, int frequency, char s[]);
 
 /*** delete all nodes ***/
 

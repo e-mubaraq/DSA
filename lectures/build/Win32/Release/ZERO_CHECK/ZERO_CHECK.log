@@ -1,11 +1,30 @@
-﻿Build started 22/02/2020 19:38:23.
+﻿Build started 07/03/2020 12:49:38.
      1>Project "C:\DSA\lectures\build\ZERO_CHECK.vcxproj" on node 2 (build target(s)).
-     1>PrepareForBuild:
-         Creating directory "C:\DSA\lectures\build\Release\".
-       InitializeBuildStatus:
+     1>InitializeBuildStatus:
          Creating "Win32\Release\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ComputeCustomBuildOutput:
+         Creating directory "C:\DSA\lectures\build\CMakeFiles\".
        CustomBuild:
          Checking Build System
+         CMake is re-running because generate.stamp.list is missing.
+         -- Building for: Visual Studio 10 2010
+         -- The C compiler identification is MSVC 16.0.30319.1
+         -- The CXX compiler identification is MSVC 16.0.30319.1
+         -- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/bin/cl.exe
+         -- Check for working C compiler: C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/bin/cl.exe -- works
+         -- Detecting C compiler ABI info
+         -- Detecting C compiler ABI info - done
+         -- Detecting C compile features
+         -- Detecting C compile features - done
+         -- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/bin/cl.exe
+         -- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/bin/cl.exe -- works
+         -- Detecting CXX compiler ABI info
+         -- Detecting CXX compiler ABI info - done
+         -- Detecting CXX compile features
+         -- Detecting CXX compile features - done
+         -- Configuring done
+         -- Generating done
+         -- Build files have been written to: C:/DSA/lectures/build
        FinalizeBuildStatus:
          Deleting file "Win32\Release\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild".
          Touching "Win32\Release\ZERO_CHECK\ZERO_CHECK.lastbuildstate".
@@ -13,4 +32,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.41
+Time Elapsed 00:00:21.44

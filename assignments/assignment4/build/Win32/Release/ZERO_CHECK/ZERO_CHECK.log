@@ -1,7 +1,7 @@
-﻿Build started 04/03/2020 18:09:45.
-     1>Project "C:\DSA\assignments\assignment4\build\ZERO_CHECK.vcxproj" on node 2 (build target(s)).
-     1>PrepareForBuild:
-         Creating directory "C:\DSA\assignments\assignment4\build\Release\".
+﻿Build started 08/03/2020 19:12:01.
+     1>Project "C:\DSA\assignments\assignment4\build\ZERO_CHECK.vcxproj" on node 2 (rebuild target(s)).
+     1>_PrepareForClean:
+         Deleting file "Win32\Release\ZERO_CHECK\ZERO_CHECK.lastbuildstate".
        InitializeBuildStatus:
          Creating "Win32\Release\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild" because "AlwaysCreate" was specified.
        CustomBuild:
@@ -9,8 +9,8 @@
        FinalizeBuildStatus:
          Deleting file "Win32\Release\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild".
          Touching "Win32\Release\ZERO_CHECK\ZERO_CHECK.lastbuildstate".
-     1>Done Building Project "C:\DSA\assignments\assignment4\build\ZERO_CHECK.vcxproj" (build target(s)).
+     1>Done Building Project "C:\DSA\assignments\assignment4\build\ZERO_CHECK.vcxproj" (rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.08
+Time Elapsed 00:00:00.19

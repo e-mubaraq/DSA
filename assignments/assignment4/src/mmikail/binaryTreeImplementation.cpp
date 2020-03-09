@@ -51,15 +51,20 @@ BINARY_TREE_TYPE *insert(ELEMENT_TYPE e,  BINARY_TREE_TYPE *tree ) {
          temp->right   = NULL;
          *tree = temp;
       }
-   }
-   else if (e.number < (*tree)->element.number) { /* assume the number field is the key */
+   }  
+   else if (strcmp(e.string, (*tree)->element.string) == 0)
+	   (*tree)->element.frequency++;
+   else if (strcmp(e.string, (*tree)->element.string) < 0) { /* assume the frequency field is the key */
       insert(e, &((*tree)->left));
+	  (*tree)->element.frequency = 1;
    }
-   else if (e.number > (*tree)->element.number) {
+   else if (strcmp(e.string, (*tree)->element.string) > 0) {
       insert(e, &((*tree)->right));
+	  (*tree)->element.frequency = 1;
    }
    
-   /* if e.number == (*tree)->element.number, e already is in the tree so do nothing */
+   //printf("compare: %d\n",strcmp(e.string, (*tree)->element.string));
+   /* if e.frequency == (*tree)->element.frequency, e already is in the tree so do nothing */
 
    return(tree);
 }
@@ -103,10 +108,10 @@ BINARY_TREE_TYPE *delete_element(ELEMENT_TYPE e, BINARY_TREE_TYPE *tree) {
 
    if (*tree != NULL) {
 
-      if (e.number < (*tree)->element.number)  /* assume element.number is the */
+      if (e.frequency < (*tree)->element.frequency)  /* assume element.frequency is the */
          delete_element(e, &((*tree)->left));  /* key                          */
 
-      else if (e.number > (*tree)->element.number)
+      else if (e.frequency > (*tree)->element.frequency)
          delete_element(e, &((*tree)->right));
 
       else if (((*tree)->left == NULL) && ((*tree)->right == NULL)) {
@@ -156,7 +161,7 @@ int inorder(BINARY_TREE_TYPE tree, int n) {
       inorder(tree->left, n+1);
 
       for (i=0; i<n; i++) printf("        ");
-      printf("%d %s\n", tree->element.number, tree->element.string);
+      printf("%d %s\n", tree->element.frequency, tree->element.string);
 
       inorder(tree->right, n+1);
    }
@@ -203,11 +208,11 @@ int error(char *s) {
 
 /*** assign values to an element ***/
 
-int assign_element_values(ELEMENT_TYPE *e, int number, char s[]) {
+int assign_element_values(ELEMENT_TYPE *e, int frequency, char s[]) {
 
    e->string = (char *) malloc(sizeof(char) * (strlen(s)+1));
    strcpy(e->string, s);
-   e->number = number;
+   e->frequency = frequency;
    return(0);
 }
 
