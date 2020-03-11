@@ -3,36 +3,36 @@ mmikail
 My heart is in the work
 My heart is in the WIRK 
 Maximum number of probes: 4
-Average number of probes: 0.0
-heart          2
-in             2
-is             2
-my             2
-the            2
-work           1
+Average number of probes: 1.0
+heart          2 (1)
+in             2 (3)
+is             2 (2)
+my             2 (0)
+the            2 (1)
+work           1 (2)
 --------------------
 ../data/textfile2.txt
 heart in is My the work 
 Maximum number of probes: 6
-Average number of probes: 0.0
-heart          1
-in             1
-is             1
-my             1
-the            1
-work           1
+Average number of probes: 3.0
+heart          1 (0)
+in             1 (1)
+is             1 (2)
+my             1 (3)
+the            1 (4)
+work           1 (5)
 --------------------
 ../data/textfile3.txt
 The school's long-term motto is: for LEARNING AND culture
 The school's long-term motto is: for LEARNING AND culture
 The SCHOL'S long-term MOTO is:::: for LEARNING AND culture 
 Maximum number of probes: 6
-Average number of probes: 0.0
-culture        3
-for            3
-is             3
-long-term      3
-motto          2
-school         2
-the            3
+Average number of probes: 6.0
+culture        3 (5)
+for            3 (4)
+is             3 (3)
+long-term      3 (2)
+motto          2 (3)
+school         2 (1)
+the            3 (0)
 --------------------

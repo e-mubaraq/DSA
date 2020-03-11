@@ -12,7 +12,7 @@
    Read in the the words file which is the dictionary that contains all words and then read in the first testfile from the input file. 
 
    The Binary Search Tree(BST) ADT was  used in implementing this solution since, it has do with constructing 2 trees of words in the word file 
-   and test file, by implementing the BST functions of height and size, we were able to compute the height and size of the BST respectively.
+   and test file, by implementing the BST functions of getTreeHeight and size, we were able to compute the getTreeHeight and size of the BST respectively.
 
    The output file will contain a set of data computed from the input text files we were given.
 
@@ -148,7 +148,7 @@ int main() {
    bool debug            = false; // print diagnostic information?
    bool input_dictionary = true;  // we begin by reading the dictionary
    int end_of_file, end_of_file2;
-   int frequency = 1;
+   int height, frequency = 1;
    int max_num_of_probes = 0;
    double avg_num_of_probes = 0.0;
    char filename[MAX_STRING_LENGTH];
@@ -231,6 +231,7 @@ int main() {
 				/*** building the dictionary ***/
 				assign_element_values(&e, frequency, word);
 				insert(e, &dictionary_tree);
+
 			}
 			else {
 
@@ -265,9 +266,13 @@ int main() {
       }
 
 	  if (!input_dictionary) {
-		 fprintf(fp_out, "\nMaximum number of probes: %d\n", height(text_tree));
+		  height = getTreeHeight(text_tree);
+		  for (i= 0; i < height; i++)
+			  max_num_of_probes += i;
+		  avg_num_of_probes = max_num_of_probes / height;
+		 fprintf(fp_out, "\nMaximum number of probes: %d\n", height);
          fprintf(fp_out, "Average number of probes: %3.1f\n", avg_num_of_probes);
-		 inorder_write(text_tree, fp_out);
+		 inorder_write(text_tree, fp_out, 0);
          fprintf (fp_out,"--------------------\n");
 	  }
 

@@ -19,6 +19,7 @@
 
 typedef  struct {
             int frequency;
+			int level;
             char *string;
          } ELEMENT_TYPE;
 

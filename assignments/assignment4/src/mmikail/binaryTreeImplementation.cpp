@@ -75,9 +75,11 @@ BINARY_TREE_TYPE *insert(ELEMENT_TYPE e,  BINARY_TREE_TYPE *tree ) {
 	   (*tree)->element.frequency += 1;
    else if (strcmp(e.string, (*tree)->element.string) < 0) { /* assume the frequency field is the key */
       insert(e, &((*tree)->left));
+	  //(*tree)->element.level += 1;
    }
    else if (strcmp(e.string, (*tree)->element.string) > 0) {
       insert(e, &((*tree)->right));
+	  //(*tree)->element.level += 1;
    }
    
    /* if e.string == (*tree)->element.string, e already is in the tree so do nothing */
