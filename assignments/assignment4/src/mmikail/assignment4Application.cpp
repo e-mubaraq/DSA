@@ -148,7 +148,7 @@ int main() {
    bool debug            = false; // print diagnostic information?
    bool input_dictionary = true;  // we begin by reading the dictionary
    int end_of_file, end_of_file2;
-   int frequency = 0;
+   int frequency = 1;
    int max_num_of_probes = 0;
    double avg_num_of_probes = 0.0;
    char filename[MAX_STRING_LENGTH];
@@ -165,8 +165,8 @@ int main() {
    FILE *fp_out;
    FILE *fp_in2;
 
-   //initialize(&dictionary_tree);
-
+   initialize(&dictionary_tree);
+	initialize2(&text_tree);
    if ((fp_in = fopen("../data/input.txt","r")) == 0) {
 	  printf("Error can't open input input.txt\n");
       prompt_and_exit(1);
@@ -182,9 +182,7 @@ int main() {
    /* read the filenames from the input file */
 
    end_of_file = fscanf(fp_in, "%s", filename);  // read a filename
-
-
-
+  
    while (end_of_file != EOF) {
 
       if (!input_dictionary) {
@@ -198,8 +196,8 @@ int main() {
          prompt_and_exit(1);
       }
 
-	  initialize(&text_tree);
-	  //printf("height at the beginning = %d\n", height(dictionary_tree));
+	  
+
       end_of_file2 = fscanf(fp_in2, "%s", original_word);  // read a word from the file
 
 	  /* check the whitespace character after the word to see if it is a newline */
@@ -212,6 +210,7 @@ int main() {
       }
 
 	  
+	 
       while (end_of_file2 != EOF) {
              
 		 strcpy(word,original_word); // make a copy of the word so that we can process it
@@ -224,27 +223,31 @@ int main() {
          }
 		 
 		 removePunt(word);
-
-
-
+		 
          if (strlen(word) > 0) {
 
 			if (input_dictionary) {
 				
 				/*** building the dictionary ***/
-				
-				//assign_element_values(&e, frequency, word);
-				//insert(e, &dictionary_tree);
-				//print(dictionary_tree);
+				assign_element_values(&e, frequency, word);
+				insert(e, &dictionary_tree);
 			}
 			else {
 
 			   /*** analyzing text ***/
-				 assign_element_values(&e, frequency, word);
-				 insert(e, &text_tree);
-				 print(text_tree);
-				 printf("height = %d\n", height(text_tree));
-		         fprintf(fp_out, "%s", word); // copy to output 
+				assign_element_values(&e, frequency, word);
+
+				 if (check(e, dictionary_tree)) {
+					 insert(e, &text_tree);
+					 fprintf(fp_out, "%s", original_word);
+				 }
+				 else
+				 {
+					 for (i=0; i<strlen(original_word); i++)
+						 original_word[i] = toupper(original_word[i]);
+					 fprintf(fp_out, "%s", original_word);
+				 }
+				 
 			}
          }
   
@@ -264,16 +267,17 @@ int main() {
 	  if (!input_dictionary) {
 		 fprintf(fp_out, "\nMaximum number of probes: %d\n", height(text_tree));
          fprintf(fp_out, "Average number of probes: %3.1f\n", avg_num_of_probes);
-
+		 inorder_write(text_tree, fp_out);
          fprintf (fp_out,"--------------------\n");
 	  }
 
       fclose(fp_in2);
 
       end_of_file = fscanf(fp_in, "%s", filename); // read the next filename
-
+	  initialize2(&text_tree);
 	  input_dictionary = false; // the first file is the dictionary file; we've read it so now we reset this flag
    };
+
 
    fclose(fp_in);
    fclose(fp_out);

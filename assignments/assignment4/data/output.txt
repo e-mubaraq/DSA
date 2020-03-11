@@ -1,17 +1,38 @@
 mmikail
 ../data/textfile1.txt
-my heart is in the work
-my heart is in the wirk 
+My heart is in the work
+My heart is in the WIRK 
 Maximum number of probes: 4
 Average number of probes: 0.0
+heart          2
+in             2
+is             2
+my             2
+the            2
+work           1
 --------------------
 ../data/textfile2.txt
-heart in is my the work 
+heart in is My the work 
 Maximum number of probes: 6
 Average number of probes: 0.0
+heart          1
+in             1
+is             1
+my             1
+the            1
+work           1
 --------------------
 ../data/textfile3.txt
-the school  long-term motto is for learning and culture 
-Maximum number of probes: 7
+The school's long-term motto is: for LEARNING AND culture
+The school's long-term motto is: for LEARNING AND culture
+The SCHOL'S long-term MOTO is:::: for LEARNING AND culture 
+Maximum number of probes: 6
 Average number of probes: 0.0
+culture        3
+for            3
+is             3
+long-term      3
+motto          2
+school         2
+the            3
 --------------------

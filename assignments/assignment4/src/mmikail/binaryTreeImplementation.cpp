@@ -32,6 +32,25 @@ void initialize(BINARY_TREE_TYPE *tree) {
    }
 }
 
+void initialize2(BINARY_TREE_TYPE *tree) {
+
+   static bool first_call2 = true;
+
+   /* we don't know what value *tree has when the program is launched      */
+   /* so we have to be careful not to dereference it                       */
+   /* if it's the first call to initialize, there is no tree to be deleted */
+   /* and we just set *tree to NULL                                        */
+
+   if (first_call2) {
+      first_call2 = false;
+      *tree = NULL;
+   }
+   else {
+      if (*tree != NULL) postorder_delete_nodes(*tree);
+      *tree = NULL;
+   }
+}
+
 
 /*** insert an element in a tree ***/
 
@@ -53,18 +72,15 @@ BINARY_TREE_TYPE *insert(ELEMENT_TYPE e,  BINARY_TREE_TYPE *tree ) {
       }
    }  
    else if (strcmp(e.string, (*tree)->element.string) == 0)
-	   (*tree)->element.frequency++;
+	   (*tree)->element.frequency += 1;
    else if (strcmp(e.string, (*tree)->element.string) < 0) { /* assume the frequency field is the key */
       insert(e, &((*tree)->left));
-	  (*tree)->element.frequency = 1;
    }
    else if (strcmp(e.string, (*tree)->element.string) > 0) {
       insert(e, &((*tree)->right));
-	  (*tree)->element.frequency = 1;
    }
    
-   //printf("compare: %d\n",strcmp(e.string, (*tree)->element.string));
-   /* if e.frequency == (*tree)->element.frequency, e already is in the tree so do nothing */
+   /* if e.string == (*tree)->element.string, e already is in the tree so do nothing */
 
    return(tree);
 }
@@ -212,7 +228,7 @@ int assign_element_values(ELEMENT_TYPE *e, int frequency, char s[]) {
 
    e->string = (char *) malloc(sizeof(char) * (strlen(s)+1));
    strcpy(e->string, s);
-   e->frequency = frequency;
+   e->frequency = 1;
    return(0);
 }
 

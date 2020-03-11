@@ -71,27 +71,44 @@ void swap(int arr[], int i, int j) {
 }
 
 void removePunt(char word[]) {
-	unsigned int i, j;
+	int i, j = 0;
+	char temp[MAX_STRING_LENGTH];
 	for (i=0; i<strlen(word); i++) {
-		if (word[i] == '\'')
-			word[i+1] = ' ';
-		if (!isalnum(word[i]) && (word[i] != '-') && (word[i] != ' ') && (word[i] != '\n')) {
-			for (j=i; j<strlen(word); j++) // copy the rest of the word overwriting the non-alphanumeric
-				word[j] = word[j+1];
+		if (isalnum(word[i]) || (word[i] == '-')  ) {
+			temp[j] = word[i];
+			j++;
 		}
+		else
+			if (word[i] == '\'') 
+				i++;
 
 	}
+	temp[j] = '\0';
+	strcpy(word, temp);
 }
 
-bool isCorrect(ELEMENT_TYPE e, BINARY_TREE_TYPE *tree) {
-	//check if the element is in the dictionary
-	if (strcmp(e.string, (*tree)->element.string) == 0) {
-		return true;
 
-	}
-	else
+
+bool check(ELEMENT_TYPE e, BINARY_TREE_TYPE tree) {
+
+	if (tree != NULL) {
+		if (strcmp(e.string, tree->element.string) < 0){
+			printf("Okay_passed - %s _ %s\n", e.string, tree->element.string);
+			check(e, (tree->left));
+		}
+		else if (strcmp(e.string, tree->element.string) > 0){
+			printf("Okay_passed2 - %s _ %s\n", e.string, tree->element.string);
+			check(e, (tree->right));
+		}
+		else{
+			printf("Found - %s _ %s\n", e.string, tree->element.string);
+			return true;
+		}
+	}  
+	else{
+		printf("Nope\n");
 		return false;
-	//return 0;
+	}
 }
 
 int height(BINARY_TREE_TYPE tree) {
@@ -102,7 +119,7 @@ int height(BINARY_TREE_TYPE tree) {
 }
 
 int avg_number_of_probes(BINARY_TREE_TYPE tree) {
-	int num;
+	int num = 0;
 
 	return num;
 }
@@ -115,13 +132,24 @@ int max(int a, int b) {
 }
 
 int inorder_write(BINARY_TREE_TYPE tree, FILE *fp_out) {
+	int i, n;
 
    if (tree != NULL) {
-	   inorder_write(tree->left, fp_out);
+	   n = 15 - strlen(tree->element.string);
+		inorder_write(tree->left, fp_out);
 
-	  fprintf(fp_out, "%s %d \n", tree->element.string, tree->element.frequency);
+		fprintf(fp_out, "%s", tree->element.string);
+		for (i=0; i<n; i++) fprintf(fp_out, " ");
+		fprintf(fp_out, "%d\n", tree->element.frequency);
 
-	  inorder_write(tree->right, fp_out);
+		inorder_write(tree->right, fp_out);
    }
    return(0);
+}
+
+int size(BINARY_TREE_TYPE tree) {
+	if (tree != NULL) {
+		return (1+ size(tree->left) + size(tree->right));
+	}
+	return (0);
 }

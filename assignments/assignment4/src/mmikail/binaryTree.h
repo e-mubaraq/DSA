@@ -38,6 +38,7 @@ typedef BINARY_TREE_TYPE WINDOW_TYPE;
 /*** initialize a tree ***/
 
 void initialize(BINARY_TREE_TYPE *tree );
+void initialize2(BINARY_TREE_TYPE *tree );
  
 /*** insert an element in a tree ***/
 
