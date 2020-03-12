@@ -60,7 +60,7 @@ void removePunt(char word[]);
 bool check(ELEMENT_TYPE e, BINARY_TREE_TYPE tree);
 int getTreeHeight(BINARY_TREE_TYPE tree);
 int max(int a, int b);
-int avg_number_of_probes(BINARY_TREE_TYPE tree);
+double getAvg_number_of_probes(BINARY_TREE_TYPE tree);
 int inorder_write(BINARY_TREE_TYPE tree, FILE *fp_out);
 int inorder_write(BINARY_TREE_TYPE tree, FILE *fp_out, int level);
 int size(BINARY_TREE_TYPE tree);

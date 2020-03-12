@@ -78,10 +78,10 @@ void removePunt(char word[]) {
 			temp[j] = word[i];
 			j++;
 		}
-		else
+		else {
 			if (word[i] == '\'') 
 				i++;
-
+		}
 	}
 	temp[j] = '\0';
 	strcpy(word, temp);
@@ -93,20 +93,16 @@ bool check(ELEMENT_TYPE e, BINARY_TREE_TYPE tree) {
 
 	if (tree != NULL) {
 		if (strcmp(e.string, tree->element.string) < 0){
-			//printf("Okay_passed - %s _ %s\n", e.string, tree->element.string);
 			check(e, (tree->left));
 		}
 		else if (strcmp(e.string, tree->element.string) > 0){
-			//printf("Okay_passed2 - %s _ %s\n", e.string, tree->element.string);
 			check(e, (tree->right));
 		}
 		else{
-			//printf("Found - %s _ %s\n", e.string, tree->element.string);
 			return true;
 		}
 	}  
 	else{
-		//printf("Nope\n");
 		return false;
 	}
 }
@@ -118,10 +114,16 @@ int getTreeHeight(BINARY_TREE_TYPE tree) {
 	return 0;
 }
 
-int avg_number_of_probes(BINARY_TREE_TYPE tree) {
-	int num = 0;
+double getAvg_number_of_probes(BINARY_TREE_TYPE tree) {
+	int i, height, total_num_of_probes = 0;
+	double avg = 0.0;
 
-	return num;
+	height = getTreeHeight(tree);
+	for (i= 1; i <= height; i++)
+		total_num_of_probes += i;
+	avg = ((float)total_num_of_probes / height);
+
+	return avg;
 }
 
 int max(int a, int b) {

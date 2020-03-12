@@ -93,12 +93,11 @@
    -------------
 
    The program has been tested with a variety of test data sets that reflect all valid conditions, including boundary conditions:
-   1. Test with different values of the input parameters.
-   2. Test with input parameters such that the order of the parameters of the file is different from the previous.
-   3. Test with a red_time_duration of 0 and a high green_time_duration
-   4. Test with a green_time_duration of 0
-   5. Test with a low green_time_duration and a high red_time_duration
-   6. Test wih arrival rate of 0
+   1. Test with normal words.
+   2. Test with repeated words in one file.
+   3. Test with words that have multiple non-alphanumeric characters.
+   4. Test with words that have hyphen.
+   5. Test with words that have apostrophe and a character after it.
    - 
 
    The order of complexity
@@ -149,7 +148,7 @@ int main() {
    bool input_dictionary = true;  // we begin by reading the dictionary
    int end_of_file, end_of_file2;
    int height, frequency = 1;
-   int max_num_of_probes = 0;
+   int total_num_of_probes = 0, max_num_of_probes = 0;
    double avg_num_of_probes = 0.0;
    char filename[MAX_STRING_LENGTH];
    char word[MAX_STRING_LENGTH];
@@ -166,7 +165,7 @@ int main() {
    FILE *fp_in2;
 
    initialize(&dictionary_tree);
-	initialize2(&text_tree);
+
    if ((fp_in = fopen("../data/input.txt","r")) == 0) {
 	  printf("Error can't open input input.txt\n");
       prompt_and_exit(1);
@@ -197,7 +196,7 @@ int main() {
       }
 
 	  
-
+	  initialize2(&text_tree);
       end_of_file2 = fscanf(fp_in2, "%s", original_word);  // read a word from the file
 
 	  /* check the whitespace character after the word to see if it is a newline */
@@ -267,19 +266,20 @@ int main() {
 
 	  if (!input_dictionary) {
 		  height = getTreeHeight(text_tree);
-		  for (i= 0; i < height; i++)
-			  max_num_of_probes += i;
-		  avg_num_of_probes = max_num_of_probes / height;
+		  avg_num_of_probes = getAvg_number_of_probes(text_tree);
+
 		 fprintf(fp_out, "\nMaximum number of probes: %d\n", height);
          fprintf(fp_out, "Average number of probes: %3.1f\n", avg_num_of_probes);
 		 inorder_write(text_tree, fp_out, 0);
          fprintf (fp_out,"--------------------\n");
+
+		 total_num_of_probes = 0;
 	  }
 
       fclose(fp_in2);
 
       end_of_file = fscanf(fp_in, "%s", filename); // read the next filename
-	  initialize2(&text_tree);
+
 	  input_dictionary = false; // the first file is the dictionary file; we've read it so now we reset this flag
    };
 
@@ -287,5 +287,5 @@ int main() {
    fclose(fp_in);
    fclose(fp_out);
 
-   prompt_and_exit(1);
+   //prompt_and_exit(1);
 }
