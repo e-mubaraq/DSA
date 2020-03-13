@@ -1,8 +1,6 @@
-﻿Build started 12/03/2020 06:24:48.
-     1>Project "C:\DSA\assignments\assignment4\build\INSTALL.vcxproj" on node 2 (rebuild target(s)).
-     1>_PrepareForClean:
-         Deleting file "Win32\Release\INSTALL\INSTALL.lastbuildstate".
-       InitializeBuildStatus:
+﻿Build started 13/03/2020 18:14:59.
+     1>Project "C:\DSA\assignments\assignment4\build\INSTALL.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
          Creating "Win32\Release\INSTALL\INSTALL.unsuccessfulbuild" because "AlwaysCreate" was specified.
        PostBuildEvent:
          setlocal
@@ -20,8 +18,8 @@
        FinalizeBuildStatus:
          Deleting file "Win32\Release\INSTALL\INSTALL.unsuccessfulbuild".
          Touching "Win32\Release\INSTALL\INSTALL.lastbuildstate".
-     1>Done Building Project "C:\DSA\assignments\assignment4\build\INSTALL.vcxproj" (rebuild target(s)).
+     1>Done Building Project "C:\DSA\assignments\assignment4\build\INSTALL.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.32
+Time Elapsed 00:00:00.36

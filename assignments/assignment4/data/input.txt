@@ -2,3 +2,4 @@
 ../data/textfile1.txt
 ../data/textfile2.txt
 ../data/textfile3.txt
+../data/textfile4.txt

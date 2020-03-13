@@ -14,6 +14,17 @@
    The Binary Search Tree(BST) ADT was  used in implementing this solution since, it has do with constructing 2 trees of words in the word file 
    and test file, by implementing the BST functions of getTreeHeight and size, we were able to compute the getTreeHeight and size of the BST respectively.
 
+   The BST ADT insert function was used to keep track of the frequency of occurence of a word in a particular file when building the tree for that file.
+   I implemented a inorder_write function which I used to write the words, their frequency and level to the output file. I was able to keep track of the
+   level of each word in the tree uing this function. This function does an inorder traversal of the tree.
+
+   The total number of probes was computed with the getHeight() function. It is a recursive function which basically
+   returns 1 + the maximum of the heights of the left and right trees (1+ max(getTreeHeight(tree->left), getTreeHeight(tree->right))); 
+   when the tree is not null, it the tree is null it return zero that is the tree is empty.
+
+   The average number of probes was calculated using a function which implements something close to a fibonnacci series. 
+   The final sum is the total maximum of probes in a tree, the average is gotten by dividing the total by the height of the tree.
+
    The output file will contain a set of data computed from the input text files we were given.
 
    Input data with the words file and textfiles that will be used for testing is provided in an input file named input.txt.
@@ -28,7 +39,7 @@
    Input
    -----
 
-   -  Dictionary file and text files that contains sentences or words to be checked from the dictionary.
+   -  Dictionary file with words to build a dictionary and text files that contains sentences or words to be checked from the dictionary.
 
    Output
    ------
@@ -72,22 +83,32 @@
    Solution Strategy
    -----------------
 
-   The input parameters were read in and stored in variables. The parameters were converted to the right units required for simulation.
-   A function was implemented to saple a Poisson distribution, which was then used in our main program to simulate the number of cars
-   that arrived at any interval during the runtime(in ms) given in the input file.
-   A queue data structure with its enqueue and dequeue functions was implented to store the arrival time of cars and the number of cars that arrived.
-   Cars were added to the queue based on the count of cars returned by the samplePoisson() function, the total numbers of cars that arrived
-   was tracked. 
-   
-   Decalre variables to store the input parameters.
-   read_in(all input parameters) for each testcase/simulation
+   The input parameters were read in and stored in variables. 
+   The total number of probes was computed with a getHeight() function. It is a recursive function which basically
+   returns 1 + the maximum of the heights of the left and right trees (1+ max(getTreeHeight(tree->left), getTreeHeight(tree->right))); 
+   when the tree is not null, it the tree is null it return zero that is the tree is empty.
 
+   The average number of probes was calculated using a function which implements something close to a fibonnacci series. 
+   The final sum is the total maximum of probes in a tree, the average is gotten by dividing the total by the height of the tree.
 
-
+   Declare necessary variables to store the input and output parameters.
+   declare 2 trees, one for the dictionary and one for the texts.
+   read_in(filenames).
+   for each filename:
+	   if it is the words file, 
+			initialize and construct the dictionary
+	   else it is a test file (files to check)
+			Construct a proper word from each of the words in the file and check if it is in the dictionary.
+			if it is in the dictionary
+				Insert it into the text_tree
+				write the original word to the output file
+				write the word, its frequency of occurence and level to the output file
+			else
+				convert the word to capital letter and write it to the output file.
+			write the statistics(Maximum and avergae number of probes) to the output file.
 
 
 	write the output to the file
-   Repeat the process from read_in() for another test case until there is no more test case to test with in the input file.
 
    Test Strategy
    -------------
@@ -101,13 +122,13 @@
    - 
 
    The order of complexity
-   -----------------------
-   An insertion sort was used to sort our queue outside the main simualation loop. Insertion sort has a worst case Big O of O(n^2). 
-   The sort function was called three times.
-   The algorithm for this solution was implemented in 4 main steps: read, simulate, sort and write the data.
-   Read and write have a big O of O(n) but the simulation has a Big O of O(n^3). The simulation loop had an internal loop which 
-   was used to add cars to the queue by using the queue function(enqeue). The enqueue function which also based on the LinkedList ADT
-   implementation has a big O of O(n). Hence the Big O of the whole algorithm is going to be O(n^3).
+   -----------------------.
+   The algorithm for this solution was implemented in 4 main steps: read, read, check and write the data.
+   The check was done by searching the dictionary binary tree, searching a binary tree has a O(n) of O(logn)
+   There is an outer read(loop) which houses another read this gives Big O of O(n^2). Read and write have a big O of O(n).
+   Inserting into the binary tree has a complexity of O(logn).
+   One of the writing was done by performing an inorder traversal of the binary tree (text_tree), this also has O(logn).
+   Hence the Big O of the whole algorithm is going to be O(n^2).
 
 
    File organization
@@ -135,8 +156,13 @@
    Audit Trail
    -----------
 
-   - Added swap() to swap an array element with another array element.	Mubarak Mikail 29/02/2019
-   - Added insertion_sort() to implement insertion sort for sorting the queue lengths. Mubarak Mikail 29/02/2019
+   - Added removePunct() to remove non-alpha numeric characters from a word.	Mubarak Mikail 04/03/2020
+   - Added check() to check if an elemebt is in the tree. Mubarak Mikail 07/03/2020
+   - Added getTreeHeight() to compute the height of a tree.	Mubarak Mikail 08/03/2020
+   - Added max() to get the higher of two integers. Mubarak Mikail 08/03/2020
+   - Added getAvg_number_of_probes() to compute the average number of probes for a treee.	Mubarak Mikail 10/03/2020
+   - Added inorder_write() to write the statistics computed to the output file. 	Mubarak Mikail 10/03/2020
+   - Added size() to compute the size of a tree. Mubarak Mikail 10/03/2020
 
 */
  
@@ -157,8 +183,7 @@ int main() {
    char ch;
 
    ELEMENT_TYPE e;
-   BINARY_TREE_TYPE dictionary_tree;
-   BINARY_TREE_TYPE text_tree;
+   BINARY_TREE_TYPE text_tree, dictionary_tree;
 
    FILE *fp_in;
    FILE *fp_out;
@@ -209,7 +234,6 @@ int main() {
       }
 
 	  
-	 
       while (end_of_file2 != EOF) {
              
 		 strcpy(word,original_word); // make a copy of the word so that we can process it

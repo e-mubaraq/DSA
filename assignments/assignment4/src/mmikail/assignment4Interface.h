@@ -32,8 +32,13 @@
    Audit Trail
    -----------
 
-   - Added swap() to swap an array element with another array element.	Mubarak Mikail 29/02/2020
-   - Added insertion_sort() to implement insertion sort for sorting the queue lengths. Mubarak Mikail 29/02/2020
+   - Added removePunct() to remove non-alpha numeric characters from a word.	Mubarak Mikail 04/03/2020
+   - Added check() to check if an elemebt is in the tree. Mubarak Mikail 07/03/2020
+   - Added getTreeHeight() to compute the height of a tree.	Mubarak Mikail 08/03/2020
+   - Added max() to get the higher of two integers. Mubarak Mikail 08/03/2020
+   - Added getAvg_number_of_probes() to compute the average number of probes for a treee.	Mubarak Mikail 10/03/2020
+   - Added inorder_write() to write the statistics computed to the output file. 	Mubarak Mikail 10/03/2020
+   - Added size() to compute the size of a tree. Mubarak Mikail 10/03/2020
 
 */
  
@@ -54,13 +59,10 @@
 
 
 void prompt_and_exit(int status);
-int insertion_sort(int a[], int size);
-void swap(int arr[], int i, int j);
 void removePunt(char word[]);
 bool check(ELEMENT_TYPE e, BINARY_TREE_TYPE tree);
 int getTreeHeight(BINARY_TREE_TYPE tree);
 int max(int a, int b);
 double getAvg_number_of_probes(BINARY_TREE_TYPE tree);
-int inorder_write(BINARY_TREE_TYPE tree, FILE *fp_out);
 int inorder_write(BINARY_TREE_TYPE tree, FILE *fp_out, int level);
 int size(BINARY_TREE_TYPE tree);

@@ -33,8 +33,13 @@
    Audit Trail
    -----------
 
-   - Added swap() to swap an array element with another array element.	Mubarak Mikail 29/02/2020
-   - Added insertion_sort() to implement insertion sort for sorting the queue lengths. Mubarak Mikail 29/02/2020
+   - Added removePunct() to remove non-alpha numeric characters from a word.	Mubarak Mikail 04/03/2020
+   - Added check() to check if an elemebt is in the tree. Mubarak Mikail 07/03/2020
+   - Added getTreeHeight() to compute the height of a tree.	Mubarak Mikail 08/03/2020
+   - Added max() to get the higher of two integers. Mubarak Mikail 08/03/2020
+   - Added getAvg_number_of_probes() to compute the average number of probes for a treee.	Mubarak Mikail 10/03/2020
+   - Added inorder_write() to write the statistics computed to the output file. 	Mubarak Mikail 10/03/2020
+   - Added size() to compute the size of a tree. Mubarak Mikail 10/03/2020
 
 */
 
@@ -44,30 +49,6 @@ void prompt_and_exit(int status) {
    printf("Press any key to continue and close terminal\n");
    getchar();
    exit(status);
-}
-
-
-int insertion_sort(int a[], int size) { // int a[]
-	int i,j;
-	
-	for (i = 1; i < size; i++) {
-		j = i;
-		while ((a[j] < a[j-1]) &&  (j > 0)){
-			/* swap */
-			swap(a, j-1, j);
-			j--;
-		}
-	}
-
-   return (0);
-}
-
-void swap(int arr[], int i, int j) {
-	int temp;
-
-	temp = arr[j];
-	arr[j] = arr[i];
-	arr[i] = temp;
 }
 
 void removePunt(char word[]) {
@@ -86,7 +67,6 @@ void removePunt(char word[]) {
 	temp[j] = '\0';
 	strcpy(word, temp);
 }
-
 
 
 bool check(ELEMENT_TYPE e, BINARY_TREE_TYPE tree) {
@@ -137,7 +117,7 @@ int inorder_write(BINARY_TREE_TYPE tree, FILE *fp_out, int level) {
 	int i, n;
 
    if (tree != NULL) {
-	   n = 15 - strlen(tree->element.string);
+	   n = 15 - strlen(tree->element.string);	// n is number os spaces in the output file between the word and frequency
 		inorder_write(tree->left, fp_out, level + 1);
 
 		fprintf(fp_out, "%s", tree->element.string);
