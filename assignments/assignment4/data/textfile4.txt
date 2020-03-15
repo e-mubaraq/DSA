@@ -1,2 +1,7 @@
-school'c'c
-I can't go to school today
+For each file, compile a list of all distinct correctly-spelled words by reading them from the
+file and inserting them in a binary search tree (BST). When all the words have been read from
+that file, traverse the BST and write the words to an output file, one word per line, in
+alphabetic order, together with the number of occurrences of each word in the file and, in
+brackets, the level at which they are stored in the BST. Remember, the root of the tree is at
+level 0. Your program should be case-insensitive, i.e. it should treat “Tree” and “tree” as the
+same word.

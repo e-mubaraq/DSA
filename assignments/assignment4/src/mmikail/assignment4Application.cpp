@@ -18,11 +18,11 @@
    I implemented a inorder_write function which I used to write the words, their frequency and level to the output file. I was able to keep track of the
    level of each word in the tree uing this function. This function does an inorder traversal of the tree.
 
-   The total number of probes was computed with the getHeight() function. It is a recursive function which basically
+   The maximum number of probes was computed with the getHeight() function. It is a recursive function which basically
    returns 1 + the maximum of the heights of the left and right trees (1+ max(getTreeHeight(tree->left), getTreeHeight(tree->right))); 
    when the tree is not null, it the tree is null it return zero that is the tree is empty.
 
-   The average number of probes was calculated using a function which implements something close to a fibonnacci series. 
+   The average number of probes was calculated using a function . 
    The final sum is the total maximum of probes in a tree, the average is gotten by dividing the total by the height of the tree.
 
    The output file will contain a set of data computed from the input text files we were given.
@@ -72,24 +72,33 @@
 	heart in is My the work
 	Maximum number of probes: 6
 	Average number of probes: 3.5
-	heart 1 (0)
-	in 1 (1)
-	is 1 (2)
-	my 1 (3)
-	the 1 (4)
-	work 1 (5)
+	heart		1 (0)
+	in			1 (1)
+	is			1 (2)
+	my			1 (3)
+	the			1 (4)
+	work		1 (5)
 	--------------------
 
    Solution Strategy
    -----------------
 
    The input parameters were read in and stored in variables. 
-   The total number of probes was computed with a getHeight() function. It is a recursive function which basically
-   returns 1 + the maximum of the heights of the left and right trees (1+ max(getTreeHeight(tree->left), getTreeHeight(tree->right))); 
-   when the tree is not null, it the tree is null it return zero that is the tree is empty.
+   The maximum number of probes was computed with a getHeight() function. It is a recursive function which basically
+   returns 1 + the maximum of the heights of the left and right trees that is (1+ max(getTreeHeight(tree->left), getTreeHeight(tree->right))); 
+   when the tree is not null, if the tree is null it return zero that is the tree is empty.
 
-   The average number of probes was calculated using a function which implements something close to a fibonnacci series. 
-   The final sum is the total maximum of probes in a tree, the average is gotten by dividing the total by the height of the tree.
+   The average number of probes was calculated using a function getAvg_number_of_probes() which gets the total number of probes from 
+   a getTotal_number_of_probes() function and divides it by the size of the tree using the size() function.
+   
+   The total number of probes was computed using a recursive funtion that takes the tree and an integer level as an argument, this function
+   returns  level + 1 + getTotal_number_of_probes(tree ->left, level + 1) + getTotal_number_of_probes(tree ->right, level + 1) when the tree
+   is not null, it return 0 when tree is empty(null). This is based on the algorithm that keys on the zeroth level have a probes of 1, 
+   first level keys have 2, level 2 keys have a probe of 3. We take a sum of all the probes of keys in the tree.
+
+   The size of the tree is basically the number of elements in the tree, this was computed with a recursive function that returns
+   the sum of 1, size of left tree and size of the right tree as in (1+ size(tree->left) + size(tree->right)) when the tree is not null,
+   if the tree is null it return zero that is the tree is empty.
 
    Declare necessary variables to store the input and output parameters.
    declare 2 trees, one for the dictionary and one for the texts.
@@ -156,12 +165,13 @@
    Audit Trail
    -----------
 
-   - Added removePunct() to remove non-alpha numeric characters from a word.	Mubarak Mikail 04/03/2020
+   - Added removePunct() to remove non-alpha numeric characters from a word. Mubarak Mikail 04/03/2020
    - Added check() to check if an elemebt is in the tree. Mubarak Mikail 07/03/2020
    - Added getTreeHeight() to compute the height of a tree.	Mubarak Mikail 08/03/2020
    - Added max() to get the higher of two integers. Mubarak Mikail 08/03/2020
-   - Added getAvg_number_of_probes() to compute the average number of probes for a treee.	Mubarak Mikail 10/03/2020
-   - Added inorder_write() to write the statistics computed to the output file. 	Mubarak Mikail 10/03/2020
+   - Added getTotal_number_of_probes() to get the total number of probes in a tree.	Mubarak Mikail 08/03/2020
+   - Added getAvg_number_of_probes() to compute the average number of probes for a tree. Mubarak Mikail 10/03/2020
+   - Added inorder_write() to write the statistics computed to the output file. Mubarak Mikail 10/03/2020
    - Added size() to compute the size of a tree. Mubarak Mikail 10/03/2020
 
 */
@@ -174,13 +184,13 @@ int main() {
    bool input_dictionary = true;  // we begin by reading the dictionary
    int end_of_file, end_of_file2;
    int height, frequency = 1;
-   int total_num_of_probes = 0, max_num_of_probes = 0;
    double avg_num_of_probes = 0.0;
    char filename[MAX_STRING_LENGTH];
    char word[MAX_STRING_LENGTH];
    char original_word[MAX_STRING_LENGTH];
    unsigned int i;
    char ch;
+
 
    ELEMENT_TYPE e;
    BINARY_TREE_TYPE text_tree, dictionary_tree;
@@ -296,8 +306,6 @@ int main() {
          fprintf(fp_out, "Average number of probes: %3.1f\n", avg_num_of_probes);
 		 inorder_write(text_tree, fp_out, 0);
          fprintf (fp_out,"--------------------\n");
-
-		 total_num_of_probes = 0;
 	  }
 
       fclose(fp_in2);
@@ -310,6 +318,4 @@ int main() {
 
    fclose(fp_in);
    fclose(fp_out);
-
-   //prompt_and_exit(1);
 }

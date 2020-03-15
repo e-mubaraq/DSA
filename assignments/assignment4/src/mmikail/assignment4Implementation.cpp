@@ -37,8 +37,9 @@
    - Added check() to check if an elemebt is in the tree. Mubarak Mikail 07/03/2020
    - Added getTreeHeight() to compute the height of a tree.	Mubarak Mikail 08/03/2020
    - Added max() to get the higher of two integers. Mubarak Mikail 08/03/2020
-   - Added getAvg_number_of_probes() to compute the average number of probes for a treee.	Mubarak Mikail 10/03/2020
-   - Added inorder_write() to write the statistics computed to the output file. 	Mubarak Mikail 10/03/2020
+   - Added getTotal_number_of_probes() to get the total number of probes in a tree.	Mubarak Mikail 08/03/2020
+   - Added getAvg_number_of_probes() to compute the average number of probes for a tree.	Mubarak Mikail 10/03/2020
+   - Added inorder_write() to write the statistics computed to the output file. Mubarak Mikail 10/03/2020
    - Added size() to compute the size of a tree. Mubarak Mikail 10/03/2020
 
 */
@@ -60,7 +61,7 @@ void removePunt(char word[]) {
 			j++;
 		}
 		else {
-			if (word[i] == '\'') 
+			if (word[i] == '\'') // && word[i++] == 's'
 				i++;
 		}
 	}
@@ -95,15 +96,20 @@ int getTreeHeight(BINARY_TREE_TYPE tree) {
 }
 
 double getAvg_number_of_probes(BINARY_TREE_TYPE tree) {
-	int i, height, total_num_of_probes = 0;
+	int total_num_of_probes = 0;
 	double avg = 0.0;
 
-	height = getTreeHeight(tree);
-	for (i= 1; i <= height; i++)
-		total_num_of_probes += i;
-	avg = ((float)total_num_of_probes / height);
+	total_num_of_probes = getTotal_number_of_probes(tree, 0);
+	avg = (float)total_num_of_probes / size(tree);
 
 	return avg;
+}
+
+int getTotal_number_of_probes(BINARY_TREE_TYPE tree, int level) {
+	 if (tree != NULL) {
+		return level + 1 + getTotal_number_of_probes(tree ->left, level + 1) + getTotal_number_of_probes(tree ->right, level + 1);
+	 }
+	 return 0;
 }
 
 int max(int a, int b) {
@@ -117,7 +123,7 @@ int inorder_write(BINARY_TREE_TYPE tree, FILE *fp_out, int level) {
 	int i, n;
 
    if (tree != NULL) {
-	   n = 15 - strlen(tree->element.string);	// n is number os spaces in the output file between the word and frequency
+	    n = 15 - strlen(tree->element.string);	// n is number of spaces in the output file between the word and frequency
 		inorder_write(tree->left, fp_out, level + 1);
 
 		fprintf(fp_out, "%s", tree->element.string);
@@ -136,3 +142,4 @@ int size(BINARY_TREE_TYPE tree) {
 	}
 	return (0);
 }
+

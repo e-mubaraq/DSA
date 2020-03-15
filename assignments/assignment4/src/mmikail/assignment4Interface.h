@@ -36,6 +36,7 @@
    - Added check() to check if an elemebt is in the tree. Mubarak Mikail 07/03/2020
    - Added getTreeHeight() to compute the height of a tree.	Mubarak Mikail 08/03/2020
    - Added max() to get the higher of two integers. Mubarak Mikail 08/03/2020
+   - Added getTotal_number_of_probes() to get the total number of probes in a tree.	Mubarak Mikail 08/03/2020
    - Added getAvg_number_of_probes() to compute the average number of probes for a treee.	Mubarak Mikail 10/03/2020
    - Added inorder_write() to write the statistics computed to the output file. 	Mubarak Mikail 10/03/2020
    - Added size() to compute the size of a tree. Mubarak Mikail 10/03/2020
@@ -66,3 +67,4 @@ int max(int a, int b);
 double getAvg_number_of_probes(BINARY_TREE_TYPE tree);
 int inorder_write(BINARY_TREE_TYPE tree, FILE *fp_out, int level);
 int size(BINARY_TREE_TYPE tree);
+int getTotal_number_of_probes(BINARY_TREE_TYPE tree, int level);
