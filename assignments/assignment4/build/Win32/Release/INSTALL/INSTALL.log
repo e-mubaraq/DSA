@@ -1,4 +1,4 @@
-﻿Build started 15/03/2020 19:21:44.
+﻿Build started 18/03/2020 12:07:36.
      1>Project "C:\DSA\assignments\assignment4\build\INSTALL.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Win32\Release\INSTALL\INSTALL.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -22,4 +22,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.55
+Time Elapsed 00:00:00.14

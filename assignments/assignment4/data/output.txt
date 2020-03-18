@@ -24,20 +24,7 @@ work           1 (5)
 --------------------
 ../data/textfile3.txt
 The school's long-term MOTTO is: for learning and culture
-The school's long-term MOTTO is: for learning and culture
-The SCHOL'S long-term MOTO is:::: for learning and culture 
-Maximum number of probes: 7
-Average number of probes: 4.1
-and            3 (5)
-culture        3 (6)
-for            3 (4)
-is             3 (3)
-learning       3 (4)
-long-term      3 (2)
-school         2 (1)
-the            3 (0)
---------------------
-../data/textfile4.txt
+The SCHOL'S long-term MOTO is:::: for learning and culture
 For each file, COMPILE a list of all distinct CORRECTLY-SPELLED WORDS by reading them from the
 file and INSERTING them in a BINARY search tree (BST). When all the WORDS have BEEN read from
 that file, TRAVERSE the BST and write the WORDS to AN OUTPUT file, one word per line, in
@@ -45,53 +32,63 @@ ALPHABETIC order, together with the number of OCCURRENCES of each word in the fi
 BRACKETS, the level at which they ARE STORED in the BST. Remember, the root of the tree is at
 level 0. Your program should be CASE-INSENSITIVE, i.e. it should treat “Tree” and “tree” as the
 same word. 
-Maximum number of probes: 11
-Average number of probes: 6.4
-a              2 (2)
-all            2 (3)
-and            4 (6)
-as             1 (8)
-at             2 (7)
-be             1 (8)
-by             1 (5)
-distinct       1 (4)
-each           2 (1)
-file           5 (2)
-for            1 (0)
-from           2 (2)
-have           1 (4)
-ie             1 (5)
-in             5 (3)
-is             1 (6)
-it             1 (7)
-level          2 (5)
-line           1 (4)
-list           1 (1)
-number         1 (3)
-of             4 (2)
-one            1 (5)
-order          1 (7)
-per            1 (6)
-program        1 (7)
-read           1 (4)
-reading        1 (3)
-remember       1 (7)
-root           1 (8)
-same           1 (9)
-search         1 (6)
-should         2 (8)
-that           1 (7)
-the            11 (5)
-them           2 (4)
-they           1 (7)
-to             1 (6)
-together       1 (7)
-treat          1 (8)
-tree           4 (5)
-when           1 (6)
-which          1 (10)
-with           1 (9)
-word           3 (8)
-write          1 (7)
-your           1 (8)
+Maximum number of probes: 10
+Average number of probes: 6.2
+a              2 (6)
+all            2 (7)
+and            6 (5)
+as             1 (9)
+at             2 (8)
+be             1 (9)
+by             1 (7)
+culture        2 (6)
+distinct       1 (8)
+each           2 (7)
+file           5 (8)
+for            3 (4)
+from           2 (5)
+have           1 (7)
+ie             1 (8)
+in             5 (6)
+is             3 (3)
+it             1 (5)
+learning       2 (4)
+level          2 (7)
+line           1 (6)
+list           1 (5)
+long-term      2 (2)
+number         1 (4)
+of             4 (3)
+one            1 (6)
+order          1 (8)
+per            1 (7)
+program        1 (8)
+read           1 (5)
+reading        1 (4)
+remember       1 (5)
+root           1 (6)
+same           1 (7)
+school         1 (1)
+search         1 (2)
+should         2 (4)
+that           1 (3)
+the            13 (0)
+them           2 (1)
+they           1 (4)
+to             1 (3)
+together       1 (4)
+treat          1 (5)
+tree           4 (2)
+when           1 (3)
+which          1 (7)
+with           1 (6)
+word           3 (5)
+write          1 (4)
+your           1 (5)
+--------------------
+../data/textfile4.txt
+-
+
+Maximum number of probes: 0
+Average number of probes: 0.0
 --------------------

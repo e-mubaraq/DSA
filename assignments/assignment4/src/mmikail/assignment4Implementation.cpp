@@ -100,7 +100,8 @@ double getAvg_number_of_probes(BINARY_TREE_TYPE tree) {
 	double avg = 0.0;
 
 	total_num_of_probes = getTotal_number_of_probes(tree, 0);
-	avg = (float)total_num_of_probes / size(tree);
+	if(size(tree) != 0)
+		avg = (float)total_num_of_probes / size(tree);
 
 	return avg;
 }
