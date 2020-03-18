@@ -1,11 +1,11 @@
 /* 
 
-   assignment4Application.cpp - application file for a program named assignment4
+   assignment5Application.cpp - application file for a program named assignment5
    =============================================================================
 
-   This program is for Assignment No. 4, Course 04-630 Data Structures and Algorithms for Engineers. 
+   This program is for Assignment No. 5, Course 04-630 Data Structures and Algorithms for Engineers. 
 
-   Text Analysis using Binary Search Trees.
+   Robot Path Planning using Breadth-First Search in Undirected Unweighted Graphs.
 
    The functionality of the program is defined as follows.
 
@@ -143,14 +143,14 @@
    File organization
    -----------------
 
-   assignment4Interface.h           interface file:      
+   assignment5Interface.h           interface file:      
 									contains the declarations required to use the functions that implement the solution to this problem
 									typically, these will include the definitions of the abstract data types used in the implementation
 
-   assignment4Implementation.cpp	implementation file: 
+   assignment5Implementation.cpp	implementation file: 
 									contains the definitions of the functions that implement the algorithms used in the implementation
  
-   assignment4Application.cpp		application file:    
+   assignment5Application.cpp		application file:    
 									contains the code that instantiates the abstract data types and calls the associated functions
 									in order to effect the required functionality for this application
 
@@ -159,7 +159,7 @@
    ------
 
    Mubarak Mikail, Carnegie Mellon University Africa
-   03/03/2020
+   18/03/2020
 
 
    Audit Trail
@@ -176,7 +176,7 @@
 
 */
  
-#include "assignment4Interface.h"
+#include "assignment5Interface.h"
 
 int main() {
 
@@ -191,15 +191,10 @@ int main() {
    unsigned int i;
    char ch;
 
-
-   ELEMENT_TYPE e;
-   BINARY_TREE_TYPE text_tree, dictionary_tree;
-
    FILE *fp_in;
    FILE *fp_out;
    FILE *fp_in2;
 
-   initialize(&dictionary_tree);
 
    if ((fp_in = fopen("../data/input.txt","r")) == 0) {
 	  printf("Error can't open input input.txt\n");
@@ -230,8 +225,6 @@ int main() {
          prompt_and_exit(1);
       }
 
-	  
-	  initialize2(&text_tree);
       end_of_file2 = fscanf(fp_in2, "%s", original_word);  // read a word from the file
 
 	  /* check the whitespace character after the word to see if it is a newline */
@@ -255,56 +248,8 @@ int main() {
             word[i] = tolower(word[i]);
          }
 		 
-		 removePunt(word);
-		 
-         if (strlen(word) > 0) {
 
-			if (input_dictionary) {
-				
-				/*** building the dictionary ***/
-				assign_element_values(&e, frequency, word);
-				insert(e, &dictionary_tree);
 
-			}
-			else {
-
-			   /*** analyzing text ***/
-				assign_element_values(&e, frequency, word);
-
-				 if (check(e, dictionary_tree)) {
-					 insert(e, &text_tree);
-					 fprintf(fp_out, "%s", original_word);
-				 }
-				 else
-				 {
-					 for (i=0; i<strlen(original_word); i++)
-						 original_word[i] = toupper(original_word[i]);
-					 fprintf(fp_out, "%s", original_word);
-				 }
-				 
-			}
-         }
-  
-         end_of_file2 = fscanf(fp_in2, "%s", original_word);
-		      
-	     /* check the whitespace character to see if it is a newline */
-         ch = getc(fp_in2);
-	     if (ch == '\n') {
-	        strcat(original_word,"\n");  // add the newline
-	     }
-		 else {
-
-			 strcat(original_word," ");  // add the whitespace
-		 }
-      }
-
-	  if (!input_dictionary) {
-		  height = getTreeHeight(text_tree);
-		  avg_num_of_probes = getAvg_number_of_probes(text_tree);
-
-		 fprintf(fp_out, "\nMaximum number of probes: %d\n", height);
-         fprintf(fp_out, "Average number of probes: %3.1f\n", avg_num_of_probes);
-		 inorder_write(text_tree, fp_out, 0);
          fprintf (fp_out,"--------------------\n");
 	  }
 

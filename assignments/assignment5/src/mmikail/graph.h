@@ -95,5 +95,4 @@ int empty_queue(queue *q);
 
 void print_queue(queue *q);
 
-void prompt_and_exit(int status);
  

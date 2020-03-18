@@ -335,10 +335,3 @@ void print_queue(queue *q)
 }
 
 
-void prompt_and_exit(int status) {
-   printf("Press any key to continue and close terminal\n");
-   getchar();
-   getchar();
-   exit(status);
-}
-
