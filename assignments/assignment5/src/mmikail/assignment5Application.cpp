@@ -181,19 +181,14 @@
 int main() {
 
    bool debug            = false; // print diagnostic information?
-   bool input_dictionary = true;  // we begin by reading the dictionary
-   int end_of_file, end_of_file2;
-   int height, frequency = 1;
-   double avg_num_of_probes = 0.0;
-   char filename[MAX_STRING_LENGTH];
-   char word[MAX_STRING_LENGTH];
-   char original_word[MAX_STRING_LENGTH];
-   unsigned int i;
-   char ch;
-
+   int i, j, k, number_of_scenarios;
+   int n, m; // n refers to rows amd mt to columns
+   int value;
+   
+   int arr[MAX_N][MAX_M];
+   char input_string[MAX_STRING_LENGTH];
    FILE *fp_in;
    FILE *fp_out;
-   FILE *fp_in2;
 
 
    if ((fp_in = fopen("../data/input.txt","r")) == 0) {
@@ -207,60 +202,35 @@ int main() {
    }
 
    fprintf(fp_out,"mmikail\n");
+   /* read the number of scenarios from a file */
+   fscanf(fp_in, "%d", &number_of_scenarios);
+   //fscanf(fp_in, "%d", &n);
 
-   /* read the filenames from the input file */
+   for (i = 1; i <= number_of_scenarios; i++) {
+	   fprintf(fp_out, "Scenario %d\n", i);
+	   fscanf(fp_in, "%d %d", &n, &m);
 
-   end_of_file = fscanf(fp_in, "%s", filename);  // read a filename
-  
-   while (end_of_file != EOF) {
+	   printf("Scenario %d\n", i);
+	   printf("%d %d", n, m);
 
-      if (!input_dictionary) {
-		  fprintf(fp_out,"%s\n",filename);
-	  }
+	   for (j = 0; j <= n; j++) {
+		   printf("\n**************\n");
+		   fgets(input_string, MAX_STRING_LENGTH, fp_in); // read a line from the input file
+		   printf("%s \n", input_string);
+		   for (k = 0; k < m; k++) {
+			   //value = fscanf
+				sscanf(input_string, "%d", &value);
+			    arr[j][k] = value;
+				printf("%d ", value);
+		   }
+		   printf("\n");
+	   }
 
-      /* open the target file: dictionary or text */
-
-      if ((fp_in2 = fopen(filename,"r")) == 0) {  
-	      printf("Error can't open text file %s\n",filename);
-         prompt_and_exit(1);
-      }
-
-      end_of_file2 = fscanf(fp_in2, "%s", original_word);  // read a word from the file
-
-	  /* check the whitespace character after the word to see if it is a newline */
-      ch = getc(fp_in2);
-	  if (ch == '\n') {
-	     strcat(original_word,"\n"); // add a newline character so that subsequent text in on the next line
-	  }
-	  else {
-		 strcat(original_word," ");  // add the whitespace
-      }
-
-	  
-      while (end_of_file2 != EOF) {
-             
-		 strcpy(word,original_word); // make a copy of the word so that we can process it
-		                             // but keep the original so that we can write it to the output file 
-
-         /* convert to lower case */
-		 
-         for (i=0; i<strlen(word); i++) {
-            word[i] = tolower(word[i]);
-         }
-		 
-
-
-         fprintf (fp_out,"--------------------\n");
-	  }
-
-      fclose(fp_in2);
-
-      end_of_file = fscanf(fp_in, "%s", filename); // read the next filename
-
-	  input_dictionary = false; // the first file is the dictionary file; we've read it so now we reset this flag
-   };
+   }
 
 
    fclose(fp_in);
    fclose(fp_out);
+
+   prompt_and_exit(0);
 }

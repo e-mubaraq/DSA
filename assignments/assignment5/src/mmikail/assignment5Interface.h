@@ -32,8 +32,8 @@
    Audit Trail
    -----------
 
-   - Added removePunct() to remove non-alpha numeric characters from a word.	Mubarak Mikail 04/03/2020
-   - Added check() to check if an elemebt is in the tree. Mubarak Mikail 07/03/2020
+   - Added initialize_2D_array() to initialize a 2-d array.	Mubarak Mikail 20/03/2020
+   - Added write_char_to_file() to print the chracter version of the map to screen. Mubarak Mikail 20/03/2020
    - Added getTreeHeight() to compute the height of a tree.	Mubarak Mikail 08/03/2020
    - Added max() to get the higher of two integers. Mubarak Mikail 08/03/2020
    - Added getTotal_number_of_probes() to get the total number of probes in a tree.	Mubarak Mikail 08/03/2020
@@ -53,13 +53,16 @@
 
 #define TRUE 1
 #define FALSE 0
-#define MAX_STRING_LENGTH 80
+#define MAX_STRING_LENGTH 200
+#define MAX_N 100
+#define MAX_M 100
 
 
 /* function prototypes go here */
 
 
 void prompt_and_exit(int status);
-void removePunt(char word[]);
 int max(int a, int b);
+void initialize_2D_array(int arr[][MAX_M], int n, int m, int value);
+void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m);
 

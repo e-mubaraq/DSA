@@ -52,28 +52,39 @@ void prompt_and_exit(int status) {
    exit(status);
 }
 
-void removePunt(char word[]) {
-	int i, j = 0;
-	char temp[MAX_STRING_LENGTH];
-	for (i=0; i<strlen(word); i++) {
-		if (isalnum(word[i]) || (word[i] == '-')  ) {
-			temp[j] = word[i];
-			j++;
-		}
-		else {
-			if (word[i] == '\'') // && word[i++] == 's'
-				i++;
-		}
-	}
-	temp[j] = '\0';
-	strcpy(word, temp);
-}
-
 
 int max(int a, int b) {
 	if (a > b)
 		return a;
 	else
 		return b;
+}
+
+void initialize_2D_array(int arr[][MAX_M], int n, int m, int value) {
+	int j, k;
+	 for (j = 0; j < n; j++) {
+		   for (k = 0; k < m; k++) {
+			   arr[j][k] = value;
+		   }
+
+	   }
+}
+
+void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m) {
+	 int j, k;
+	 for (j = 0; j < n; j++) {
+		   for (k = 0; k < m; k++) {
+			   if (arr[j][k] == 0)
+				   fprintf(fp_out, "  ");
+			   else if (arr[j][k] == 1)
+				   fprintf(fp_out, "# ");
+			   else if (arr[j][k] == 2)
+				   fprintf(fp_out, "@ ");
+			   else if (arr[j][k] == 3)
+				   fprintf(fp_out, "$ ");
+		   }
+		   fprintf(fp_out, "\n");
+	   }
+
 }
 
