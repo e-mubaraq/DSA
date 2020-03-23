@@ -60,14 +60,17 @@ int max(int a, int b) {
 		return b;
 }
 
-void initialize_2D_array(int arr[][MAX_M], int n, int m, int value) {
-	int j, k;
-	 for (j = 0; j < n; j++) {
-		   for (k = 0; k < m; k++) {
-			   arr[j][k] = value;
-		   }
+void initialize_2D_array(FILE *fp_in, int arr[][MAX_M], int n, int m) {
+	int j, k, value;
 
-	   }
+	for (j = 0; j < n; j++) {
+		for (k = 0; k < m; k++) {
+			fscanf(fp_in, "%d", &value);
+			arr[j][k] = value;
+			printf("%d ", arr[j][k]);
+		}
+		printf("\n");
+	}
 }
 
 void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m) {

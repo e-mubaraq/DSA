@@ -181,12 +181,10 @@
 int main() {
 
    bool debug            = false; // print diagnostic information?
-   int i, j, k, number_of_scenarios;
+   int i, number_of_scenarios;
    int n, m; // n refers to rows amd mt to columns
-   int value;
    
    int arr[MAX_N][MAX_M];
-   char input_string[MAX_STRING_LENGTH];
    FILE *fp_in;
    FILE *fp_out;
 
@@ -204,28 +202,16 @@ int main() {
    fprintf(fp_out,"mmikail\n");
    /* read the number of scenarios from a file */
    fscanf(fp_in, "%d", &number_of_scenarios);
-   //fscanf(fp_in, "%d", &n);
 
    for (i = 1; i <= number_of_scenarios; i++) {
 	   fprintf(fp_out, "Scenario %d\n", i);
 	   fscanf(fp_in, "%d %d", &n, &m);
 
-	   printf("Scenario %d\n", i);
-	   printf("%d %d", n, m);
+	   initialize_2D_array(fp_in, arr, n, m);
 
-	   for (j = 0; j <= n; j++) {
-		   printf("\n**************\n");
-		   fgets(input_string, MAX_STRING_LENGTH, fp_in); // read a line from the input file
-		   printf("%s \n", input_string);
-		   for (k = 0; k < m; k++) {
-			   //value = fscanf
-				sscanf(input_string, "%d", &value);
-			    arr[j][k] = value;
-				printf("%d ", value);
-		   }
-		   printf("\n");
-	   }
-
+	   write_char_to_file(fp_out, arr, n, m);
+	   printf("--------------\n");
+	   fprintf(fp_out, "\n");
    }
 
 

@@ -63,6 +63,6 @@
 
 void prompt_and_exit(int status);
 int max(int a, int b);
-void initialize_2D_array(int arr[][MAX_M], int n, int m, int value);
+void initialize_2D_array(FILE *fp_in, int arr[][MAX_M], int n, int m);
 void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m);
 
