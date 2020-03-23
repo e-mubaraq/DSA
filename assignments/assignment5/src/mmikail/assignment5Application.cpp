@@ -185,6 +185,7 @@ int main() {
    int n, m; // n refers to rows amd mt to columns
    
    int arr[MAX_N][MAX_M];
+   int temp[MAX_N * MAX_M];
    FILE *fp_in;
    FILE *fp_out;
 
@@ -208,7 +209,7 @@ int main() {
 	   fscanf(fp_in, "%d %d", &n, &m);
 
 	   initialize_2D_array(fp_in, arr, n, m);
-
+	   construct_graph(n, m);
 	   write_char_to_file(fp_out, arr, n, m);
 	   printf("--------------\n");
 	   fprintf(fp_out, "\n");

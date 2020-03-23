@@ -34,9 +34,9 @@
 
    - Added initialize_2D_array() to initialize a 2-d array.	Mubarak Mikail 20/03/2020
    - Added write_char_to_file() to print the chracter version of the map to screen. Mubarak Mikail 20/03/2020
-   - Added getTreeHeight() to compute the height of a tree.	Mubarak Mikail 08/03/2020
+   - Added getVertex_from_cellCoordinates() to compute the vertex number from its cell coordinates by using a mapping function.	Mubarak Mikail 23/03/2020
    - Added max() to get the higher of two integers. Mubarak Mikail 08/03/2020
-   - Added getTotal_number_of_probes() to get the total number of probes in a tree.	Mubarak Mikail 08/03/2020
+   - Added construct_graph() to construct a graph from a map.	Mubarak Mikail 23/03/2020
    - Added getAvg_number_of_probes() to compute the average number of probes for a treee.	Mubarak Mikail 10/03/2020
    - Added inorder_write() to write the statistics computed to the output file. 	Mubarak Mikail 10/03/2020
    - Added size() to compute the size of a tree. Mubarak Mikail 10/03/2020
@@ -65,4 +65,5 @@ void prompt_and_exit(int status);
 int max(int a, int b);
 void initialize_2D_array(FILE *fp_in, int arr[][MAX_M], int n, int m);
 void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m);
-
+int getVertex_from_cellCoordinates(int x, int y, int column_size);
+void construct_graph(int n, int m);

@@ -61,15 +61,14 @@ int max(int a, int b) {
 }
 
 void initialize_2D_array(FILE *fp_in, int arr[][MAX_M], int n, int m) {
-	int j, k, value;
+	int j, k;
 
 	for (j = 0; j < n; j++) {
 		for (k = 0; k < m; k++) {
-			fscanf(fp_in, "%d", &value);
-			arr[j][k] = value;
-			printf("%d ", arr[j][k]);
+			fscanf(fp_in, "%d", &arr[j][k]);
+			//printf("%d ", arr[j][k]);
 		}
-		printf("\n");
+		//printf("\n");
 	}
 }
 
@@ -89,5 +88,23 @@ void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m) {
 		   fprintf(fp_out, "\n");
 	   }
 
+}
+
+int getVertex_from_cellCoordinates(int x, int y, int column_size) {
+	int vertex = 0;
+	vertex = (column_size * x) + y + 1;
+
+	return vertex;
+}
+void construct_graph(int n, int m) {
+	int j, k, v;
+
+	for (j = 0; j < n; j++) {
+		for (k = 0; k < m; k++) {
+			v = getVertex_from_cellCoordinates(j, k, m);
+			printf("%d ", v);
+		}
+		printf("\n");
+	}
 }
 
