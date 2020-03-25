@@ -38,7 +38,7 @@
    - Added max() to get the higher of two integers. Mubarak Mikail 08/03/2020
    - Added construct_graph_vertex() to construct a graph of vertex from a map of coordinates.	Mubarak Mikail 23/03/2020
    - Added construct_graph() to construct the graph.	Mubarak Mikail 25/03/2020
-   - Added getAvg_number_of_probes() to compute the average number of probes for a treee.	Mubarak Mikail 10/03/2020
+   - Added search_for_path() to find the path between the start and end points of the robot.	Mubarak Mikail 25/03/2020
    - Added inorder_write() to write the statistics computed to the output file. 	Mubarak Mikail 10/03/2020
    - Added size() to compute the size of a tree. Mubarak Mikail 10/03/2020
 
@@ -69,3 +69,4 @@ void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m);
 int getVertex_from_cellCoordinates(int x, int y, int column_size);
 void construct_graph_vertex(int n, int m);
 void construct_graph(graph *g, bool directed, FILE *fp_in, int arr[][MAX_M], int n, int m);
+bool search_for_path(graph *g, int arr[][MAX_M], int n, int m);

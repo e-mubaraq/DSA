@@ -117,21 +117,26 @@ void construct_graph(graph *g, bool directed, FILE *fp_in, int arr[][MAX_M], int
 
 	if (g->nvertices != 0) {
 		for (i = 0; i < n; i++) {
-			for (j = 0; j < m; j++) {
-				if (arr[i][j] == arr[i][j+1]) {
-					x = getVertex_from_cellCoordinates(i, j, m);
-					y = getVertex_from_cellCoordinates(i, j+1, m);
+			for (j = 0; j < m - 1; j++) {
+				x = getVertex_from_cellCoordinates(i, j, m);
+				y = getVertex_from_cellCoordinates(i, j+1, m);
+				if (arr[i][j] == 2 || arr[i][j] == 3 || arr[i][j] == arr[i][j+1] || arr[i][j+1] == 2 || arr[i][j+1] == 3) {
+					//x = getVertex_from_cellCoordinates(i, j, m);
+					//y = getVertex_from_cellCoordinates(i, j+1, m);
 					insert_edge(g, x, y, directed, 0);
 				}
 			}
 		}
 		for (j = 0; j < m; j++) {
 			for (i = 0; i < n - 1; i++) {
-				if (arr[i][j] == arr[i+1][j]) {
-					x = getVertex_from_cellCoordinates(i, j, m);
-					y = getVertex_from_cellCoordinates(i+1, j, m);
+				x = getVertex_from_cellCoordinates(i, j, m);
+				y = getVertex_from_cellCoordinates(i+1, j, m);
+				if (arr[i][j] == 2 || arr[i][j] == 3 || arr[i][j] == arr[i+1][j] || arr[i+1][j] == 2 || arr[i+1][j] == 3) {
+					//x = getVertex_from_cellCoordinates(i, j, m);
+					//y = getVertex_from_cellCoordinates(i+1, j, m);
 					insert_edge(g, x, y, directed, 0);
 				}
+
 			}
 		}
 
@@ -139,3 +144,20 @@ void construct_graph(graph *g, bool directed, FILE *fp_in, int arr[][MAX_M], int
 
 }
 
+bool search_for_path(graph *g, int arr[][MAX_M], int n, int m) {
+	int j, k, start, end;
+
+	 for (j = 0; j < n; j++) {
+		   for (k = 0; k < m; k++) {
+			   if (arr[j][k] == 2)
+				   start = getVertex_from_cellCoordinates(j, k, m);
+			   if (arr[j][k] == 3)
+				   end = getVertex_from_cellCoordinates(j, k, m);
+		   }
+	 }
+
+	if (find_path(g, start, end))
+		return true;
+	else
+		return false;
+}

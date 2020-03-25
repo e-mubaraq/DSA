@@ -1,12 +1,12 @@
-﻿Build started 25/03/2020 13:04:59.
+﻿Build started 25/03/2020 15:47:27.
      1>Project "C:\DSA\assignments\assignment5\build\src\mmikail\mmikail.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "mmikail.dir\Release\mmikail.unsuccessfulbuild" because "AlwaysCreate" was specified.
        CustomBuild:
          All outputs are up-to-date.
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /nologo /W3 /WX- /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D _CRT_SECURE_NO_DEPRECATE /D "CMAKE_INTDIR=\"Release\"" /D _MBCS /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"mmikail.dir\Release\\" /Fd"mmikail.dir\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\src\mmikail\assignment5Application.cpp
-         assignment5Application.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /nologo /W3 /WX- /O2 /Ob2 /Oy- /D WIN32 /D _WINDOWS /D NDEBUG /D _CRT_SECURE_NO_DEPRECATE /D "CMAKE_INTDIR=\"Release\"" /D _MBCS /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /GR /Fo"mmikail.dir\Release\\" /Fd"mmikail.dir\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\..\src\mmikail\assignment5Implementation.cpp
+         assignment5Implementation.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\DSA\assignments\assignment5\build\Release\mmikail.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /NODEFAULTLIB:"libc;libcmt.lib;libcmtd.lib" /MANIFEST /ManifestFile:"mmikail.dir\Release\mmikail.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"C:/DSA/assignments/assignment5/build/Release/mmikail.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/DSA/assignments/assignment5/build/Release/mmikail.lib" /MACHINE:X86 mmikail.dir\Release\assignment5Application.obj
          mmikail.dir\Release\assignment5Implementation.obj
@@ -21,4 +21,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.69
+Time Elapsed 00:00:00.39
