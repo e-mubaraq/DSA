@@ -61,11 +61,11 @@ int max(int a, int b) {
 }
 
 void initialize_2D_array(FILE *fp_in, int arr[][MAX_M], int n, int m) {
-	int j, k;
+	int i, j;
 
-	for (j = 0; j < n; j++) {
-		for (k = 0; k < m; k++) {
-			fscanf(fp_in, "%d", &arr[j][k]);
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < m; j++) {
+			fscanf(fp_in, "%d", &arr[i][j]);
 			//printf("%d ", arr[j][k]);
 		}
 		//printf("\n");
@@ -96,15 +96,46 @@ int getVertex_from_cellCoordinates(int x, int y, int column_size) {
 
 	return vertex;
 }
-void construct_graph(int n, int m) {
-	int j, k, v;
+void construct_graph_vertex(int n, int m) {
+	int i, j, v;
 
-	for (j = 0; j < n; j++) {
-		for (k = 0; k < m; k++) {
-			v = getVertex_from_cellCoordinates(j, k, m);
+	for (i = 0; i < n; i++) {
+		for (j = 0; j < m; j++) {
+			v = getVertex_from_cellCoordinates(i, j, m);
 			printf("%d ", v);
 		}
 		printf("\n");
 	}
+}
+
+void construct_graph(graph *g, bool directed, FILE *fp_in, int arr[][MAX_M], int n, int m) {
+	int i,j, x, y;
+
+	initialize_graph(g, directed);
+	initialize_2D_array(fp_in, arr, n, m);
+	g->nvertices = n * m;
+
+	if (g->nvertices != 0) {
+		for (i = 0; i < n; i++) {
+			for (j = 0; j < m; j++) {
+				if (arr[i][j] == arr[i][j+1]) {
+					x = getVertex_from_cellCoordinates(i, j, m);
+					y = getVertex_from_cellCoordinates(i, j+1, m);
+					insert_edge(g, x, y, directed, 0);
+				}
+			}
+		}
+		for (j = 0; j < m; j++) {
+			for (i = 0; i < n - 1; i++) {
+				if (arr[i][j] == arr[i+1][j]) {
+					x = getVertex_from_cellCoordinates(i, j, m);
+					y = getVertex_from_cellCoordinates(i+1, j, m);
+					insert_edge(g, x, y, directed, 0);
+				}
+			}
+		}
+
+	}
+
 }
 

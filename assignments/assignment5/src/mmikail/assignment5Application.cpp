@@ -180,12 +180,13 @@
 
 int main() {
 
-   bool debug            = false; // print diagnostic information?
+   bool debug    = false; // print diagnostic information?
+   graph g;
+   bool directed = false;
    int i, number_of_scenarios;
    int n, m; // n refers to rows amd mt to columns
    
    int arr[MAX_N][MAX_M];
-   int temp[MAX_N * MAX_M];
    FILE *fp_in;
    FILE *fp_out;
 
@@ -208,9 +209,12 @@ int main() {
 	   fprintf(fp_out, "Scenario %d\n", i);
 	   fscanf(fp_in, "%d %d", &n, &m);
 
-	   initialize_2D_array(fp_in, arr, n, m);
-	   construct_graph(n, m);
+	   //initialize_2D_array(fp_in, arr, n, m);
+	   construct_graph(&g, directed, fp_in, arr, n, m);
+	   //construct_graph_vertex(n, m);
 	   write_char_to_file(fp_out, arr, n, m);
+
+	   print_graph(&g);
 	   printf("--------------\n");
 	   fprintf(fp_out, "\n");
    }
