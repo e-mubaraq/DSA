@@ -45,6 +45,8 @@
 */
 
 #include "assignment5Interface.h"
+bool debugg = true;
+int  parentt[MAX_N * MAX_M];   
 
 void prompt_and_exit(int status) {
    printf("Press any key to continue and close terminal\n");
@@ -78,6 +80,8 @@ void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m) {
 		   for (k = 0; k < m; k++) {
 			   if (arr[j][k] == 0)
 				   fprintf(fp_out, "  ");
+			   else	if (arr[j][k] == 4)
+				   fprintf(fp_out, "* ");
 			   else if (arr[j][k] == 1)
 				   fprintf(fp_out, "# ");
 			   else if (arr[j][k] == 2)
@@ -118,22 +122,22 @@ void construct_graph(graph *g, bool directed, FILE *fp_in, int arr[][MAX_M], int
 	if (g->nvertices != 0) {
 		for (i = 0; i < n; i++) {
 			for (j = 0; j < m - 1; j++) {
-				x = getVertex_from_cellCoordinates(i, j, m);
-				y = getVertex_from_cellCoordinates(i, j+1, m);
+				//x = getVertex_from_cellCoordinates(i, j, m);
+				//y = getVertex_from_cellCoordinates(i, j+1, m);
 				if (arr[i][j] == 2 || arr[i][j] == 3 || arr[i][j] == arr[i][j+1] || arr[i][j+1] == 2 || arr[i][j+1] == 3) {
-					//x = getVertex_from_cellCoordinates(i, j, m);
-					//y = getVertex_from_cellCoordinates(i, j+1, m);
+					x = getVertex_from_cellCoordinates(i, j, m);
+					y = getVertex_from_cellCoordinates(i, j+1, m);
 					insert_edge(g, x, y, directed, 0);
 				}
 			}
 		}
 		for (j = 0; j < m; j++) {
 			for (i = 0; i < n - 1; i++) {
-				x = getVertex_from_cellCoordinates(i, j, m);
-				y = getVertex_from_cellCoordinates(i+1, j, m);
+				//x = getVertex_from_cellCoordinates(i, j, m);
+				//y = getVertex_from_cellCoordinates(i+1, j, m);
 				if (arr[i][j] == 2 || arr[i][j] == 3 || arr[i][j] == arr[i+1][j] || arr[i+1][j] == 2 || arr[i+1][j] == 3) {
-					//x = getVertex_from_cellCoordinates(i, j, m);
-					//y = getVertex_from_cellCoordinates(i+1, j, m);
+					x = getVertex_from_cellCoordinates(i, j, m);
+					y = getVertex_from_cellCoordinates(i+1, j, m);
 					insert_edge(g, x, y, directed, 0);
 				}
 
@@ -143,6 +147,7 @@ void construct_graph(graph *g, bool directed, FILE *fp_in, int arr[][MAX_M], int
 	}
 
 }
+
 
 bool search_for_path(graph *g, int arr[][MAX_M], int n, int m) {
 	int j, k, start, end;
@@ -156,8 +161,17 @@ bool search_for_path(graph *g, int arr[][MAX_M], int n, int m) {
 		   }
 	 }
 
-	if (find_path(g, start, end))
+	//if (find_path(g, start, end))
+	if (find_path_graph(g, start, end, arr, n, m))
 		return true;
 	else
 		return false;
 }
+
+//int getX_from_vertex(int vertex, int m) {
+//	return (vertex - 1) / m;
+//}
+//
+//int getY_from_vertex(int vertex, int m) {
+//	return (vertex - 1) % m;
+//}

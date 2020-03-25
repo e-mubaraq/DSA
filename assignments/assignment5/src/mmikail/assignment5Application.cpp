@@ -211,18 +211,19 @@ int main() {
 
 	   //initialize_2D_array(fp_in, arr, n, m);
 	   construct_graph(&g, directed, fp_in, arr, n, m);
-	   construct_graph_vertex(n, m);
+	   //construct_graph_vertex(n, m);
 	   if (search_for_path(&g, arr, n, m))
 			write_char_to_file(fp_out, arr, n, m);
 	   else
 		   fprintf(fp_out, "No path exists from the robot\'s initial position to its goal position");
 
-	   print_graph(&g);
+	   //print_graph(&g);
 	   printf("--------------\n");
 	   fprintf(fp_out, "\n");
    }
 
-
+   //printf("x = %d\n", getX_from_vertex(5,5));
+   //printf("y = %d\n", getY_from_vertex(5,5));
    fclose(fp_in);
    fclose(fp_out);
 

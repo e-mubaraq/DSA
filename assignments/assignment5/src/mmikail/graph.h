@@ -17,6 +17,8 @@
 
 #define TRUE 1
 #define FALSE 0
+#define MAX_N 100
+#define MAX_M 100
 
 #define QUEUESIZE       1000
 
@@ -82,6 +84,12 @@ void process_edge(int x, int y);
 bool find_path(int start, int end, int parents[]);
 
 bool find_path(graph *g, int start, int end);
+
+bool find_path_graph(int start, int end, int parents[], int arr[][MAX_M], int n, int m);
+bool find_path_graph(graph *g, int start, int end, int arr[][MAX_M], int n, int m);
+
+int getX_from_vertex(int vertex, int m);
+int getY_from_vertex(int vertex, int m);
 
 void init_queue(queue *q);
 

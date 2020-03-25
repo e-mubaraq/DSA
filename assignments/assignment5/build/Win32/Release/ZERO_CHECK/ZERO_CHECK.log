@@ -1,4 +1,4 @@
-﻿Build started 22/03/2020 19:22:10.
+﻿Build started 25/03/2020 20:41:17.
      1>Project "C:\DSA\assignments\assignment5\build\ZERO_CHECK.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Win32\Release\ZERO_CHECK\ZERO_CHECK.lastbuildstate".
@@ -13,4 +13,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.50
+Time Elapsed 00:00:00.09

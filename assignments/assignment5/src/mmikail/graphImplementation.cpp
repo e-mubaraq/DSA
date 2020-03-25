@@ -13,6 +13,7 @@
  
 #include "graph.h"
 
+
 /* Breadth-First Search data structures */
 
 bool processed[MAXV+1];   /* which vertices have been processed */
@@ -245,6 +246,73 @@ bool find_path(graph *g, int start, int end) {
    }
    return(is_path);
 }
+
+
+
+bool find_path_graph(int start, int end, int parents[], int arr[][MAX_M], int n, int m) {
+   
+   bool is_path;
+   int j, k, x, y;
+
+   if (end == -1) {
+      is_path = false; // some vertex on the path back from the end has no parentt (not counting start)
+      if (debug) printf("\nis_path is false: ");
+   }
+   else if ((start == end)) {
+       if (debug) printf("\n%d",start);
+       is_path = true; // we have reached the start vertex
+   }
+   else {
+	   is_path = find_path_graph(start,parents[end],parents, arr, n, m);
+	   if (debug) {
+			printf(" %d",end); //get x and y coordinates from the end value not 2 or 3
+			x = getX_from_vertex(end, m);
+			y = getY_from_vertex(end, m);
+			if (arr[x][y] != 3) {		
+				arr[x][y] = 4;
+			}
+		}
+   }
+   return(is_path); 
+}
+
+
+bool find_path_graph(graph *g, int start, int end, int arr[][MAX_M], int n, int m) {
+   bool is_path;
+
+   if (debug) printf("Path from %d to %d:",start,end);
+
+   if ((start < 1) || (start > g->nvertices)) {
+      if (debug) 
+         printf("Invalid start vertex\n");
+      is_path = false;
+   }
+   else if ((end < 1) || (end > g->nvertices)) {
+      if (debug) 
+         printf("Invalid end vertex\n");
+      is_path = false;
+   }
+   else {
+      initialize_search(g);
+      bfs(g, start);
+	  //is_path = find_path(start, end, parent); 
+      is_path = find_path_graph(start, end, parent, arr, n, m); // now call the version of find_path that has the parentt array as an argument
+      if (debug) printf("\n");
+   }
+   return(is_path);
+}
+
+
+int getX_from_vertex(int vertex, int m) {
+	return (vertex - 1) / m;
+}
+
+int getY_from_vertex(int vertex, int m) {
+	return (vertex - 1) % m;
+}
+
+
+
 
 
 
