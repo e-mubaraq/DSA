@@ -45,8 +45,6 @@
 */
 
 #include "assignment5Interface.h"
-bool debugg = true;
-int  parentt[MAX_N * MAX_M];   
 
 void prompt_and_exit(int status) {
    printf("Press any key to continue and close terminal\n");
@@ -54,43 +52,47 @@ void prompt_and_exit(int status) {
    exit(status);
 }
 
-
-int max(int a, int b) {
-	if (a > b)
-		return a;
-	else
-		return b;
-}
-
 void initialize_2D_array(FILE *fp_in, int arr[][MAX_M], int n, int m) {
 	int i, j;
 
 	for (i = 0; i < n; i++) {
-		for (j = 0; j < m; j++) {
+		for (j = 0; j < m; j++)
 			fscanf(fp_in, "%d", &arr[i][j]);
-			//printf("%d ", arr[j][k]);
-		}
-		//printf("\n");
 	}
 }
 
-void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m) {
+void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m, graph *g) {
 	 int j, k;
-	 for (j = 0; j < n; j++) {
-		   for (k = 0; k < m; k++) {
-			   if (arr[j][k] == 0)
-				   fprintf(fp_out, "  ");
-			   else	if (arr[j][k] == 4)
-				   fprintf(fp_out, "* ");
-			   else if (arr[j][k] == 1)
-				   fprintf(fp_out, "# ");
-			   else if (arr[j][k] == 2)
-				   fprintf(fp_out, "@ ");
-			   else if (arr[j][k] == 3)
-				   fprintf(fp_out, "$ ");
-		   }
-		   fprintf(fp_out, "\n");
-	   }
+	 int start, end;
+	 if (search_for_path(g, arr, n, m)) {
+		for (j = 0; j < n; j++) {
+			for (k = 0; k < m; k++) {
+				if (arr[j][k] == 0)
+					fprintf(fp_out, "  ");
+				else if (arr[j][k] == 4)
+					fprintf(fp_out, "* ");
+				else if (arr[j][k] == 1)
+					fprintf(fp_out, "# ");
+				else if (arr[j][k] == 2)
+					fprintf(fp_out, "@ ");
+				else if (arr[j][k] == 3)
+					fprintf(fp_out, "$ ");
+			} 
+			fprintf(fp_out, "\n");
+		}
+	}
+	else {
+		for (j = 0; j < n; j++) {
+			for (k = 0; k < m; k++) {
+				if (arr[j][k] == 2)
+				   start = getVertex_from_cellCoordinates(j, k, m);
+			   if (arr[j][k] == 3)
+				   end = getVertex_from_cellCoordinates(j, k, m);
+			}
+		}
+		fprintf(fp_out, "No path exists from the robot\'s initial position(%d, %d) to its goal position(%d, %d)",
+				getX_from_vertex(start,m), getY_from_vertex(start,m), getX_from_vertex(end,m), getY_from_vertex(end,m));
+	}
 
 }
 
@@ -122,32 +124,39 @@ void construct_graph(graph *g, bool directed, FILE *fp_in, int arr[][MAX_M], int
 	if (g->nvertices != 0) {
 		for (i = 0; i < n; i++) {
 			for (j = 0; j < m - 1; j++) {
-				//x = getVertex_from_cellCoordinates(i, j, m);
-				//y = getVertex_from_cellCoordinates(i, j+1, m);
-				if (arr[i][j] == 2 || arr[i][j] == 3 || arr[i][j] == arr[i][j+1] || arr[i][j+1] == 2 || arr[i][j+1] == 3) {
-					x = getVertex_from_cellCoordinates(i, j, m);
-					y = getVertex_from_cellCoordinates(i, j+1, m);
+				x = getVertex_from_cellCoordinates(i, j, m);
+				y = getVertex_from_cellCoordinates(i, j+1, m);
+
+				if (arr[i][j] == 1 && arr[i][j+1] == 1)
 					insert_edge(g, x, y, directed, 0);
-				}
+				else if (arr[i][j] == 0 && arr[i][j+1] == 0)
+					insert_edge(g, x, y, directed, 0);
+				else if ((arr[i][j] == 0 && arr[i][j+1] == 2) || (arr[i][j] == 2 && arr[i][j+1] == 0))
+					insert_edge(g, x, y, directed, 0);
+				else if ((arr[i][j] == 0 && arr[i][j+1] == 3) || (arr[i][j] == 3 && arr[i][j+1] == 0))
+					insert_edge(g, x, y, directed, 0);
 			}
 		}
+
 		for (j = 0; j < m; j++) {
 			for (i = 0; i < n - 1; i++) {
-				//x = getVertex_from_cellCoordinates(i, j, m);
-				//y = getVertex_from_cellCoordinates(i+1, j, m);
-				if (arr[i][j] == 2 || arr[i][j] == 3 || arr[i][j] == arr[i+1][j] || arr[i+1][j] == 2 || arr[i+1][j] == 3) {
-					x = getVertex_from_cellCoordinates(i, j, m);
-					y = getVertex_from_cellCoordinates(i+1, j, m);
-					insert_edge(g, x, y, directed, 0);
-				}
+				x = getVertex_from_cellCoordinates(i, j, m);
+				y = getVertex_from_cellCoordinates(i+1, j, m);
 
+				if (arr[i][j] == 1 && arr[i+1][j] == 1)
+					insert_edge(g, x, y, directed, 0);
+				else if (arr[i][j] == 0 && arr[i+1][j] == 0)
+					insert_edge(g, x, y, directed, 0);
+				else if ((arr[i][j] == 0 && arr[i+1][j] == 2) || (arr[i][j] == 2 && arr[i+1][j] == 0))
+					insert_edge(g, x, y, directed, 0);
+				else if ((arr[i][j] == 0 && arr[i+1][j] == 3) || (arr[i][j] == 3 && arr[i+1][j] == 0))
+					insert_edge(g, x, y, directed, 0);
 			}
 		}
 
 	}
 
 }
-
 
 bool search_for_path(graph *g, int arr[][MAX_M], int n, int m) {
 	int j, k, start, end;
@@ -161,17 +170,9 @@ bool search_for_path(graph *g, int arr[][MAX_M], int n, int m) {
 		   }
 	 }
 
-	//if (find_path(g, start, end))
 	if (find_path_graph(g, start, end, arr, n, m))
 		return true;
 	else
 		return false;
 }
 
-//int getX_from_vertex(int vertex, int m) {
-//	return (vertex - 1) / m;
-//}
-//
-//int getY_from_vertex(int vertex, int m) {
-//	return (vertex - 1) % m;
-//}

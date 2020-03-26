@@ -248,11 +248,10 @@ bool find_path(graph *g, int start, int end) {
 }
 
 
-
 bool find_path_graph(int start, int end, int parents[], int arr[][MAX_M], int n, int m) {
    
    bool is_path;
-   int j, k, x, y;
+   int x, y;
 
    if (end == -1) {
       is_path = false; // some vertex on the path back from the end has no parentt (not counting start)
@@ -295,7 +294,6 @@ bool find_path_graph(graph *g, int start, int end, int arr[][MAX_M], int n, int 
    else {
       initialize_search(g);
       bfs(g, start);
-	  //is_path = find_path(start, end, parent); 
       is_path = find_path_graph(start, end, parent, arr, n, m); // now call the version of find_path that has the parentt array as an argument
       if (debug) printf("\n");
    }
@@ -310,8 +308,6 @@ int getX_from_vertex(int vertex, int m) {
 int getY_from_vertex(int vertex, int m) {
 	return (vertex - 1) % m;
 }
-
-
 
 
 
