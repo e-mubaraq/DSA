@@ -84,11 +84,20 @@ void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m, graph *g) 
 	else {
 		for (j = 0; j < n; j++) {
 			for (k = 0; k < m; k++) {
-				if (arr[j][k] == 2)
+				if (arr[j][k] == 2) {
 				   start = getVertex_from_cellCoordinates(j, k, m);
-			   if (arr[j][k] == 3)
+				   fprintf(fp_out, "@ ");
+				}
+			    else if (arr[j][k] == 3) {
 				   end = getVertex_from_cellCoordinates(j, k, m);
+				   fprintf(fp_out, "$ ");
+				}
+				else if (arr[j][k] == 0)
+					fprintf(fp_out, "  ");
+				else if (arr[j][k] == 1)
+					fprintf(fp_out, "# ");
 			}
+			fprintf(fp_out, "\n");
 		}
 		fprintf(fp_out, "No path exists from the robot\'s initial position(%d, %d) to its goal position(%d, %d)",
 				getX_from_vertex(start,m), getY_from_vertex(start,m), getX_from_vertex(end,m), getY_from_vertex(end,m));

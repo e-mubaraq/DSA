@@ -1,8 +1,6 @@
-﻿Build started 26/03/2020 20:06:33.
-     1>Project "C:\DSA\assignments\assignment5\build\INSTALL.vcxproj" on node 2 (rebuild target(s)).
-     1>_PrepareForClean:
-         Deleting file "Win32\Release\INSTALL\INSTALL.lastbuildstate".
-       InitializeBuildStatus:
+﻿Build started 27/03/2020 13:45:35.
+     1>Project "C:\DSA\assignments\assignment5\build\INSTALL.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
          Creating "Win32\Release\INSTALL\INSTALL.unsuccessfulbuild" because "AlwaysCreate" was specified.
        PostBuildEvent:
          setlocal
@@ -16,12 +14,12 @@
          if %errorlevel% neq 0 goto :VCEnd
          :VCEnd
          -- Install configuration: "Release"
-         -- Installing: C:/DSA/assignments/assignment5/bin/mmikail.exe
+         -- Up-to-date: C:/DSA/assignments/assignment5/bin/mmikail.exe
        FinalizeBuildStatus:
          Deleting file "Win32\Release\INSTALL\INSTALL.unsuccessfulbuild".
          Touching "Win32\Release\INSTALL\INSTALL.lastbuildstate".
-     1>Done Building Project "C:\DSA\assignments\assignment5\build\INSTALL.vcxproj" (rebuild target(s)).
+     1>Done Building Project "C:\DSA\assignments\assignment5\build\INSTALL.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.12
+Time Elapsed 00:00:00.16

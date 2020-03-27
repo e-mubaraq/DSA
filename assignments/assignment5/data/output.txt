@@ -18,4 +18,8 @@ Scenario 2
                     
 
 Scenario 3
-No path exists from the robot's initial position(0, 0) to its goal position(1, 1)
+@ # # # 
+#   # # 
+# #   # 
+# # # $ 
+No path exists from the robot's initial position(0, 0) to its goal position(3, 3)
