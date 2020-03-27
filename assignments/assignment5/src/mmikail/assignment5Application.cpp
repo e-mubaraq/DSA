@@ -9,26 +9,28 @@
 
    The functionality of the program is defined as follows.
 
-   Read in the the words file which is the dictionary that contains all words and then read in the first testfile from the input file. 
+   Read in the map whcih contains the two-dimensional array of numbers, each number representing the occupancy of a cell in the grid.
+   The cells could have numbers 0,1,2,and 3.
+		0 indicates that the cell is empty and the robot can occupy that cell when navigating to its goal.
+		1 indicates that there is an obstacle in that cell and the robot cannot move into that cell when navigating to its goal.
+		2 indicates the initial position of the robot.
+		3 indicates the goal position of the robot.
 
-   The Binary Search Tree(BST) ADT was  used in implementing this solution since, it has do with constructing 2 trees of words in the word file 
-   and test file, by implementing the BST functions of getTreeHeight and size, we were able to compute the getTreeHeight and size of the BST respectively.
+	This problem was solved with a graph by implenting a graph and some graph functions.
+	After reading in the graph, I used a function to initialize a 2-d array thus using another function to construct a graph from this
+	2-d array. The construct_graph function uses the insert_edge() function to insert edges between 2 similar cells in the map that is 
+	a cell with a value of 0 can be connected to another cell with value 0 horizontally and vertically not diagonally.
 
-   The BST ADT insert function was used to keep track of the frequency of occurence of a word in a particular file when building the tree for that file.
-   I implemented a inorder_write function which I used to write the words, their frequency and level to the output file. I was able to keep track of the
-   level of each word in the tree uing this function. This function does an inorder traversal of the tree.
+	After constructing the graph, the find_path function was used to search for path between the start and end point of the robot,
+	this path is marked and printed on another map in the output file.
 
-   The maximum number of probes was computed with the getHeight() function. It is a recursive function which basically
-   returns 1 + the maximum of the heights of the left and right trees (1+ max(getTreeHeight(tree->left), getTreeHeight(tree->right))); 
-   when the tree is not null, it the tree is null it return zero that is the tree is empty.
+   The output file will contain a map showing the robot path with an asterisk.
 
-   The average number of probes was calculated using a function . 
-   The final sum is the total maximum of probes in a tree, the average is gotten by dividing the total by the height of the tree.
-
-   The output file will contain a set of data computed from the input text files we were given.
-
-   Input data with the words file and textfiles that will be used for testing is provided in an input file named input.txt.
-   The first line is the relative path of the words.txt file. It is followed by the location of the textfiles to be tested with, one line per textfiles.
+   Input data with the maps that will be used for testing is provided in an input file named input.txt.
+   The first line is the number of scenarios/test cases we want to use to test. The remaining lines specify these scenarios.
+   Each scenario has its first line giving the dimension n rows and m columns of the map.
+   There then follow n lines, each line comprising m numbers. Each number is either a 0 designating an unoccupied cell, 1, a cell occupied 
+   by an obstacle, 2, the start cell where the robot is located initially, and 3, the destination cell.
 
    This input file is located in the data directory. Since this directory is a sibling directory of the bin directory 
    where the example .exe file resides, the filename used when opening the file is "../data/input.txt".
@@ -39,105 +41,120 @@
    Input
    -----
 
-   -  Dictionary file with words to build a dictionary and text files that contains sentences or words to be checked from the dictionary.
+   - The input file contains maps which comprises a two-dimensional array of numbers, each number representing the occupancy of a cell in the grid.
 
    Output
    ------
 
-   - Statistics computed from the input textfiles.
+   - Map showing the path from the robot's initial position to its end position with asterisks (*). The start position is marked by @,
+   end position by $, obstacles by # and the remaining non-obsatacle cells by a space.
  
    Sample Input
    ------------
    
-	../data/words.txt
-	../data/textfile1.txt
-	../data/textfile2.txt
+	2
+	4 4
+	2 0 0 0
+	0 1 1 0
+	0 0 0 0
+	0 0 0 3
+	10 10
+	0 0 0 0 0 0 0 0 0 0
+	0 2 0 0 0 0 0 0 0 0
+	0 0 0 0 0 0 0 0 0 0
+	0 0 0 1 1 1 1 1 1 0
+	0 0 0 1 1 1 1 0 0 0
+	0 0 0 1 1 1 1 0 0 0
+	0 0 0 0 0 1 1 0 0 0
+	0 1 1 1 0 0 0 0 0 0
+	0 1 1 1 0 0 0 0 3 0
+	0 0 0 0 0 0 0 0 0 0
 
    Sample Output
    -------------
 	mmikail
-	../data/textfile1.txt
-	My heart is in the work
-	My heart is in the WIRK
-	Maximum number of probes: 4
-	Average number of probes: 2.5
-	heart 2 (1)
-	in 2 (3)
-	is 2 (2)
-	my 2 (0)
-	the 2 (1)
-	work 1 (2)
-	--------------------
-	../data/textfile2.txt
-	heart in is My the work
-	Maximum number of probes: 6
-	Average number of probes: 3.5
-	heart		1 (0)
-	in			1 (1)
-	is			1 (2)
-	my			1 (3)
-	the			1 (4)
-	work		1 (5)
-	--------------------
+	Scenario 1
+	@       
+	* # #   
+	*       
+	* * * $ 
+
+	Scenario 2
+                    
+	@                 
+	*                 
+	*   # # # # # #   
+	*   # # # #       
+	*   # # # #       
+	* * * * # #       
+	# # # *           
+	# # # * * * * $   
+                  
 
    Solution Strategy
    -----------------
 
-   The input parameters were read in and stored in variables. 
-   The maximum number of probes was computed with a getHeight() function. It is a recursive function which basically
-   returns 1 + the maximum of the heights of the left and right trees that is (1+ max(getTreeHeight(tree->left), getTreeHeight(tree->right))); 
-   when the tree is not null, if the tree is null it return zero that is the tree is empty.
+   The number of scenarios was read in and stored in a variable.
+   A function was created to initialize a 2-d array for each scenario. Another function construct_graph was used to construct a graph from ths 2-d array.
+   The construct_graph() function initializes a graph and then uses a function which implements a mapping function that maps coordinates to vertes.
+   After constructing a graph of vertices I used the insert_edge() function of graph to connect similar vertices. Thus, unoccupied cells can only be 
+   connected to unoccupied cells and obstacle cells can only be connected to obstacle cells. While sonstructing the graph, I also ensured to insert edges
+   between the initial position and unoccupied cells. i did the same for the final position. This is important when I want to find the path between the start 
+   and end position of the robot.
+   I then used a find_path_graph() function to search for path between the initial and final position of the robot.
+   The find_path_function is a rcursive function which does a breadth first search on the graph. If a path is found on the graph, the function marks that point
+   in the map with a number (4) such that at the end of the path finding, the path has been marked with the number 4. Two funtion were implented to map
+   a vertex back to its x and y coordinates respectively. This function was used to get the coordinates(indices) to be marked on the map.
 
-   The average number of probes was calculated using a function getAvg_number_of_probes() which gets the total number of probes from 
-   a getTotal_number_of_probes() function and divides it by the size of the tree using the size() function.
-   
-   The total number of probes was computed using a recursive funtion that takes the tree and an integer level as an argument, this function
-   returns  level + 1 + getTotal_number_of_probes(tree ->left, level + 1) + getTotal_number_of_probes(tree ->right, level + 1) when the tree
-   is not null, it return 0 when tree is empty(null). This is based on the algorithm that keys on the zeroth level have a probes of 1, 
-   first level keys have 2, level 2 keys have a probe of 3. We take a sum of all the probes of keys in the tree.
+   Another function was implemented to write the output map to file, this function was used to map the numbers showing the cell occupancy to certain characters.
+	- An empty cell(0) is depicted by a space '  ' character
+	- An obstacle(1) is depicted by '# ' character
+	- The start position(2) of the robot is depicted by a '@ ' character
+	- The destination position(3) of the robot is depicted by a '$ ' character
+	- The path cells(4) are depicted by a '* ' character
 
-   The size of the tree is basically the number of elements in the tree, this was computed with a recursive function that returns
-   the sum of 1, size of left tree and size of the right tree as in (1+ size(tree->left) + size(tree->right)) when the tree is not null,
-   if the tree is null it return zero that is the tree is empty.
-
-   Declare necessary variables to store the input and output parameters.
-   declare 2 trees, one for the dictionary and one for the texts.
-   read_in(filenames).
-   for each filename:
-	   if it is the words file, 
-			initialize and construct the dictionary
-	   else it is a test file (files to check)
-			Construct a proper word from each of the words in the file and check if it is in the dictionary.
-			if it is in the dictionary
-				Insert it into the text_tree
-				write the original word to the output file
-				write the word, its frequency of occurence and level to the output file
-			else
-				convert the word to capital letter and write it to the output file.
-			write the statistics(Maximum and avergae number of probes) to the output file.
+	This function checks if there is a path and prints out the map showing the path in the output file. If there is no path, it prints out the map without the path
+	and prints a message saying there is no path between the initial and final position of the robot. It also prints out the coordiantes of the two positions.
 
 
-	write the output to the file
+   Declare necessary variables.
+   Declare the graph and 2-d array that will be used for processing.
+   read_in(number of scenarios from input file).
+   for each scenario:
+	   read_in(dimensions n,m of the input map  from the input dile).
+	   initialize 2-d array and graph
+	   construct a graph from the map
+	   get the start and end position of the robot in the map using the getVertex_from_coordinates() function
+	   find a path between the start and end position(vertices) of the robot
+	   if a path exists:	
+			get the x and y coordinates of each of those vertices along the path
+			mark those coordinates in the map
+			write to file a map showing that path with the vertices represented as *
+	   else
+			write to file the map showing the characters 
+			write to file a message that says there is no path between the initial and final position of the robot with their coordinates.
+
+	write to filw a new line at the end of eery scenario
 
    Test Strategy
    -------------
 
    The program has been tested with a variety of test data sets that reflect all valid conditions, including boundary conditions:
-   1. Test with normal words.
-   2. Test with repeated words in one file.
-   3. Test with words that have multiple non-alphanumeric characters.
-   4. Test with words that have hyphen.
-   5. Test with words that have apostrophe and a character after it.
+   1. Test with a smaller dimension map.
+   2. Test with a map with a larger dimension.
+   3. Test with a map that has no path between the initial and final position of the robot.
+   4. Test with 
+   5. Test with
    - 
 
    The order of complexity
    -----------------------.
-   The algorithm for this solution was implemented in 4 main steps: read, read, check and write the data.
-   The check was done by searching the dictionary binary tree, searching a binary tree has a O(n) of O(logn)
+   The algorithm for this solution was implemented in 6 main steps: read, read, initialize 2-d array, construct graph, find path in graph and write the data.
+   The path was found by doing a bfs traversal of the graph. This has a O(n) of O(n)
    There is an outer read(loop) which houses another read this gives Big O of O(n^2). Read and write have a big O of O(n).
-   Inserting into the binary tree has a complexity of O(logn).
-   One of the writing was done by performing an inorder traversal of the binary tree (text_tree), this also has O(logn).
-   Hence the Big O of the whole algorithm is going to be O(n^2).
+   Writing the output to file has a Big O of O(n^2) as it involves traversing the 2-d array.
+   Initializing a 2-d array has a Big O of O(n^2) as it involves traversing the 2-d array.
+   Hence the Big O of the whole algorithm is going to be O(n^3).
 
 
    File organization
@@ -146,7 +163,7 @@
    assignment5Interface.h           interface file:      
 									contains the declarations required to use the functions that implement the solution to this problem
 									typically, these will include the definitions of the abstract data types used in the implementation
-
+										
    assignment5Implementation.cpp	implementation file: 
 									contains the definitions of the functions that implement the algorithms used in the implementation
  
@@ -165,14 +182,14 @@
    Audit Trail
    -----------
 
-   - Added removePunct() to remove non-alpha numeric characters from a word. Mubarak Mikail 04/03/2020
-   - Added check() to check if an elemebt is in the tree. Mubarak Mikail 07/03/2020
-   - Added getTreeHeight() to compute the height of a tree.	Mubarak Mikail 08/03/2020
-   - Added max() to get the higher of two integers. Mubarak Mikail 08/03/2020
-   - Added getTotal_number_of_probes() to get the total number of probes in a tree.	Mubarak Mikail 08/03/2020
-   - Added getAvg_number_of_probes() to compute the average number of probes for a tree. Mubarak Mikail 10/03/2020
-   - Added inorder_write() to write the statistics computed to the output file. Mubarak Mikail 10/03/2020
-   - Added size() to compute the size of a tree. Mubarak Mikail 10/03/2020
+   - Added initialize_2D_array() to initialize a 2-d array.	Mubarak Mikail 20/03/2020
+   - Added write_char_to_file() to print the chracter version of the map to screen. Mubarak Mikail 20/03/2020
+   - Added getVertex_from_cellCoordinates() to compute the vertex number from its cell coordinates by using a mapping function.	Mubarak Mikail 23/03/2020
+   - Added construct_graph_vertex() to construct a graph of vertex from a map of coordinates.	Mubarak Mikail 23/03/2020
+   - Added construct_graph() to construct the graph.	Mubarak Mikail 25/03/2020
+   - Added search_for_path() to find the path between the start and end points of the robot.	Mubarak Mikail 25/03/2020
+   - Added getX_from_vertex() to compute the x coordinate from the vertex. Mubarak Mikail 25/03/2020
+   - Added getY_from_vertex() to compute the y coordinate from the vertex. Mubarak Mikail 25/03/2020
 
 */
  
@@ -210,7 +227,7 @@ int main() {
 	   fscanf(fp_in, "%d %d", &n, &m);
 
 	   construct_graph(&g, directed, fp_in, arr, n, m);
-	   //construct_graph_vertex(n, m);
+	   construct_graph_vertex(n, m);
 	   write_char_to_file(fp_out, arr, n, m, &g);
 
 	   print_graph(&g);
@@ -218,8 +235,6 @@ int main() {
 	   fprintf(fp_out, "\n");
    }
 
-   //printf("x = %d\n", getX_from_vertex(5,5));
-   //printf("y = %d\n", getY_from_vertex(5,5));
    fclose(fp_in);
    fclose(fp_out);
 

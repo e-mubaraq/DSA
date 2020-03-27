@@ -33,14 +33,14 @@
    Audit Trail
    -----------
 
-   - Added removePunct() to remove non-alpha numeric characters from a word.	Mubarak Mikail 04/03/2020
-   - Added check() to check if an elemebt is in the tree. Mubarak Mikail 07/03/2020
-   - Added getTreeHeight() to compute the height of a tree.	Mubarak Mikail 08/03/2020
-   - Added max() to get the higher of two integers. Mubarak Mikail 08/03/2020
-   - Added getTotal_number_of_probes() to get the total number of probes in a tree.	Mubarak Mikail 08/03/2020
-   - Added getAvg_number_of_probes() to compute the average number of probes for a tree.	Mubarak Mikail 10/03/2020
-   - Added inorder_write() to write the statistics computed to the output file. Mubarak Mikail 10/03/2020
-   - Added size() to compute the size of a tree. Mubarak Mikail 10/03/2020
+   - Added initialize_2D_array() to initialize a 2-d array.	Mubarak Mikail 20/03/2020
+   - Added write_char_to_file() to print the chracter version of the map to screen. Mubarak Mikail 20/03/2020
+   - Added getVertex_from_cellCoordinates() to compute the vertex number from its cell coordinates by using a mapping function.	Mubarak Mikail 23/03/2020
+   - Added construct_graph_vertex() to construct a graph of vertex from a map of coordinates.	Mubarak Mikail 23/03/2020
+   - Added construct_graph() to construct the graph.	Mubarak Mikail 25/03/2020
+   - Added search_for_path() to find the path between the start and end points of the robot.	Mubarak Mikail 25/03/2020
+   - Added getX_from_vertex() to compute the x coordinate from the vertex. Mubarak Mikail 25/03/2020
+   - Added getY_from_vertex() to compute the y coordinate from the vertex. Mubarak Mikail 25/03/2020
 
 */
 
@@ -99,7 +99,7 @@ void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m, graph *g) 
 			}
 			fprintf(fp_out, "\n");
 		}
-		fprintf(fp_out, "No path exists from the robot\'s initial position(%d, %d) to its goal position(%d, %d)",
+		fprintf(fp_out, "No path exists from the robot\'s initial position(%d, %d) to its goal position(%d, %d)\n",
 				getX_from_vertex(start,m), getY_from_vertex(start,m), getX_from_vertex(end,m), getY_from_vertex(end,m));
 	}
 
