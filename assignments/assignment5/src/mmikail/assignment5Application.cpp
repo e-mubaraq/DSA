@@ -141,20 +141,10 @@
 
    The program has been tested with a variety of test data sets that reflect all valid conditions, including boundary conditions:
    1. Test with a smaller dimension map.
-   2. Test with a map with a larger dimension.
+   2. Test with a map that has a larger dimension.
    3. Test with a map that has no path between the initial and final position of the robot.
-   4. Test with 
-   5. Test with
-   - 
-
-   The order of complexity
-   -----------------------.
-   The algorithm for this solution was implemented in 6 main steps: read, read, initialize 2-d array, construct graph, find path in graph and write the data.
-   The path was found by doing a bfs traversal of the graph. This has a O(n) of O(n)
-   There is an outer read(loop) which houses another read this gives Big O of O(n^2). Read and write have a big O of O(n).
-   Writing the output to file has a Big O of O(n^2) as it involves traversing the 2-d array.
-   Initializing a 2-d array has a Big O of O(n^2) as it involves traversing the 2-d array.
-   Hence the Big O of the whole algorithm is going to be O(n^3).
+   4. Test with a map where the start and end position of the robot are adjacent to each other.
+   5. Test with a medium dimension map.
 
 
    File organization

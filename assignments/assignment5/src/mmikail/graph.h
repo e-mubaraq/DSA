@@ -37,7 +37,7 @@ typedef struct {
 /* Directed edge (x, y) is represented by edgenode y in x’s         */
 /* adjacency list. Vertices are numbered 1 .. MAXV                  */
 
-#define MAXV 1000  /* maximum number of vertices */
+#define MAXV 10000  /* maximum number of vertices */
 
 //Original code
 //typedef struct {

@@ -144,6 +144,8 @@ void construct_graph(graph *g, bool directed, FILE *fp_in, int arr[][MAX_M], int
 					insert_edge(g, x, y, directed, 0);
 				else if ((arr[i][j] == 0 && arr[i][j+1] == 3) || (arr[i][j] == 3 && arr[i][j+1] == 0))
 					insert_edge(g, x, y, directed, 0);
+				else if ((arr[i][j] == 2 && arr[i][j+1] == 3) || (arr[i][j] == 3 && arr[i][j+1] == 2))
+					insert_edge(g, x, y, directed, 0);
 			}
 		}
 
@@ -159,6 +161,8 @@ void construct_graph(graph *g, bool directed, FILE *fp_in, int arr[][MAX_M], int
 				else if ((arr[i][j] == 0 && arr[i+1][j] == 2) || (arr[i][j] == 2 && arr[i+1][j] == 0))
 					insert_edge(g, x, y, directed, 0);
 				else if ((arr[i][j] == 0 && arr[i+1][j] == 3) || (arr[i][j] == 3 && arr[i+1][j] == 0))
+					insert_edge(g, x, y, directed, 0);
+				else if ((arr[i][j] == 2 && arr[i+1][j] == 3) || (arr[i][j] == 3 && arr[i+1][j] == 2))
 					insert_edge(g, x, y, directed, 0);
 			}
 		}
