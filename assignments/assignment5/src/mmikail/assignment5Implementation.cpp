@@ -115,11 +115,8 @@ void construct_graph_vertex(int n, int m) {
 	int i, j, v;
 
 	for (i = 0; i < n; i++) {
-		for (j = 0; j < m; j++) {
+		for (j = 0; j < m; j++)
 			v = getVertex_from_cellCoordinates(i, j, m);
-			printf("%d ", v);
-		}
-		printf("\n");
 	}
 }
 

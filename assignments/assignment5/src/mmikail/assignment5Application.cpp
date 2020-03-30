@@ -17,11 +17,11 @@
 		3 indicates the goal position of the robot.
 
 	This problem was solved with a graph by implenting a graph and some graph functions.
-	After reading in the graph, I used a function to initialize a 2-d array thus using another function to construct a graph from this
-	2-d array. The construct_graph function uses the insert_edge() function to insert edges between 2 similar cells in the map that is 
-	a cell with a value of 0 can be connected to another cell with value 0 horizontally and vertically not diagonally.
+	After reading in the map from the input file, I used a function to initialize a 2-d array thus using another function to construct a graph 
+	from this 2-d array. The construct_graph function uses the insert_edge() function to insert edges between 2 similar cells in the map that 
+	is a cell with a value of 0 can be connected to another cell with value 0 horizontally and vertically but not diagonally.
 
-	After constructing the graph, the find_path function was used to search for path between the start and end point of the robot,
+	After constructing the graph, the find_path_graph function was used to find a path between the start and end point of the robot,
 	this path is marked and printed on another map in the output file.
 
    The output file will contain a map showing the robot path with an asterisk.
@@ -96,10 +96,10 @@
 
    The number of scenarios was read in and stored in a variable.
    A function was created to initialize a 2-d array for each scenario. Another function construct_graph was used to construct a graph from ths 2-d array.
-   The construct_graph() function initializes a graph and then uses a function which implements a mapping function that maps coordinates to vertes.
-   After constructing a graph of vertices I used the insert_edge() function of graph to connect similar vertices. Thus, unoccupied cells can only be 
-   connected to unoccupied cells and obstacle cells can only be connected to obstacle cells. While sonstructing the graph, I also ensured to insert edges
-   between the initial position and unoccupied cells. i did the same for the final position. This is important when I want to find the path between the start 
+   The construct_graph() function initializes a graph and then uses a function which implements a mapping function that maps coordinates to vertex.
+   After constructing a graph of vertices, I used the insert_edge() function of graph to connect similar vertices. Thus, unoccupied cells can only be 
+   connected to unoccupied cells and obstacle cells can only be connected to obstacle cells. While constructing the graph, I also ensured to insert edges
+   between the initial position(2) and unoccupied cells(0). I did the same for the final position. This is important when I want to find the path between the start 
    and end position of the robot.
    I then used a find_path_graph() function to search for path between the initial and final position of the robot.
    The find_path_function is a rcursive function which does a breadth first search on the graph. If a path is found on the graph, the function marks that point
@@ -116,13 +116,14 @@
 	This function checks if there is a path and prints out the map showing the path in the output file. If there is no path, it prints out the map without the path
 	and prints a message saying there is no path between the initial and final position of the robot. It also prints out the coordiantes of the two positions.
 
-
+   Pseudocode
+   ----------
    Declare necessary variables.
    Declare the graph and 2-d array that will be used for processing.
    read_in(number of scenarios from input file).
    for each scenario:
-	   read_in(dimensions n,m of the input map  from the input dile).
-	   initialize 2-d array and graph
+	   read_in(dimensions n,m of the input map  from the input file).
+	   initialize a 2-d array and a graph
 	   construct a graph from the map
 	   get the start and end position of the robot in the map using the getVertex_from_coordinates() function
 	   find a path between the start and end position(vertices) of the robot
@@ -134,7 +135,7 @@
 			write to file the map showing the characters 
 			write to file a message that says there is no path between the initial and final position of the robot with their coordinates.
 
-	write to filw a new line at the end of eery scenario
+	write to file a new line at the end of every scenario
 
    Test Strategy
    -------------
@@ -220,13 +221,10 @@ int main() {
 	   construct_graph_vertex(n, m);
 	   write_char_to_file(fp_out, arr, n, m, &g);
 
-	   print_graph(&g);
-	   printf("--------------\n");
+
 	   fprintf(fp_out, "\n");
    }
 
    fclose(fp_in);
    fclose(fp_out);
-
-   prompt_and_exit(0);
 }

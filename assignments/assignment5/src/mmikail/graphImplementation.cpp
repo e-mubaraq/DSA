@@ -264,7 +264,7 @@ bool find_path_graph(int start, int end, int parents[], int arr[][MAX_M], int n,
    else {
 	   is_path = find_path_graph(start,parents[end],parents, arr, n, m);
 	   if (debug) {
-			printf(" %d",end); //get x and y coordinates from the end value not 2 or 3
+			//printf(" %d",end); //get x and y coordinates from the end value not 2 or 3
 			x = getX_from_vertex(end, m);
 			y = getY_from_vertex(end, m);
 			if (arr[x][y] != 3) {		
