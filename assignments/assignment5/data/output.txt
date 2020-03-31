@@ -64,3 +64,23 @@ Scenario 6
   # # #         # #       # * # # #   # 
 #                   #     # * * $ # #   
 
+Scenario 7
+@ 
+* 
+$ 
+
+Scenario 8
+$ * @ 
+
+Scenario 9
+@ $ 
+
+Scenario 10
+$ 
+@ 
+
+Scenario 11
+@ # 
+# $ 
+No path exists from the robot's initial position(0, 0) to its goal position(1, 1)
+
