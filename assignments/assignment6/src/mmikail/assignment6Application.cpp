@@ -1,11 +1,11 @@
 /* 
 
-   assignment5Application.cpp - application file for a program named assignment5
+   assignment6Application.cpp - application file for a program named assignment6
    =============================================================================
 
-   This program is for Assignment No. 5, Course 04-630 Data Structures and Algorithms for Engineers. 
+   This program is for Assignment No. 6, Course 04-630 Data Structures and Algorithms for Engineers. 
 
-   Robot Path Planning using Breadth-First Search in Undirected Unweighted Graphs.
+   Travel Planner Minimizing the number of scheduled buses needed to take tourists to their destination.
 
    The functionality of the program is defined as follows.
 
@@ -52,44 +52,38 @@
    Sample Input
    ------------
    
-	2
-	4 4
-	2 0 0 0
-	0 1 1 0
-	0 0 0 0
-	0 0 0 3
-	10 10
-	0 0 0 0 0 0 0 0 0 0
-	0 2 0 0 0 0 0 0 0 0
-	0 0 0 0 0 0 0 0 0 0
-	0 0 0 1 1 1 1 1 1 0
-	0 0 0 1 1 1 1 0 0 0
-	0 0 0 1 1 1 1 0 0 0
-	0 0 0 0 0 1 1 0 0 0
-	0 1 1 1 0 0 0 0 0 0
-	0 1 1 1 0 0 0 0 3 0
-	0 0 0 0 0 0 0 0 0 0
+	7 10
+	1 2 30
+	1 3 15
+	1 4 10
+	2 4 25
+	2 5 60
+	3 4 40
+	3 6 20
+	4 7 35
+	5 7 20
+	6 7 30
+	1 7 99
+	6 6
+	1 2 30
+	1 3 15
+	2 4 20
+	3 5 11
+	4 6 10
+	5 6 20
+	1 6 49
+	0 0
 
    Sample Output
    -------------
 	mmikail
 	Scenario 1
-	@       
-	* # #   
-	*       
-	* * * $ 
+	Minimum Number of Trips = 5: 24 24 24 24 3
+	Route = 1 2 4 7
 
 	Scenario 2
-                    
-	@                 
-	*                 
-	*   # # # # # #   
-	*   # # # #       
-	*   # # # #       
-	* * * * # #       
-	# # # *           
-	# # # * * * * $   
-                  
+	Minimum Number of Trips = 5: 10 10 10 10 9
+	Route = 1 3 5 6               
 
    Solution Strategy
    -----------------
@@ -151,14 +145,14 @@
    File organization
    -----------------
 
-   assignment5Interface.h           interface file:      
+   assignment6Interface.h           interface file:      
 									contains the declarations required to use the functions that implement the solution to this problem
 									typically, these will include the definitions of the abstract data types used in the implementation
 										
-   assignment5Implementation.cpp	implementation file: 
+   assignment6Implementation.cpp	implementation file: 
 									contains the definitions of the functions that implement the algorithms used in the implementation
  
-   assignment5Application.cpp		application file:    
+   assignment6Application.cpp		application file:    
 									contains the code that instantiates the abstract data types and calls the associated functions
 									in order to effect the required functionality for this application
 
@@ -167,7 +161,7 @@
    ------
 
    Mubarak Mikail, Carnegie Mellon University Africa
-   18/03/2020
+   01/04/2020
 
 
    Audit Trail
@@ -184,7 +178,7 @@
 
 */
  
-#include "assignment5Interface.h"
+#include "assignment6Interface.h"
 
 int main() {
 
@@ -192,7 +186,8 @@ int main() {
    graph g;
    bool directed = false;
    int i, number_of_scenarios;
-   int n, m; // n refers to rows amd mt to columns
+   //int n, m; // n refers to rows amd mt to columns
+   int n, r;
    
    int arr[MAX_N][MAX_M];
    FILE *fp_in;
@@ -211,19 +206,30 @@ int main() {
 
    fprintf(fp_out,"mmikail\n");
    /* read the number of scenarios from a file */
-   fscanf(fp_in, "%d", &number_of_scenarios);
 
-   for (i = 1; i <= number_of_scenarios; i++) {
+
+   i = 1;
+   fscanf(fp_in, "%d %d", &n, &r);
+   while(n != 0 && r !=0) {
 	   fprintf(fp_out, "Scenario %d\n", i);
-	   fscanf(fp_in, "%d %d", &n, &m);
-
-	   construct_graph(&g, directed, fp_in, arr, n, m);
-	   construct_graph_vertex(n, m);
-	   write_char_to_file(fp_out, arr, n, m, &g);
 
 
+	   i++;
 	   fprintf(fp_out, "\n");
+	   fscanf(fp_in, "%d %d", &n, &r);
    }
+
+   //for (i = 1; i <= number_of_scenarios; i++) {
+	  // fprintf(fp_out, "Scenario %d\n", i);
+	  // fscanf(fp_in, "%d %d", &n, &r);
+
+	  // //construct_graph(&g, directed, fp_in, arr, n, m);
+	  // //construct_graph_vertex(n, m);
+	  // //write_char_to_file(fp_out, arr, n, m, &g);
+
+
+	  // fprintf(fp_out, "\n");
+   //}
 
    fclose(fp_in);
    fclose(fp_out);
