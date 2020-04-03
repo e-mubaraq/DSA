@@ -185,11 +185,10 @@ int main() {
    bool debug    = false; // print diagnostic information?
    graph g;
    bool directed = false;
-   int i, number_of_scenarios;
-   //int n, m; // n refers to rows amd mt to columns
+   int number_of_scenarios;
    int n, r;
+   int start, dest, num_of_tourists;
    
-   int arr[MAX_N][MAX_M];
    FILE *fp_in;
    FILE *fp_out;
 
@@ -206,31 +205,29 @@ int main() {
 
    fprintf(fp_out,"mmikail\n");
    /* read the number of scenarios from a file */
+   /*initialize_graph(&g, directed);*/
 
-
-   i = 1;
+   number_of_scenarios = 1;
    fscanf(fp_in, "%d %d", &n, &r);
    while(n != 0 && r !=0) {
-	   fprintf(fp_out, "Scenario %d\n", i);
+	   fprintf(fp_out, "Scenario %d\n", number_of_scenarios);
+	   printf("%d %d\n", n, r);
 
+	   build_graph(&g, directed, n, r, fp_in);
+	   print_graph(&g);
 
-	   i++;
+	   fscanf(fp_in, "%d %d %d", &start, &dest, &num_of_tourists);
+	   printf("%d %d %d\n\n", start, dest, num_of_tourists);
+
+	   find_path(&g, 1, g.nvertices);
+
+	   number_of_scenarios++;
 	   fprintf(fp_out, "\n");
 	   fscanf(fp_in, "%d %d", &n, &r);
    }
 
-   //for (i = 1; i <= number_of_scenarios; i++) {
-	  // fprintf(fp_out, "Scenario %d\n", i);
-	  // fscanf(fp_in, "%d %d", &n, &r);
-
-	  // //construct_graph(&g, directed, fp_in, arr, n, m);
-	  // //construct_graph_vertex(n, m);
-	  // //write_char_to_file(fp_out, arr, n, m, &g);
-
-
-	  // fprintf(fp_out, "\n");
-   //}
-
    fclose(fp_in);
    fclose(fp_out);
+
+   prompt_and_exit(1);
 }

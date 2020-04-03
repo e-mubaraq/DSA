@@ -52,137 +52,17 @@ void prompt_and_exit(int status) {
    exit(status);
 }
 
-void initialize_2D_array(FILE *fp_in, int arr[][MAX_M], int n, int m) {
-	int i, j;
 
-	for (i = 0; i < n; i++) {
-		for (j = 0; j < m; j++)
-			fscanf(fp_in, "%d", &arr[i][j]);
-	}
-}
-
-void write_char_to_file(FILE *fp_out, int arr[][MAX_M], int n, int m, graph *g) {
-	 int j, k;
-	 int start, end;
-	 if (search_for_path(g, arr, n, m)) {
-		for (j = 0; j < n; j++) {
-			for (k = 0; k < m; k++) {
-				if (arr[j][k] == 0)
-					fprintf(fp_out, "  ");
-				else if (arr[j][k] == 4)
-					fprintf(fp_out, "* ");
-				else if (arr[j][k] == 1)
-					fprintf(fp_out, "# ");
-				else if (arr[j][k] == 2)
-					fprintf(fp_out, "@ ");
-				else if (arr[j][k] == 3)
-					fprintf(fp_out, "$ ");
-			} 
-			fprintf(fp_out, "\n");
-		}
-	}
-	else {
-		for (j = 0; j < n; j++) {
-			for (k = 0; k < m; k++) {
-				if (arr[j][k] == 2) {
-				   start = getVertex_from_cellCoordinates(j, k, m);
-				   fprintf(fp_out, "@ ");
-				}
-			    else if (arr[j][k] == 3) {
-				   end = getVertex_from_cellCoordinates(j, k, m);
-				   fprintf(fp_out, "$ ");
-				}
-				else if (arr[j][k] == 0)
-					fprintf(fp_out, "  ");
-				else if (arr[j][k] == 1)
-					fprintf(fp_out, "# ");
-			}
-			fprintf(fp_out, "\n");
-		}
-		fprintf(fp_out, "No path exists from the robot\'s initial position(%d, %d) to its goal position(%d, %d)\n",
-				getX_from_vertex(start,m), getY_from_vertex(start,m), getX_from_vertex(end,m), getY_from_vertex(end,m));
-	}
-
-}
-
-int getVertex_from_cellCoordinates(int x, int y, int column_size) {
-	int vertex = 0;
-	vertex = (column_size * x) + y + 1;
-
-	return vertex;
-}
-void construct_graph_vertex(int n, int m) {
-	int i, j, v;
-
-	for (i = 0; i < n; i++) {
-		for (j = 0; j < m; j++)
-			v = getVertex_from_cellCoordinates(i, j, m);
-	}
-}
-
-void construct_graph(graph *g, bool directed, FILE *fp_in, int arr[][MAX_M], int n, int m) {
-	int i,j, x, y;
+void build_graph(graph *g, bool directed, int n, int r, FILE *fp_in) {
+	int j, s_city, d_city, passengers;
 
 	initialize_graph(g, directed);
-	initialize_2D_array(fp_in, arr, n, m);
-	g->nvertices = n * m;
+	g->nvertices = n;
 
 	if (g->nvertices != 0) {
-		for (i = 0; i < n; i++) {
-			for (j = 0; j < m - 1; j++) {
-				x = getVertex_from_cellCoordinates(i, j, m);
-				y = getVertex_from_cellCoordinates(i, j+1, m);
-
-				if (arr[i][j] == 1 && arr[i][j+1] == 1)
-					insert_edge(g, x, y, directed, 0);
-				else if (arr[i][j] == 0 && arr[i][j+1] == 0)
-					insert_edge(g, x, y, directed, 0);
-				else if ((arr[i][j] == 0 && arr[i][j+1] == 2) || (arr[i][j] == 2 && arr[i][j+1] == 0))
-					insert_edge(g, x, y, directed, 0);
-				else if ((arr[i][j] == 0 && arr[i][j+1] == 3) || (arr[i][j] == 3 && arr[i][j+1] == 0))
-					insert_edge(g, x, y, directed, 0);
-				else if ((arr[i][j] == 2 && arr[i][j+1] == 3) || (arr[i][j] == 3 && arr[i][j+1] == 2))
-					insert_edge(g, x, y, directed, 0);
-			}
-		}
-
-		for (j = 0; j < m; j++) {
-			for (i = 0; i < n - 1; i++) {
-				x = getVertex_from_cellCoordinates(i, j, m);
-				y = getVertex_from_cellCoordinates(i+1, j, m);
-
-				if (arr[i][j] == 1 && arr[i+1][j] == 1)
-					insert_edge(g, x, y, directed, 0);
-				else if (arr[i][j] == 0 && arr[i+1][j] == 0)
-					insert_edge(g, x, y, directed, 0);
-				else if ((arr[i][j] == 0 && arr[i+1][j] == 2) || (arr[i][j] == 2 && arr[i+1][j] == 0))
-					insert_edge(g, x, y, directed, 0);
-				else if ((arr[i][j] == 0 && arr[i+1][j] == 3) || (arr[i][j] == 3 && arr[i+1][j] == 0))
-					insert_edge(g, x, y, directed, 0);
-				else if ((arr[i][j] == 2 && arr[i+1][j] == 3) || (arr[i][j] == 3 && arr[i+1][j] == 2))
-					insert_edge(g, x, y, directed, 0);
-			}
-		}
-
+		for (j = 0; j < r; j++) {
+		   fscanf(fp_in, "%d %d %d", &s_city, &d_city, &passengers);
+		   insert_edge(g, s_city, d_city, directed, passengers);
+	   }
 	}
-
 }
-
-bool search_for_path(graph *g, int arr[][MAX_M], int n, int m) {
-	int j, k, start, end;
-
-	 for (j = 0; j < n; j++) {
-		   for (k = 0; k < m; k++) {
-			   if (arr[j][k] == 2)
-				   start = getVertex_from_cellCoordinates(j, k, m);
-			   if (arr[j][k] == 3)
-				   end = getVertex_from_cellCoordinates(j, k, m);
-		   }
-	 }
-
-	if (find_path_graph(g, start, end, arr, n, m))
-		return true;
-	else
-		return false;
-}
-
