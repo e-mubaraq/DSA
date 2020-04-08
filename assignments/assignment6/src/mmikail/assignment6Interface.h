@@ -32,9 +32,9 @@
    Audit Trail
    -----------
 
-   - Added void build_graph() to build weighted graoh of roads between two cities.	Mubarak Mikail 03/04/2020
-   - Added void delete_edge() to delete an edge in a graph. Mubarak Mikail 20/03/2020
-   - Added construct_graph_vertex() to construct a graph of vertex from a map of coordinates.	Mubarak Mikail 23/03/2020
+   - Added build_graph() to build weighted graoh of roads between two cities.	Mubarak Mikail 03/04/2020
+   - Added delete_edge() to delete an edge in a graph. Mubarak Mikail 08/04/2020
+   - Added in_sort() to sort the edges of the graph by their weight.	Mubarak Mikail 08/04/2020
    - Added construct_graph() to construct the graph.	Mubarak Mikail 25/03/2020
    - Added search_for_path() to find the path between the start and end points of the robot.	Mubarak Mikail 25/03/2020
 
@@ -56,9 +56,15 @@
 
 
 /* function prototypes go here */
-
+struct edge_type {
+	int v;	
+	int y;
+	int w;
+};
 
 void prompt_and_exit(int status);
 void build_graph(graph *g, bool directed, int n, int r, FILE *fp_in);
+void build_graph(graph *g, bool directed, int n, int r, FILE *fp_in, struct edge_type edges[]);
 void delete_edge(graph *g, int v, int u, int w);
-
+void in_sort(struct edge_type edges[], int n);
+void swapStruct(struct edge_type edges[], int i , int j);

@@ -53,7 +53,7 @@ void prompt_and_exit(int status) {
 }
 
 
-void build_graph(graph *g, bool directed, int n, int r, FILE *fp_in) {
+void build_graph(graph *g, bool directed, int n, int r, FILE *fp_in, struct edge_type edges[]) {
 	int j, s_city, d_city, passengers;
 
 	initialize_graph(g, directed);
@@ -63,7 +63,17 @@ void build_graph(graph *g, bool directed, int n, int r, FILE *fp_in) {
 		for (j = 0; j < r; j++) {
 		   fscanf(fp_in, "%d %d %d", &s_city, &d_city, &passengers);
 		   insert_edge(g, s_city, d_city, directed, passengers);
+		   	edges[j].v = s_city;
+			edges[j].y = d_city;
+			edges[j].w = passengers;
 	   }
+	in_sort(edges, r);
+
+	for (j = 0; j < r; j++) {
+	/* write the output data to the output file */
+	printf("%d %d %d\n", edges[j].v,
+							edges[j].y, edges[j].w);
+	}
 	}
 }
 
@@ -97,4 +107,25 @@ void delete_edge(graph *g, int v, int u, int w) {
 		}
 	}
 	print_graph(g);
+}
+
+void in_sort(struct edge_type edges[], int n){
+	int i, j;
+
+	for(i = 0; i < n-1; i++) {
+		j = i;
+		while((j >= 0) && (edges[j].w > edges[j + 1].w)){
+			swapStruct(edges, j, j+1);
+			j--;
+		}
+		
+	}
+}
+
+void swapStruct(struct edge_type edges[], int i , int j){
+	struct edge_type temp;
+
+	temp = edges[j];
+	edges[j] = edges[i];
+	edges[i] = temp;
 }

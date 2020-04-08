@@ -186,11 +186,19 @@ int main() {
    graph g;
    bool directed = false;
    int number_of_scenarios;
-   int n, r;
+   int i, n, r;
    int start, dest, num_of_tourists;
    
    FILE *fp_in;
    FILE *fp_out;
+
+   struct edge_type edges [MAX_N];
+
+   for (i = 0; i < MAX_N; i++) {
+	   edges[i].v = 0;
+	   edges[i].y = 0;
+	   edges[i].w = 0;
+   }
 
 
    if ((fp_in = fopen("../data/input.txt","r")) == 0) {
@@ -205,7 +213,6 @@ int main() {
 
    fprintf(fp_out,"mmikail\n");
    /* read the number of scenarios from a file */
-   /*initialize_graph(&g, directed);*/
 
    number_of_scenarios = 1;
    fscanf(fp_in, "%d %d", &n, &r);
@@ -213,16 +220,18 @@ int main() {
 	   fprintf(fp_out, "Scenario %d\n", number_of_scenarios);
 	   printf("%d %d\n", n, r);
 
-	   build_graph(&g, directed, n, r, fp_in);
+	   //build_graph(&g, directed, n, r, fp_in);
+	   build_graph(&g, directed, n, r, fp_in, edges);
 	   print_graph(&g);
 
 	   fscanf(fp_in, "%d %d %d", &start, &dest, &num_of_tourists);
 	   printf("%d %d %d\n\n", start, dest, num_of_tourists);
+	   find_path(&g, start, dest);
 
 	   //find_path(&g, 1, g.nvertices);
-	   delete_edge(&g, 1, 4, 10);
-	   delete_edge(&g, 1, 3, 15);
-	   delete_edge(&g, 1, 2, 30);
+	   //delete_edge(&g, 1, 4, 10);
+	   //delete_edge(&g, 1, 3, 15);
+	   //delete_edge(&g, 1, 2, 30);
 
 	   number_of_scenarios++;
 	   fprintf(fp_out, "\n");
