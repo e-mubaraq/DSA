@@ -95,6 +95,8 @@ void insert_edge(graph *g, int x, int y, bool directed, int w) {
       g->nedges ++;              /* only once                     */
 }
 
+
+
 /* Print a graph                                                    */
 
 void print_graph(graph *g) {
@@ -265,8 +267,6 @@ bool find_path_graph(int start, int end, int parents[], int arr[][MAX_M], int n,
 	   is_path = find_path_graph(start,parents[end],parents, arr, n, m);
 	   if (debug) {
 			//printf(" %d",end); //get x and y coordinates from the end value not 2 or 3
-			x = getX_from_vertex(end, m);
-			y = getY_from_vertex(end, m);
 			if (arr[x][y] != 3) {		
 				arr[x][y] = 4;
 			}
@@ -298,15 +298,6 @@ bool find_path_graph(graph *g, int start, int end, int arr[][MAX_M], int n, int 
       if (debug) printf("\n");
    }
    return(is_path);
-}
-
-
-int getX_from_vertex(int vertex, int m) {
-	return (vertex - 1) / m;
-}
-
-int getY_from_vertex(int vertex, int m) {
-	return (vertex - 1) % m;
 }
 
 

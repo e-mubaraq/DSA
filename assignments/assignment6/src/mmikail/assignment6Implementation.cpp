@@ -66,3 +66,35 @@ void build_graph(graph *g, bool directed, int n, int r, FILE *fp_in) {
 	   }
 	}
 }
+
+/* delete an edge in a graph */
+void delete_edge(graph *g, int v, int u, int w) {
+
+	int x, capac;
+	edgenode *p;
+	edgenode *temp;
+	p = g->edges[v];
+	temp = p;
+
+	if(p->y == u && p->weight == w) {
+		g->edges[v] = p->next;
+		free(p);
+		g->nedges --;
+	}
+	else {
+		while (p != NULL) {
+			x = p->y;
+			capac = p->weight;
+			if (x == u && capac == w) {
+				temp->next = p->next;
+				free (p);
+				g->nedges --;
+			}
+			else {
+				temp = p;
+				p = p->next;
+			}
+		}
+	}
+	print_graph(g);
+}

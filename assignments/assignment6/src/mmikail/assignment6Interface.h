@@ -33,7 +33,7 @@
    -----------
 
    - Added void build_graph() to build weighted graoh of roads between two cities.	Mubarak Mikail 03/04/2020
-   - Added write_char_to_file() to print the chracter version of the map to screen. Mubarak Mikail 20/03/2020
+   - Added void delete_edge() to delete an edge in a graph. Mubarak Mikail 20/03/2020
    - Added construct_graph_vertex() to construct a graph of vertex from a map of coordinates.	Mubarak Mikail 23/03/2020
    - Added construct_graph() to construct the graph.	Mubarak Mikail 25/03/2020
    - Added search_for_path() to find the path between the start and end points of the robot.	Mubarak Mikail 25/03/2020
@@ -60,4 +60,5 @@
 
 void prompt_and_exit(int status);
 void build_graph(graph *g, bool directed, int n, int r, FILE *fp_in);
+void delete_edge(graph *g, int v, int u, int w);
 

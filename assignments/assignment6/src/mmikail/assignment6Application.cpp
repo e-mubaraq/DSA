@@ -219,7 +219,10 @@ int main() {
 	   fscanf(fp_in, "%d %d %d", &start, &dest, &num_of_tourists);
 	   printf("%d %d %d\n\n", start, dest, num_of_tourists);
 
-	   find_path(&g, 1, g.nvertices);
+	   //find_path(&g, 1, g.nvertices);
+	   delete_edge(&g, 1, 4, 10);
+	   delete_edge(&g, 1, 3, 15);
+	   delete_edge(&g, 1, 2, 30);
 
 	   number_of_scenarios++;
 	   fprintf(fp_out, "\n");
