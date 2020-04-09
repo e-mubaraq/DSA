@@ -127,3 +127,27 @@ void swapStruct(struct edge_type edges[], int i , int j){
 	edges[j] = edges[i];
 	edges[i] = temp;
 }
+
+void write_output_to_file(FILE *fp_out, graph *g, int start, int dest, int num_of_tourists, int min_capacity) {
+	int i, count_of_capac, rem;
+
+	if (find_path_graph(g, start, dest)) {
+		count_of_capac = num_of_tourists / min_capacity;
+		rem = num_of_tourists % min_capacity;
+
+		fprintf(fp_out, "Minimum Number of Trips = %d: ", count_of_capac+1);
+		for (i = 0; i < count_of_capac; i++) {
+			fprintf(fp_out, "%d ", min_capacity);
+		}
+
+		fprintf(fp_out, " %d\n", rem);
+		find_path(fp_out, g, start, dest);
+		   
+		fprintf(fp_out, "\n");
+	   
+	}
+
+	else {
+		fprintf(fp_out, "There is no route that can take passengers between cities %d and %d\n", start, dest);
+	}
+}

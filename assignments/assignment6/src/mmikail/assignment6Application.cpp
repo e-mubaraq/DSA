@@ -188,7 +188,7 @@ int main() {
    int number_of_scenarios;
    int i, j, n, r;
    int start, dest, num_of_tourists;
-   int min_capacity, count_of_capac, rem;
+   int min_capacity;
    
    FILE *fp_in;
    FILE *fp_out;
@@ -232,29 +232,7 @@ int main() {
 		   insert_edge(&g, edges[j-1].v, edges[j-1].y, directed, edges[j-1].w);
 	   }
 
-	   if (find_path_graph(&g, start, dest)) {
-		   count_of_capac = num_of_tourists / min_capacity;
-		   rem = num_of_tourists % min_capacity;
-
-		   //printf("Minimum Number of Trips = %d: ", count_of_capac+1);
-		   fprintf(fp_out, "Minimum Number of Trips = %d: ", count_of_capac+1);
-		   for (i = 0; i < count_of_capac; i++) {
-			   //printf("%d ", min_capacity);
-			   fprintf(fp_out, "%d ", min_capacity);
-		   }
-		   //printf(" %d\n", rem);
-
-		   fprintf(fp_out, " %d\n", rem);
-		   find_path(fp_out, &g, start, dest);
-		   
-			fprintf(fp_out, "\n");
-	   
-	   }
-
-	   else {
-			//printf("There is no route that can take passengers between cities %d and %d\n", start, dest);
-			fprintf(fp_out, "There is no route that can take passengers between cities %d and %d\n", start, dest);
-	   }
+	   write_output_to_file(fp_out, &g, start, dest, num_of_tourists, min_capacity);
 
 	   number_of_scenarios++;
 	   fprintf(fp_out, "\n");
@@ -264,5 +242,5 @@ int main() {
    fclose(fp_in);
    fclose(fp_out);
 
-   prompt_and_exit(1);
+   //prompt_and_exit(1);
 }
