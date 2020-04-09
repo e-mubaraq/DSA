@@ -27,20 +27,17 @@
    ------
 
    Mubarak Mikail, Carnegie Mellon University Africa
-   01/04/2020+
+   01/04/2020
 
 
    Audit Trail
    -----------
 
-   - Added initialize_2D_array() to initialize a 2-d array.	Mubarak Mikail 20/03/2020
-   - Added write_char_to_file() to print the chracter version of the map to screen. Mubarak Mikail 20/03/2020
-   - Added getVertex_from_cellCoordinates() to compute the vertex number from its cell coordinates by using a mapping function.	Mubarak Mikail 23/03/2020
-   - Added construct_graph_vertex() to construct a graph of vertex from a map of coordinates.	Mubarak Mikail 23/03/2020
-   - Added construct_graph() to construct the graph.	Mubarak Mikail 25/03/2020
-   - Added search_for_path() to find the path between the start and end points of the robot.	Mubarak Mikail 25/03/2020
-   - Added getX_from_vertex() to compute the x coordinate from the vertex. Mubarak Mikail 25/03/2020
-   - Added getY_from_vertex() to compute the y coordinate from the vertex. Mubarak Mikail 25/03/2020
+   - Added build_graph() to build weighted graph of roads between two cities.	Mubarak Mikail 03/04/2020
+   - Added delete_edge() to delete an edge in a graph. Mubarak Mikail 08/04/2020
+   - Added in_sort() to sort the edges of the graph by their weight.	Mubarak Mikail 08/04/2020
+   - Added swapStruct() to swap structs.	Mubarak Mikail 08/04/2020
+   - Added write_output_to_file() to write the computed outputs to file.	Mubarak Mikail 09/04/2020
 
 */
 
@@ -116,7 +113,6 @@ void in_sort(struct edge_type edges[], int n){
 			swapStruct(edges, j, j+1);
 			j--;
 		}
-		
 	}
 }
 
@@ -144,10 +140,8 @@ void write_output_to_file(FILE *fp_out, graph *g, int start, int dest, int num_o
 		find_path(fp_out, g, start, dest);
 		   
 		fprintf(fp_out, "\n");
-	   
 	}
 
-	else {
+	else
 		fprintf(fp_out, "There is no route that can take passengers between cities %d and %d\n", start, dest);
-	}
 }

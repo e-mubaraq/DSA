@@ -28,11 +28,10 @@
    Mubarak Mikail, Carnegie Mellon University Africa
    01/04/2020
 
-
    Audit Trail
    -----------
 
-   - Added build_graph() to build weighted graoh of roads between two cities.	Mubarak Mikail 03/04/2020
+   - Added build_graph() to build weighted graph of roads between two cities.	Mubarak Mikail 03/04/2020
    - Added delete_edge() to delete an edge in a graph. Mubarak Mikail 08/04/2020
    - Added in_sort() to sort the edges of the graph by their weight.	Mubarak Mikail 08/04/2020
    - Added swapStruct() to swap structs.	Mubarak Mikail 08/04/2020

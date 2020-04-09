@@ -9,28 +9,32 @@
 
    The functionality of the program is defined as follows.
 
-   Read in the map whcih contains the two-dimensional array of numbers, each number representing the occupancy of a cell in the grid.
-   The cells could have numbers 0,1,2,and 3.
-		0 indicates that the cell is empty and the robot can occupy that cell when navigating to its goal.
-		1 indicates that there is an obstacle in that cell and the robot cannot move into that cell when navigating to its goal.
-		2 indicates the initial position of the robot.
-		3 indicates the goal position of the robot.
+   Read in the input data from the input file.
 
 	This problem was solved with a graph by implenting a graph and some graph functions.
-	After reading in the map from the input file, I used a function to initialize a 2-d array thus using another function to construct a graph 
-	from this 2-d array. The construct_graph function uses the insert_edge() function to insert edges between 2 similar cells in the map that 
-	is a cell with a value of 0 can be connected to another cell with value 0 horizontally and vertically but not diagonally.
+	After reading in the map from the input file,a  function was used to build a graph and array of edges.
+	The build_graph function uses the insert_edge() function to insert edges between 2 cities as given in the input file 
+	and also build an array of edges.
 
-	After constructing the graph, the find_path_graph function was used to find a path between the start and end point of the robot,
-	this path is marked and printed on another map in the output file.
+	The array of edges was sorted by weight so that we can easily have access to the edge with the lowest weight when we start deleting edges.
 
-   The output file will contain a map showing the robot path with an asterisk.
+	After constructing the graph, the find_path_graph function was used to find a path between the start and destination city such that
+	while there is stil path, the edhe or road with the lowest capacity is deleted. This is done until there is no path and then the last
+	deleted edge is inserted back into the graph so that we now have a path that maximizes the minimum capacity of the paths in the graph
+	between those two cities.
 
-   Input data with the maps that will be used for testing is provided in an input file named input.txt.
-   The first line is the number of scenarios/test cases we want to use to test. The remaining lines specify these scenarios.
+	After the path is found, some computations will be done to get the minimum number of trips required to take those tourists 
+	between the start and destination with the number of tourists per trip.
+
+   The output file will contain certain statistics computed from finding the best route for transporting passengers between 2 cities.
+
+   Input data with the test cases that will be used for testing is provided in an input file named input.txt.
+   The first line of each scenario contains N & R representing the number of cities and the number of road segments, respectively. 
+   The next R lines specify the roads between cities C1 and C2 with their maximum passenger capacity. 
+   The (R + 1)th line will contain three integers (S, D, and T) representing, respectively, the starting city,
+   the destination city, and the number of tourists to be guided.
    Each scenario has its first line giving the dimension n rows and m columns of the map.
-   There then follow n lines, each line comprising m numbers. Each number is either a 0 designating an unoccupied cell, 1, a cell occupied 
-   by an obstacle, 2, the start cell where the robot is located initially, and 3, the destination cell.
+   The input will end with zero values for N and R.
 
    This input file is located in the data directory. Since this directory is a sibling directory of the bin directory 
    where the example .exe file resides, the filename used when opening the file is "../data/input.txt".
@@ -41,13 +45,12 @@
    Input
    -----
 
-   - The input file contains maps which comprises a two-dimensional array of numbers, each number representing the occupancy of a cell in the grid.
+   - The input file contains data showing roads between two cities and the number of passengers the bus could take on a trip at once.
 
    Output
    ------
 
-   - Map showing the path from the robot's initial position to its end position with asterisks (*). The start position is marked by @,
-   end position by $, obstacles by # and the remaining non-obsatacle cells by a space.
+   - Minimum number of trips, number of tourists per trip and route.
  
    Sample Input
    ------------
@@ -88,46 +91,40 @@
    Solution Strategy
    -----------------
 
-   The number of scenarios was read in and stored in a variable.
-   A function was created to initialize a 2-d array for each scenario. Another function construct_graph was used to construct a graph from ths 2-d array.
-   The construct_graph() function initializes a graph and then uses a function which implements a mapping function that maps coordinates to vertex.
-   After constructing a graph of vertices, I used the insert_edge() function of graph to connect similar vertices. Thus, unoccupied cells can only be 
-   connected to unoccupied cells and obstacle cells can only be connected to obstacle cells. While constructing the graph, I also ensured to insert edges
-   between the initial position(2) and unoccupied cells(0). I did the same for the final position. This is important when I want to find the path between the start 
-   and end position of the robot.
-   I then used a find_path_graph() function to search for path between the initial and final position of the robot.
-   The find_path_function is a rcursive function which does a breadth first search on the graph. If a path is found on the graph, the function marks that point
-   in the map with a number (4) such that at the end of the path finding, the path has been marked with the number 4. Two funtion were implented to map
-   a vertex back to its x and y coordinates respectively. This function was used to get the coordinates(indices) to be marked on the map.
+   The input data were read in accordingly stored in variables and a graph was built from them.
+   A function was created to build the graph for each scenario. This function also builds an array of edges.
+   Another function in_sort was used to sort the array of edges. A delete_edge() function was implemented to delete an edge frm the graph.
+   
+   After building the graph check that while there is still a path between the start and end cities, keep deleting the edge with minimum 
+   capacity from the graph. When there is no path, insert the last deleted edge back into the graph and then find path again. This path is 
+   our bottlneck shortest path that is the path that maximizes the minimum path between the two cities.
 
-   Another function was implemented to write the output map to file, this function was used to map the numbers showing the cell occupancy to certain characters.
-	- An empty cell(0) is depicted by a space '  ' character
-	- An obstacle(1) is depicted by '# ' character
-	- The start position(2) of the robot is depicted by a '@ ' character
-	- The destination position(3) of the robot is depicted by a '$ ' character
-	- The path cells(4) are depicted by a '* ' character
+   Another function was implemented to write the output data to file.
 
-	This function checks if there is a path and prints out the map showing the path in the output file. If there is no path, it prints out the map without the path
-	and prints a message saying there is no path between the initial and final position of the robot. It also prints out the coordiantes of the two positions.
+	This function checks if there is a path and prints out the output statistics in the output file. If there is no path, it prints out
+	a message saying there is no path between the two cities. It also prints out the cities numbers.
 
    Pseudocode
    ----------
    Declare necessary variables.
-   Declare the graph and 2-d array that will be used for processing.
-   read_in(number of scenarios from input file).
-   for each scenario:
-	   read_in(dimensions n,m of the input map  from the input file).
-	   initialize a 2-d array and a graph
-	   construct a graph from the map
-	   get the start and end position of the robot in the map using the getVertex_from_coordinates() function
-	   find a path between the start and end position(vertices) of the robot
+   Declare the graph and an array of eedges that will be used for processing.
+   read_in(number of cities and roads)
+   for each scenario that while n!=0 and r!=0:
+	   write to file the scenario number
+	   read_in(start and destination city with the number of tourists).
+	   Build the graph from the input data.
+	   Populate the array of edges and sort it by weight.
+	   find a path between the start and destination cities from the graph.
 	   if a path exists:	
-			get the x and y coordinates of each of those vertices along the path
-			mark those coordinates in the map
-			write to file a map showing that path with the vertices represented as *
-	   else
-			write to file the map showing the characters 
-			write to file a message that says there is no path between the initial and final position of the robot with their coordinates.
+			delete the edge with the minimum capacity
+		repeat this check and delete until there is no path.
+
+		insert the last deleted edge back into the graph
+		find path again
+		if a path exists:
+			write to file the minimum number of trips, number of tourists per trip and route.
+		else:
+			write to file a message that says there is no path between the two cities.
 
 	write to file a new line at the end of every scenario
 
@@ -167,14 +164,11 @@
    Audit Trail
    -----------
 
-   - Added initialize_2D_array() to initialize a 2-d array.	Mubarak Mikail 20/03/2020
-   - Added write_char_to_file() to print the chracter version of the map to screen. Mubarak Mikail 20/03/2020
-   - Added getVertex_from_cellCoordinates() to compute the vertex number from its cell coordinates by using a mapping function.	Mubarak Mikail 23/03/2020
-   - Added construct_graph_vertex() to construct a graph of vertex from a map of coordinates.	Mubarak Mikail 23/03/2020
-   - Added construct_graph() to construct the graph.	Mubarak Mikail 25/03/2020
-   - Added search_for_path() to find the path between the start and end points of the robot.	Mubarak Mikail 25/03/2020
-   - Added getX_from_vertex() to compute the x coordinate from the vertex. Mubarak Mikail 25/03/2020
-   - Added getY_from_vertex() to compute the y coordinate from the vertex. Mubarak Mikail 25/03/2020
+   - Added build_graph() to build weighted graoh of roads between two cities.	Mubarak Mikail 03/04/2020
+   - Added delete_edge() to delete an edge in a graph. Mubarak Mikail 08/04/2020
+   - Added in_sort() to sort the edges of the graph by their weight.	Mubarak Mikail 08/04/2020
+   - Added swapStruct() to swap structs.	Mubarak Mikail 08/04/2020
+   - Added write_output_to_file() to write the computed outputs to file.	Mubarak Mikail 09/04/2020
 
 */
  
