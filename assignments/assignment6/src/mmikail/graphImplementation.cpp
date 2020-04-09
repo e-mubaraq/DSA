@@ -89,12 +89,13 @@ void insert_edge(graph *g, int x, int y, bool directed, int w) {
 
    g->degree[x] ++;
 
-   if (directed == false)        /* NB: if undirected add         */
-      insert_edge(g,y,x,true,w); /* the reverse edge recursively  */  
+   if (directed == false) {       /* NB: if undirected add         */
+      insert_edge(g,y,x,true,w); /* the reverse edge recursively  */ 
+	  g->nedges++;
+   }
    else                          /* but directed TRUE so we do it */
       g->nedges ++;              /* only once                     */
 }
-
 
 
 /* Print a graph                                                    */

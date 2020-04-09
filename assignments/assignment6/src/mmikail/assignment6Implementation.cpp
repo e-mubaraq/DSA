@@ -66,14 +66,17 @@ void build_graph(graph *g, bool directed, int n, int r, FILE *fp_in, struct edge
 		   	edges[j].v = s_city;
 			edges[j].y = d_city;
 			edges[j].w = passengers;
-	   }
-	in_sort(edges, r);
+			edges[j+r].v = d_city;
+			edges[j+r].y = s_city;
+			edges[j+r].w = passengers;
 
-	for (j = 0; j < r; j++) {
-	/* write the output data to the output file */
-	printf("%d %d %d\n", edges[j].v,
-							edges[j].y, edges[j].w);
-	}
+	    }
+	in_sort(edges, r*2);
+
+		for (j = 0; j < r*2; j++) {
+			printf("%d %d %d\n", edges[j].v,
+								edges[j].y, edges[j].w);
+		}
 	}
 }
 
@@ -93,11 +96,13 @@ void delete_edge(graph *g, int v, int u, int w) {
 	}
 	else {
 		while (p != NULL) {
+			printf("Enter while loop");
 			x = p->y;
 			capac = p->weight;
 			if (x == u && capac == w) {
 				temp->next = p->next;
 				free (p);
+				p = temp;
 				g->nedges --;
 			}
 			else {
@@ -106,7 +111,7 @@ void delete_edge(graph *g, int v, int u, int w) {
 			}
 		}
 	}
-	print_graph(g);
+	//print_graph(g);
 }
 
 void in_sort(struct edge_type edges[], int n){

@@ -186,7 +186,7 @@ int main() {
    graph g;
    bool directed = false;
    int number_of_scenarios;
-   int i, n, r;
+   int i, j, n, r;
    int start, dest, num_of_tourists;
    
    FILE *fp_in;
@@ -218,20 +218,32 @@ int main() {
    fscanf(fp_in, "%d %d", &n, &r);
    while(n != 0 && r !=0) {
 	   fprintf(fp_out, "Scenario %d\n", number_of_scenarios);
-	   printf("%d %d\n", n, r);
+	   printf("Scenario %d\n", number_of_scenarios);
 
-	   //build_graph(&g, directed, n, r, fp_in);
 	   build_graph(&g, directed, n, r, fp_in, edges);
 	   print_graph(&g);
 
 	   fscanf(fp_in, "%d %d %d", &start, &dest, &num_of_tourists);
-	   printf("%d %d %d\n\n", start, dest, num_of_tourists);
-	   find_path(&g, start, dest);
+	   j = 0;
+	   while (find_path(&g, start, dest)) {
+		   printf("**** j = %d\n" , j);
+		   delete_edge(&g, edges[j].v, edges[j].y, edges[j].w);
+		   printf("AFTER DELETION \n");
+		   j++;
+	   }
 
-	   //find_path(&g, 1, g.nvertices);
-	   //delete_edge(&g, 1, 4, 10);
-	   //delete_edge(&g, 1, 3, 15);
-	   //delete_edge(&g, 1, 2, 30);
+	   if (j > 0) {
+		   printf("check5\n");
+		   //min_capacity = edges[j-1].w;
+		   insert_edge(&g, edges[j-1].v, edges[j-1].y, directed, edges[j-1].w);
+	   }
+	   //delete_edge(&g,1,4,10);
+	   ////delete_edge(&g,2,1,30);
+	   ////delete_edge(&g,5,7,20);
+	   //delete_edge(&g,4,3,40);
+	   ////delete_edge(&g,1,3,15);
+
+	   find_path(&g, start, dest);
 
 	   number_of_scenarios++;
 	   fprintf(fp_out, "\n");
