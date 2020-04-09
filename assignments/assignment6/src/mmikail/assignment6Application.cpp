@@ -188,6 +188,7 @@ int main() {
    int number_of_scenarios;
    int i, j, n, r;
    int start, dest, num_of_tourists;
+   int min_capacity, count_of_capac, rem;
    
    FILE *fp_in;
    FILE *fp_out;
@@ -200,7 +201,6 @@ int main() {
 	   edges[i].w = 0;
    }
 
-
    if ((fp_in = fopen("../data/input.txt","r")) == 0) {
 	  printf("Error can't open input input.txt\n");
       prompt_and_exit(1);
@@ -212,38 +212,49 @@ int main() {
    }
 
    fprintf(fp_out,"mmikail\n");
-   /* read the number of scenarios from a file */
 
    number_of_scenarios = 1;
    fscanf(fp_in, "%d %d", &n, &r);
+
    while(n != 0 && r !=0) {
 	   fprintf(fp_out, "Scenario %d\n", number_of_scenarios);
-	   printf("Scenario %d\n", number_of_scenarios);
-
 	   build_graph(&g, directed, n, r, fp_in, edges);
-	   print_graph(&g);
-
 	   fscanf(fp_in, "%d %d %d", &start, &dest, &num_of_tourists);
+
 	   j = 0;
 	   while (find_path(&g, start, dest)) {
-		   printf("**** j = %d\n" , j);
-		   delete_edge(&g, edges[j].v, edges[j].y, edges[j].w);
-		   printf("AFTER DELETION \n");
-		   j++;
+			delete_edge(&g, edges[j].v, edges[j].y, edges[j].w);
+			j++;
 	   }
 
 	   if (j > 0) {
-		   printf("check5\n");
-		   //min_capacity = edges[j-1].w;
+		   min_capacity = edges[j-1].w;
 		   insert_edge(&g, edges[j-1].v, edges[j-1].y, directed, edges[j-1].w);
 	   }
-	   //delete_edge(&g,1,4,10);
-	   ////delete_edge(&g,2,1,30);
-	   ////delete_edge(&g,5,7,20);
-	   //delete_edge(&g,4,3,40);
-	   ////delete_edge(&g,1,3,15);
 
-	   find_path(&g, start, dest);
+	   if (find_path_graph(&g, start, dest)) {
+		   count_of_capac = num_of_tourists / min_capacity;
+		   rem = num_of_tourists % min_capacity;
+
+		   //printf("Minimum Number of Trips = %d: ", count_of_capac+1);
+		   fprintf(fp_out, "Minimum Number of Trips = %d: ", count_of_capac+1);
+		   for (i = 0; i < count_of_capac; i++) {
+			   //printf("%d ", min_capacity);
+			   fprintf(fp_out, "%d ", min_capacity);
+		   }
+		   //printf(" %d\n", rem);
+
+		   fprintf(fp_out, " %d\n", rem);
+		   find_path(fp_out, &g, start, dest);
+		   
+			fprintf(fp_out, "\n");
+	   
+	   }
+
+	   else {
+			//printf("There is no route that can take passengers between cities %d and %d\n", start, dest);
+			fprintf(fp_out, "There is no route that can take passengers between cities %d and %d\n", start, dest);
+	   }
 
 	   number_of_scenarios++;
 	   fprintf(fp_out, "\n");

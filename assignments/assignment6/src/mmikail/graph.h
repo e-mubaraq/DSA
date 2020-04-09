@@ -85,8 +85,11 @@ bool find_path(int start, int end, int parents[]);
 
 bool find_path(graph *g, int start, int end);
 
-bool find_path_graph(int start, int end, int parents[], int arr[][MAX_M], int n, int m);
-bool find_path_graph(graph *g, int start, int end, int arr[][MAX_M], int n, int m);
+bool find_path(FILE *fp_out, int start, int end, int parents[]);
+bool find_path(FILE *fp_out, graph *g, int start, int end);
+
+bool find_path_graph(int start, int end, int parents[]);
+bool find_path_graph(graph *g, int start, int end);
 
 
 void init_queue(queue *q);

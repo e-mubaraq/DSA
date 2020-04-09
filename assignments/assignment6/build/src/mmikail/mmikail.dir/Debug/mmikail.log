@@ -1,5 +1,5 @@
-﻿Build started 09/04/2020 08:43:21.
-     1>Project "C:\DSA\assignments\assignment6\build\src\mmikail\mmikail.vcxproj" on node 2 (rebuild target(s)).
+﻿Build started 09/04/2020 10:07:58.
+     1>Project "C:\DSA\assignments\assignment6\build\src\mmikail\mmikail.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "mmikail.dir\Debug\mmikail.unsuccessfulbuild" because "AlwaysCreate" was specified.
        CustomBuild:
@@ -10,8 +10,6 @@
          assignment6Implementation.cpp
          graphImplementation.cpp
          Generating Code...
-     1>c:\dsa\assignments\assignment6\src\mmikail\graphimplementation.cpp(270): warning C4700: uninitialized local variable 'x' used
-     1>c:\dsa\assignments\assignment6\src\mmikail\graphimplementation.cpp(270): warning C4700: uninitialized local variable 'y' used
        ManifestResourceCompile:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"mmikail.dir\Debug\mmikail.exe.embed.manifest.res" mmikail.dir\Debug\mmikail_manifest.rc 
        Link:
@@ -20,7 +18,6 @@
          mmikail.dir\Debug\assignment6Implementation.obj
          mmikail.dir\Debug\graphImplementation.obj  /machine:X86
        Manifest:
-         Deleting file "mmikail.dir\Debug\mmikail.exe.embed.manifest".
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"mmikail.dir\Debug\mmikail.exe.embed.manifest" /manifest mmikail.dir\Debug\mmikail.exe.intermediate.manifest
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"mmikail.dir\Debug\mmikail.exe.embed.manifest.res" mmikail.dir\Debug\mmikail_manifest.rc 
        LinkEmbedManifest:
@@ -32,8 +29,8 @@
        FinalizeBuildStatus:
          Deleting file "mmikail.dir\Debug\mmikail.unsuccessfulbuild".
          Touching "mmikail.dir\Debug\mmikail.lastbuildstate".
-     1>Done Building Project "C:\DSA\assignments\assignment6\build\src\mmikail\mmikail.vcxproj" (rebuild target(s)).
+     1>Done Building Project "C:\DSA\assignments\assignment6\build\src\mmikail\mmikail.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.50
+Time Elapsed 00:00:02.39

@@ -89,13 +89,14 @@ void insert_edge(graph *g, int x, int y, bool directed, int w) {
 
    g->degree[x] ++;
 
-   if (directed == false) {       /* NB: if undirected add         */
+   if (directed == false)  {       /* NB: if undirected add         */
       insert_edge(g,y,x,true,w); /* the reverse edge recursively  */ 
 	  g->nedges++;
    }
    else                          /* but directed TRUE so we do it */
       g->nedges ++;              /* only once                     */
 }
+
 
 
 /* Print a graph                                                    */
@@ -251,33 +252,37 @@ bool find_path(graph *g, int start, int end) {
 }
 
 
-bool find_path_graph(int start, int end, int parents[], int arr[][MAX_M], int n, int m) {
+/* adapted from original to return true if it is possible to reach the end from the start */
+
+bool find_path(FILE *fp_out, int start, int end, int parents[]) {
    
    bool is_path;
-   int x, y;
 
    if (end == -1) {
-      is_path = false; // some vertex on the path back from the end has no parentt (not counting start)
+      is_path = false; // some vertex on the path back from the end has no parent (not counting start)
       if (debug) printf("\nis_path is false: ");
    }
    else if ((start == end)) {
-       if (debug) printf("\n%d",start);
+       if (debug) {
+		   printf("\n%d",start);
+		   fprintf(fp_out,"Route = %d",start);
+	   }
        is_path = true; // we have reached the start vertex
    }
    else {
-	   is_path = find_path_graph(start,parents[end],parents, arr, n, m);
-	   if (debug) {
-			//printf(" %d",end); //get x and y coordinates from the end value not 2 or 3
-			if (arr[x][y] != 3) {		
-				arr[x][y] = 4;
-			}
-		}
+      is_path = find_path(fp_out, start,parents[end],parents);
+      if (debug) {
+		  printf(" %d",end);
+		  fprintf(fp_out, " %d",end);
+	  }
    }
    return(is_path); 
 }
+ 
+/* DV abstract version that hides implementation by removing the parent array from the parameter list */
+/* leaving only parameters that can be passed as arguments from the application code                  */
 
-
-bool find_path_graph(graph *g, int start, int end, int arr[][MAX_M], int n, int m) {
+bool find_path(FILE *fp_out, graph *g, int start, int end) {
    bool is_path;
 
    if (debug) printf("Path from %d to %d:",start,end);
@@ -295,10 +300,44 @@ bool find_path_graph(graph *g, int start, int end, int arr[][MAX_M], int n, int 
    else {
       initialize_search(g);
       bfs(g, start);
-      is_path = find_path_graph(start, end, parent, arr, n, m); // now call the version of find_path that has the parentt array as an argument
+      is_path = find_path(fp_out, start, end, parent); // now call the version of find_path that has the parent array as an argument
       if (debug) printf("\n");
    }
    return(is_path);
+}
+
+bool find_path_graph(graph *g, int start, int end) {
+   bool is_path;
+
+   if ((start < 1) || (start > g->nvertices))
+      is_path = false;
+   else if ((end < 1) || (end > g->nvertices))
+      is_path = false;
+   else {
+      initialize_search(g);
+      bfs(g, start);
+      is_path = find_path_graph(start, end, parent); // now call the version of find_path that has the parent array as an argument
+   }
+   return(is_path);
+}
+
+bool find_path_graph(int start, int end, int parents[]) {
+   
+   bool is_path;
+
+   if (end == -1) {
+      is_path = false; // some vertex on the path back from the end has no parent (not counting start)
+      if (debug) printf("\nis_path is false: ");
+   }
+   else if ((start == end)) {
+       if (debug) printf("\n%d",start);
+       is_path = true; // we have reached the start vertex
+   }
+   else {
+      is_path = find_path_graph(start,parents[end],parents);
+      if (debug) printf(" %d",end);
+   }
+   return(is_path); 
 }
 
 

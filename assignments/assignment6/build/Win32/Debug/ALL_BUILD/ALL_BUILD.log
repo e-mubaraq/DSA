@@ -1,5 +1,5 @@
-﻿Build started 09/04/2020 08:43:24.
-     1>Project "C:\DSA\assignments\assignment6\build\ALL_BUILD.vcxproj" on node 2 (rebuild target(s)).
+﻿Build started 09/04/2020 10:08:00.
+     1>Project "C:\DSA\assignments\assignment6\build\ALL_BUILD.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Win32\Debug\ALL_BUILD\ALL_BUILD.unsuccessfulbuild" because "AlwaysCreate" was specified.
        CustomBuild:
@@ -7,8 +7,8 @@
        FinalizeBuildStatus:
          Deleting file "Win32\Debug\ALL_BUILD\ALL_BUILD.unsuccessfulbuild".
          Touching "Win32\Debug\ALL_BUILD\ALL_BUILD.lastbuildstate".
-     1>Done Building Project "C:\DSA\assignments\assignment6\build\ALL_BUILD.vcxproj" (rebuild target(s)).
+     1>Done Building Project "C:\DSA\assignments\assignment6\build\ALL_BUILD.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.26
+Time Elapsed 00:00:00.17

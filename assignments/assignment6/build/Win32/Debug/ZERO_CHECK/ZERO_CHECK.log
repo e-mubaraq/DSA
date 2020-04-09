@@ -1,5 +1,5 @@
-﻿Build started 09/04/2020 08:43:21.
-     1>Project "C:\DSA\assignments\assignment6\build\ZERO_CHECK.vcxproj" on node 2 (rebuild target(s)).
+﻿Build started 09/04/2020 10:07:58.
+     1>Project "C:\DSA\assignments\assignment6\build\ZERO_CHECK.vcxproj" on node 2 (build target(s)).
      1>PrepareForBuild:
          Creating directory "C:\DSA\assignments\assignment6\build\Debug\".
        InitializeBuildStatus:
@@ -9,8 +9,8 @@
        FinalizeBuildStatus:
          Deleting file "Win32\Debug\ZERO_CHECK\ZERO_CHECK.unsuccessfulbuild".
          Touching "Win32\Debug\ZERO_CHECK\ZERO_CHECK.lastbuildstate".
-     1>Done Building Project "C:\DSA\assignments\assignment6\build\ZERO_CHECK.vcxproj" (rebuild target(s)).
+     1>Done Building Project "C:\DSA\assignments\assignment6\build\ZERO_CHECK.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.18
+Time Elapsed 00:00:00.12
