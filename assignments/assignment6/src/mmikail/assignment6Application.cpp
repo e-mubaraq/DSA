@@ -12,14 +12,14 @@
    Read in the input data from the input file.
 
 	This problem was solved with a graph by implenting a graph and some graph functions.
-	After reading in the map from the input file,a  function was used to build a graph and array of edges.
+	After reading in the cities and roads data from the input file,a  function was used to build a graph and an array of edges.
 	The build_graph function uses the insert_edge() function to insert edges between 2 cities as given in the input file 
 	and also build an array of edges.
 
 	The array of edges was sorted by weight so that we can easily have access to the edge with the lowest weight when we start deleting edges.
 
 	After constructing the graph, the find_path_graph function was used to find a path between the start and destination city such that
-	while there is stil path, the edhe or road with the lowest capacity is deleted. This is done until there is no path and then the last
+	while there is still a path, the edge or road with the lowest capacity is deleted. This is done until there is no path and then the last
 	deleted edge is inserted back into the graph so that we now have a path that maximizes the minimum capacity of the paths in the graph
 	between those two cities.
 
@@ -91,11 +91,11 @@
    Solution Strategy
    -----------------
 
-   The input data were read in accordingly stored in variables and a graph was built from them.
+   The input data were read in accordingly, stored in variables and a graph was built from them.
    A function was created to build the graph for each scenario. This function also builds an array of edges.
-   Another function in_sort was used to sort the array of edges. A delete_edge() function was implemented to delete an edge frm the graph.
+   Another function in_sort was used to sort the array of edges. A delete_edge() function was implemented to delete an edge from the graph.
    
-   After building the graph check that while there is still a path between the start and end cities, keep deleting the edge with minimum 
+   After building the graph, check that while there is still a path between the start and end cities, keep deleting the edge with the lowest 
    capacity from the graph. When there is no path, insert the last deleted edge back into the graph and then find path again. This path is 
    our bottlneck shortest path that is the path that maximizes the minimum path between the two cities.
 
@@ -132,11 +132,12 @@
    -------------
 
    The program has been tested with a variety of test data sets that reflect all valid conditions, including boundary conditions:
-   1. Test with a smaller dimension map.
-   2. Test with a map that has a larger dimension.
-   3. Test with a map that has no path between the initial and final position of the robot.
-   4. Test with a map where the start and end position of the robot are adjacent to each other.
-   5. Test with a medium dimension map.
+   1. Test with data where path exists between the start and end cities.
+   2. Test with data where path exists between the start and end cities but reversing the start and cities.
+   3. Test with data where no path exists between the start and end cities.
+   4. Test with data where path exists between the start and end cities but varying the number of passengers.
+   5. Test with data where path exists but with zero number of tourists.
+   6. Test with data where path exists directly between the two points.
 
 
    File organization
@@ -187,9 +188,9 @@ int main() {
    FILE *fp_in;
    FILE *fp_out;
 
-   struct edge_type edges [MAX_N];
+   struct edge_type edges [MAX_ROADS];
 
-   for (i = 0; i < MAX_N; i++) {
+   for (i = 0; i < MAX_ROADS; i++) {
 	   edges[i].v = 0;
 	   edges[i].y = 0;
 	   edges[i].w = 0;
@@ -213,6 +214,7 @@ int main() {
    while(n != 0 && r !=0) {
 	   fprintf(fp_out, "Scenario %d\n", number_of_scenarios);
 	   build_graph(&g, directed, n, r, fp_in, edges);
+	   print_graph(&g);
 	   fscanf(fp_in, "%d %d %d", &start, &dest, &num_of_tourists);
 
 	   j = 0;

@@ -69,6 +69,9 @@ void build_graph(graph *g, bool directed, int n, int r, FILE *fp_in, struct edge
 	    }
 		in_sort(edges, r*2);
 	}
+
+	for (j = 0; j < r *2; j++)
+		printf("%d %d %d\n", edges[j].v, edges[j].y, edges[j].w);
 }
 
 /* delete an edge in a graph */
@@ -135,8 +138,10 @@ void write_output_to_file(FILE *fp_out, graph *g, int start, int dest, int num_o
 		for (i = 0; i < count_of_capac; i++) {
 			fprintf(fp_out, "%d ", min_capacity);
 		}
-
-		fprintf(fp_out, " %d\n", rem);
+		if (rem != 0)
+			fprintf(fp_out, " %d\n", rem);
+		else
+			fprintf(fp_out, "\n");
 		find_path(fp_out, g, start, dest);
 		   
 		fprintf(fp_out, "\n");

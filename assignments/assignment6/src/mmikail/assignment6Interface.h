@@ -49,10 +49,7 @@
 
 #define TRUE 1
 #define FALSE 0
-#define MAX_STRING_LENGTH 200
-#define MAX_N 100
-#define MAX_M 100
-
+#define MAX_ROADS 10000
 
 /* function prototypes go here */
 struct edge_type {

@@ -17,8 +17,6 @@
 
 #define TRUE 1
 #define FALSE 0
-#define MAX_N 100
-#define MAX_M 100
 
 #define QUEUESIZE       1000
 
