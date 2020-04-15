@@ -134,16 +134,24 @@ void write_output_to_file(FILE *fp_out, graph *g, int start, int dest, int num_o
 		count_of_capac = num_of_tourists / min_capacity;
 		rem = num_of_tourists % min_capacity;
 
-		fprintf(fp_out, "Minimum Number of Trips = %d: ", count_of_capac+1);
-		for (i = 0; i < count_of_capac; i++) {
-			fprintf(fp_out, "%d ", min_capacity);
-		}
-		if (rem != 0)
+		if (rem != 0) {
+			fprintf(fp_out, "Minimum Number of Trips = %d: ", count_of_capac + 1);
+			for (i = 0; i < count_of_capac; i++) {
+				fprintf(fp_out, "%d ", min_capacity);
+			}
 			fprintf(fp_out, " %d\n", rem);
-		else
+		}
+
+		else {
+			fprintf(fp_out, "Minimum Number of Trips = %d: ", count_of_capac);
+			for (i = 0; i < count_of_capac; i++) {
+				fprintf(fp_out, "%d ", min_capacity);
+			}
 			fprintf(fp_out, "\n");
-		find_path(fp_out, g, start, dest);
-		   
+		}
+
+
+		find_path(fp_out, g, start, dest);   
 		fprintf(fp_out, "\n");
 	}
 
