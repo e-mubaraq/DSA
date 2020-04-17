@@ -1,8 +1,12 @@
-../data/words.txt
-../data/letter_values.txt
-sitnesw
-nbandoa
-nbanboa
-abandoo
-evensaz
-wittnes
+1
+4
+Mr. Somename, #1 Some Street.
+Mr. Someothername, #2 Someother Street.
+Ms. Altname, #3 Alt Street.
+Ms. Ctrlaltname, #4 Del ete Street.
+OptiPizza, #1 Mozzarella Road.
+0 3 10 5 12
+3 0 10 8 6
+10 11 0 3 6
+5 8 4 0 6
+12 6 9 7 0

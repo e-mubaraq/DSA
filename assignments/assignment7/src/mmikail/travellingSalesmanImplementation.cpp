@@ -1,20 +1,16 @@
 /* 
 
-  Implementation file
+   travellingSalesmanImplementation.cpp - application file for the solution of the travelling saleman problem by exhaustive search using backtracking
 
-  Find the highest highest scoring Scrabble word from a set of seven Scrabble letters
-  -----------------------------------------------------------------------------------
+   04-630 Data Structures and Algorithms for Engineers Assignment No. 7
 
-  Course 04-630 Data Structures and Algorithms for Engineers, Assignment 7
+   The backtracking code is based on the examples in S. Skiena, The Algorithm Design Manual, 2008.
+   David Vernon
+   16 April 2018
 
-  This problem reduces to finding the optimal permutation of all subsets of the seven letters.
-
-
-  David Vernon
-  19 March 2019
 */
  
-#include "scrabble.h"
+#include "travellingSalesman.h"
 
 /* original backtracking code ... needs to be adapted for the assignment */
 
@@ -29,8 +25,7 @@ void backtrack(int a[], int k, int input) {
    } 
    else {
       k = k+1;
-      construct_candidates_permutation(a,k,input,c,&ncandidates); 
-	  // construct_candidates_subset(a,k,input,c,&ncandidates); 
+      construct_candidates(a,k,input,c,&ncandidates); 
       for (i=0; i<ncandidates; i++) {
          a[k] = c[i];
          //make_move(a,k,input);
@@ -52,7 +47,7 @@ void process_solution(int a[], int k, int input) {
    int i;                       /* counter */
    bool print_permuations;      /* flag ... set to true if you want the permutations listed to the terminal */
 
-   print_permuations = false;
+   print_permuations = true;    /* set to true if you want the permutations printed to the terminal; false otherwise */
 
    if (print_permuations) {
 	  for (i=1; i<=k; i++) {
@@ -63,15 +58,7 @@ void process_solution(int a[], int k, int input) {
 }
  
 
-
-void construct_candidates_subset(int a[], int k, int n, int c[], int *ncandidates) {
-   c[0] = TRUE;
-   c[1] = FALSE;
-   *ncandidates = 2;
-}
-
-
-void construct_candidates_permutation(int a[], int k, int n, int c[], int *ncandidates) {
+void construct_candidates(int a[], int k, int n, int c[], int *ncandidates) {
 
    int i;                       /* counter */
    bool in_perm[NMAX];          /* who is in the permutation? */
@@ -79,7 +66,7 @@ void construct_candidates_permutation(int a[], int k, int n, int c[], int *ncand
 	   in_perm[i] = FALSE;
    }
 
-   /* original Skiena code is incorrect ... a[i(==0)] is not a valid element of the permutation since we start storing them at a[1]
+   /* the original Skiena code is incorrect ... a[i(==0)] is not a valid element of the permutation since we start storing them at a[1]
 
       for (i=0; i<k; i++) in_perm[ a[i] ] = TRUE;
 
@@ -104,3 +91,13 @@ void prompt_and_exit(int status) {
    getchar();
    exit(status);
 }
+
+void remove_new_line(char string[]) {
+   int i;
+
+   i=0;
+   while(string[i] != '\0' && string[i] != '\n')
+      i++;
+   string[i] = '\0';
+}
+

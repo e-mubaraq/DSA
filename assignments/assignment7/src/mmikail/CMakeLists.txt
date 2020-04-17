@@ -1,7 +1,7 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
 
 #############################################
-SET(MODULENAME dvernon)
+SET(MODULENAME mmikail)
 #############################################
 
 PROJECT(${MODULENAME})
