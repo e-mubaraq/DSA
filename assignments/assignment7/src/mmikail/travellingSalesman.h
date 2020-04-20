@@ -1,6 +1,6 @@
 /* 
 
-   travellingSalesman.h - interface file for the solution of the travelling saleman problem 
+   travellingSalesman.h - interface file for the solution of the travelling salesman problem 
    by exhaustive search using backtracking and pruning.
 
    04-630 Data Structures and Algorithms for Engineers Assignment No. 7
@@ -8,6 +8,9 @@
 
    David Vernon
    15 April 2020
+
+   Mubarak Mikail
+   17 April 2020
 
 */
  
@@ -42,7 +45,10 @@ void prompt_and_exit(int status);
 void backtrack(int a[], int k, int n);                                                // original backtrack 
 bool is_a_solution(int a[], int k, int n);                                            // 
 void construct_candidates(int a[], int k, int n, int c[], int *ncandidates);          // permutation construct_candidates
-void process_solution(int a[], int k, int n);                                         // original process_solution 
+void process_solution(int a[], int k, int n);                                         // original process_solution
+void process_solution(int a[], int k, int input, int distances[][NUMBER_OF_STOPS]);
+void backtrack_dist(int distances[][NUMBER_OF_STOPS], int a[], int k, int input);
+int computeDistance(int distances[][NUMBER_OF_STOPS], int a[], int n);
 
 
  

@@ -1,12 +1,23 @@
 /* 
 
-   travellingSalesmanImplementation.cpp - application file for the solution of the travelling saleman problem by exhaustive search using backtracking
+   travellingSalesmanImplementation.cpp - application file for the solution of the travelling salesman problem by exhaustive search using backtracking
 
    04-630 Data Structures and Algorithms for Engineers Assignment No. 7
 
    The backtracking code is based on the examples in S. Skiena, The Algorithm Design Manual, 2008.
    David Vernon
    16 April 2018
+
+   Mubarak Mikail
+   17 April 2020
+
+   Audit Trail
+   -----------
+   - Added backtrack_dist() to backtrack the distances.	Mubarak Mikail 20/04/2020
+   - Added computeDistance() to calculate distance of a given permutation. Mubarak Mikail 20/04/2020
+   - Added void process_solution() to process each permutation.	Mubarak Mikail 08/04/2020
+   - Added swapStruct() to swap structs.	Mubarak Mikail 08/04/2020
+   - Added write_output_to_file() to write the computed outputs to file.	Mubarak Mikail 09/04/2020
 
 */
  
@@ -35,6 +46,26 @@ void backtrack(int a[], int k, int input) {
    }
 }
 
+void backtrack_dist(int distances[][NUMBER_OF_STOPS], int a[], int k, int input) {
+
+   int c[MAXCANDIDATES];     /* candidates for next position  */
+   int ncandidates;          /* next position candidate count */
+   int i;                    /* counter                       */
+
+   if (is_a_solution(a,k,input)) {
+      process_solution(a,k,input);
+   } 
+   else {
+      k = k+1;
+      construct_candidates(a,k,input,c,&ncandidates); 
+      for (i=0; i<ncandidates; i++) {
+         a[k] = c[i];
+         //make_move(a,k,input);
+         backtrack(a,k,input);
+         //unmake_move(a,k,input);
+      }
+   }
+}
 
 
 bool is_a_solution(int a[], int k, int n) {
@@ -44,7 +75,7 @@ bool is_a_solution(int a[], int k, int n) {
 
 void process_solution(int a[], int k, int input) {
 
-   int i;                       /* counter */
+   int i, distance;                       /* counter */
    bool print_permuations;      /* flag ... set to true if you want the permutations listed to the terminal */
 
    print_permuations = true;    /* set to true if you want the permutations printed to the terminal; false otherwise */
@@ -55,6 +86,25 @@ void process_solution(int a[], int k, int input) {
       }
       printf("\n");
    }
+
+}
+
+void process_solution(int a[], int k, int input, int distances[][NUMBER_OF_STOPS]) {
+
+   int i, distance;                       /* counter */
+   bool print_permuations;      /* flag ... set to true if you want the permutations listed to the terminal */
+
+   print_permuations = true;    /* set to true if you want the permutations printed to the terminal; false otherwise */
+
+   if (print_permuations) {
+	  for (i=1; i<=k; i++) {
+         printf(" %d",a[i]);
+      }
+      printf("\n");
+   }
+
+   distance = computeDistance(distances, a, k);
+
 }
  
 
@@ -101,3 +151,22 @@ void remove_new_line(char string[]) {
    string[i] = '\0';
 }
 
+int computeDistance(int distances[][NUMBER_OF_STOPS], int a[], int n) {
+	int i, totalDist = 0;
+	int p, q, r;
+	totalDist = totalDist + distances[n][a[0] - 1];
+	printf("\ndist before loop%3d\n", totalDist);
+	for (i = 0; i < n-1; i++) {
+		p = a[i] - 1;
+		r = i + 1;
+		q = a[r] - 1;
+
+		totalDist = totalDist + distances[p][q];
+		printf("dist %3d\n", totalDist);
+	}
+	p = a[i] - 1;
+	totalDist = totalDist + distances[p][n];
+	printf("dist after loop: %3d\n", totalDist);
+
+	return totalDist;
+}

@@ -1,6 +1,6 @@
 /* 
 
-   travellingSalesmanApplication.cpp - application file for the solution of the travelling saleman problem by exhaustive search using backtracking
+   travellingSalesmanApplication.cpp - application file for the solution of the travelling salesman problem by exhaustive search using backtracking
 
    04-630 Data Structures and Algorithms for Engineers Assignment No. 7
 
@@ -106,6 +106,9 @@
 
    David Vernon
    15 April 2020
+
+   Mubarak Mikail
+   17 April 2020
 */
  
 #include "travellingSalesman.h"
@@ -120,6 +123,7 @@ int main() {
    char stop_name[STRING_SIZE];                      // general purpose string
    int distances[NUMBER_OF_STOPS][NUMBER_OF_STOPS];  // distances between shop i (row) and shop j (column)
    int a[NMAX+1];                                    // permutation of locations
+   int dist;
 
    int debug = TRUE;                                 // flag: if TRUE print information to assist with debugging
 
@@ -138,6 +142,8 @@ int main() {
       exit(0);
    }
 
+   fprintf(fp_out,"mmikail\n");
+
    /* read the number of test cases */
 
    fscanf(fp_in, "%d", &number_of_test_cases);
@@ -150,18 +156,17 @@ int main() {
 
    for (k=0; k<number_of_test_cases; k++) {
 
+	   fprintf(fp_out, "%d\n", ++k);
       /* read the data for each test case  */
       /* --------------------------------  */
       
       /* number of customer drop-off locations */
-
       fscanf(fp_in, "%d", &n);
       fgetc(fp_in);  // move past end of line for subsequent fgets
 
       if (debug) printf ("%d\n",n);
 
       /* get the location names and the restaurant name */
-
       for (i = 0; i < n+1; i++) {
 
          fgets(stop_name, STRING_SIZE, fp_in);
@@ -189,6 +194,10 @@ int main() {
             printf("\n");
          }
       }
+	  
+	  //a[0] = 1; a[1] = 3; a[2] = 4; a[3] = 2;
+	  //dist = computeDistance(distances, a, n);
+	  //printf("DISTANCE: %3d\n", dist);
 
 
       /* main processing begins here */
@@ -196,7 +205,7 @@ int main() {
  
       /* use backtracking to generate all permutations and store the permutation giving the highest value */
 
-      backtrack(a,0,n);    // this is the original call and will just print the permutations to the terminal
+      //backtrack(a,0,n);    // this is the original call and will just print the permutations to the terminal
                            // it must be modified to pass the distances array as an argument
                            // so that the permutation giving the minimum distance can be identified
                            // it may also be useful to have it return the permutation yielding the minimum distance
@@ -208,10 +217,12 @@ int main() {
 
 
  
-      if (debug) prompt_and_exit(1);
+      //if (debug) prompt_and_exit(1);
 
    }
 
    fclose(fp_in);
-   fclose(fp_out);                                                         
+   fclose(fp_out);   
+
+   if (debug) prompt_and_exit(1);
 }
