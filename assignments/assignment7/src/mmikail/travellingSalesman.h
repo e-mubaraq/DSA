@@ -49,6 +49,7 @@ void process_solution(int a[], int k, int n);                                   
 void process_solution(int a[], int k, int input, int distances[][NUMBER_OF_STOPS]);
 void backtrack_dist(int distances[][NUMBER_OF_STOPS], int a[], int k, int input);
 int computeDistance(int distances[][NUMBER_OF_STOPS], int a[], int n);
+void write_output_to_file(FILE *fp_out, int k, struct record_type record[]);
 
 
  

@@ -15,9 +15,8 @@
    -----------
    - Added backtrack_dist() to backtrack the distances.	Mubarak Mikail 20/04/2020
    - Added computeDistance() to calculate distance of a given permutation. Mubarak Mikail 20/04/2020
-   - Added void process_solution() to process each permutation.	Mubarak Mikail 08/04/2020
-   - Added swapStruct() to swap structs.	Mubarak Mikail 08/04/2020
-   - Added write_output_to_file() to write the computed outputs to file.	Mubarak Mikail 09/04/2020
+   - Added process_solution() to process each permutation.	Mubarak Mikail 08/04/2020
+   - Added write_output_to_file() to write the computed outputs to file.	Mubarak Mikail 22/04/2020
 
 */
  
@@ -25,6 +24,8 @@
 
 /* original backtracking code ... needs to be adapted for the assignment */
 
+int min_distance = INT_MAX;
+int min_array[NMAX+1];
 void backtrack(int a[], int k, int input) {
 
    int c[MAXCANDIDATES];     /* candidates for next position  */
@@ -53,16 +54,14 @@ void backtrack_dist(int distances[][NUMBER_OF_STOPS], int a[], int k, int input)
    int i;                    /* counter                       */
 
    if (is_a_solution(a,k,input)) {
-      process_solution(a,k,input);
+	   process_solution(a,k,input, distances);
    } 
    else {
       k = k+1;
       construct_candidates(a,k,input,c,&ncandidates); 
       for (i=0; i<ncandidates; i++) {
          a[k] = c[i];
-         //make_move(a,k,input);
-         backtrack(a,k,input);
-         //unmake_move(a,k,input);
+		 backtrack_dist(distances, a, k, input);
       }
    }
 }
@@ -75,7 +74,7 @@ bool is_a_solution(int a[], int k, int n) {
 
 void process_solution(int a[], int k, int input) {
 
-   int i, distance;                       /* counter */
+   int i;                       /* counter */
    bool print_permuations;      /* flag ... set to true if you want the permutations listed to the terminal */
 
    print_permuations = true;    /* set to true if you want the permutations printed to the terminal; false otherwise */
@@ -104,7 +103,16 @@ void process_solution(int a[], int k, int input, int distances[][NUMBER_OF_STOPS
    }
 
    distance = computeDistance(distances, a, k);
-
+   printf("DISTANCE: %3d\n", distance);
+   
+   if (distance < min_distance) {
+	   min_distance = distance;
+	   for (i=1; i<=k; i++) {
+			min_array[i-1] = a[i];
+			//printf(" %d",min_array[i]);
+      }
+   }
+   printf("minimum distance: %3d\n", min_distance);
 }
  
 
@@ -154,19 +162,29 @@ void remove_new_line(char string[]) {
 int computeDistance(int distances[][NUMBER_OF_STOPS], int a[], int n) {
 	int i, totalDist = 0;
 	int p, q, r;
-	totalDist = totalDist + distances[n][a[0] - 1];
-	printf("\ndist before loop%3d\n", totalDist);
-	for (i = 0; i < n-1; i++) {
+
+	totalDist = totalDist + distances[n][a[1] - 1];
+	for (i = 1; i < n; i++) {
 		p = a[i] - 1;
 		r = i + 1;
 		q = a[r] - 1;
 
 		totalDist = totalDist + distances[p][q];
-		printf("dist %3d\n", totalDist);
 	}
 	p = a[i] - 1;
 	totalDist = totalDist + distances[p][n];
-	printf("dist after loop: %3d\n", totalDist);
 
 	return totalDist;
+}
+
+void write_output_to_file(FILE *fp_out, int k, struct record_type record[]) {
+	int i, key;
+	fprintf(fp_out, "%d\n",min_distance);
+	fprintf(fp_out, "%s\n",record[k].string);
+	for (i=0; i<k; i++) {
+		key = min_array[i];
+		//fprintf(fp_out, "%d ",key);
+		fprintf(fp_out, "%s\n",record[key - 1].string);
+    } 
+	fprintf(fp_out, "%s\n ",record[k].string);
 }

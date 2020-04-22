@@ -175,7 +175,7 @@ int main() {
          record[i].key = i+1;
          strcpy(record[i].string,stop_name);
 
-         if (debug) printf ("%s\n",record[i].string);
+         if (debug) printf ("%d  %d  %s\n",i ,record[i].key, record[i].string);
       }
 
       /* get the matrix of distances */
@@ -194,10 +194,6 @@ int main() {
             printf("\n");
          }
       }
-	  
-	  //a[0] = 1; a[1] = 3; a[2] = 4; a[3] = 2;
-	  //dist = computeDistance(distances, a, n);
-	  //printf("DISTANCE: %3d\n", dist);
 
 
       /* main processing begins here */
@@ -214,8 +210,8 @@ int main() {
 	
 	  /* now process the result here ... */
 
-
-
+	  backtrack_dist(distances, a, 0, n);
+	  write_output_to_file(fp_out, n, record);
  
       //if (debug) prompt_and_exit(1);
 
