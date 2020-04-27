@@ -15,7 +15,7 @@
    -----------
    - Added backtrack_dist() to backtrack the distances.	Mubarak Mikail 20/04/2020
    - Added computeDistance() to calculate distance of a given permutation. Mubarak Mikail 20/04/2020
-   - Added process_solution() to process each permutation.	Mubarak Mikail 08/04/2020
+   - Added process_solution() to process each permutation.	Mubarak Mikail 20/04/2020
    - Added write_output_to_file() to write the computed outputs to file.	Mubarak Mikail 22/04/2020
 
 */
@@ -170,9 +170,13 @@ int computeDistance(int distances[][NUMBER_OF_STOPS], int a[], int n) {
 		q = a[r] - 1;
 
 		totalDist = totalDist + distances[p][q];
+		if (totalDist > min_distance)
+			return min_distance;
 	}
 	p = a[i] - 1;
 	totalDist = totalDist + distances[p][n];
+	if (totalDist > min_distance)
+			return min_distance;
 
 	return totalDist;
 }
@@ -186,5 +190,5 @@ void write_output_to_file(FILE *fp_out, int k, struct record_type record[]) {
 		//fprintf(fp_out, "%d ",key);
 		fprintf(fp_out, "%s\n",record[key - 1].string);
     } 
-	fprintf(fp_out, "%s\n ",record[k].string);
+	fprintf(fp_out, "%s\n",record[k].string);
 }

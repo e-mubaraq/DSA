@@ -123,7 +123,6 @@ int main() {
    char stop_name[STRING_SIZE];                      // general purpose string
    int distances[NUMBER_OF_STOPS][NUMBER_OF_STOPS];  // distances between shop i (row) and shop j (column)
    int a[NMAX+1];                                    // permutation of locations
-   int dist;
 
    int debug = TRUE;                                 // flag: if TRUE print information to assist with debugging
 
@@ -142,7 +141,8 @@ int main() {
       exit(0);
    }
 
-   fprintf(fp_out,"mmikail\n");
+   fprintf(fp_out,"mmikail (pruning)\n");
+   //fprintf(fp_out,"mmikail \n");
 
    /* read the number of test cases */
 
@@ -154,9 +154,9 @@ int main() {
 
    /* main processing loop, one iteration for each test case */
 
-   for (k=0; k<number_of_test_cases; k++) {
+   for (k=1; k<=number_of_test_cases; k++) {
 
-	   fprintf(fp_out, "%d\n", ++k);
+	   fprintf(fp_out, "%d\n", k);
       /* read the data for each test case  */
       /* --------------------------------  */
       
