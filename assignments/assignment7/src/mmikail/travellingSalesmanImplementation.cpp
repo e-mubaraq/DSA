@@ -26,6 +26,7 @@
 
 int min_distance = INT_MAX;
 int min_array[NMAX+1];
+
 void backtrack(int a[], int k, int input) {
 
    int c[MAXCANDIDATES];     /* candidates for next position  */
@@ -52,6 +53,7 @@ void backtrack_dist(int distances[][NUMBER_OF_STOPS], int a[], int k, int input)
    int c[MAXCANDIDATES];     /* candidates for next position  */
    int ncandidates;          /* next position candidate count */
    int i;                    /* counter                       */
+   int d;
 
    if (is_a_solution(a,k,input)) {
 	   process_solution(a,k,input, distances);
@@ -61,6 +63,9 @@ void backtrack_dist(int distances[][NUMBER_OF_STOPS], int a[], int k, int input)
       construct_candidates(a,k,input,c,&ncandidates); 
       for (i=0; i<ncandidates; i++) {
          a[k] = c[i];
+		 d = computeDistance(distances, a, k, input);
+		 if(d > min_distance)
+		   return;
 		 backtrack_dist(distances, a, k, input);
       }
    }
@@ -102,14 +107,13 @@ void process_solution(int a[], int k, int input, int distances[][NUMBER_OF_STOPS
       printf("\n");
    }
 
-   distance = computeDistance(distances, a, k);
+   distance = computeDistance(distances, a, k, input);
    printf("DISTANCE: %3d\n", distance);
    
    if (distance < min_distance) {
 	   min_distance = distance;
 	   for (i=1; i<=k; i++) {
 			min_array[i-1] = a[i];
-			//printf(" %d",min_array[i]);
       }
    }
    printf("minimum distance: %3d\n", min_distance);
@@ -159,24 +163,21 @@ void remove_new_line(char string[]) {
    string[i] = '\0';
 }
 
-int computeDistance(int distances[][NUMBER_OF_STOPS], int a[], int n) {
+int computeDistance(int distances[][NUMBER_OF_STOPS], int a[], int k, int n) {
 	int i, totalDist = 0;
 	int p, q, r;
 
-	totalDist = totalDist + distances[n][a[1] - 1];
-	for (i = 1; i < n; i++) {
+	totalDist = totalDist + distances[k][a[1] - 1];
+	for (i = 1; i < k; i++) {
 		p = a[i] - 1;
 		r = i + 1;
 		q = a[r] - 1;
-
 		totalDist = totalDist + distances[p][q];
-		if (totalDist > min_distance)
-			return min_distance;
 	}
-	p = a[i] - 1;
-	totalDist = totalDist + distances[p][n];
-	if (totalDist > min_distance)
-			return min_distance;
+	if (k == n) {
+		p = a[i] - 1;
+		totalDist = totalDist + distances[p][n];
+	}
 
 	return totalDist;
 }
@@ -187,8 +188,8 @@ void write_output_to_file(FILE *fp_out, int k, struct record_type record[]) {
 	fprintf(fp_out, "%s\n",record[k].string);
 	for (i=0; i<k; i++) {
 		key = min_array[i];
-		//fprintf(fp_out, "%d ",key);
 		fprintf(fp_out, "%s\n",record[key - 1].string);
     } 
 	fprintf(fp_out, "%s\n",record[k].string);
+	min_distance = INT_MAX;
 }

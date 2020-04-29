@@ -4,14 +4,48 @@ mmikail (pruning)
 OptiPizza, #1 Mozzarella Road.
 Mr. Someothername, #2 Someother Street.
 Mr. Somename, #1 Some Street.
-Ms. Ctrlaltname, #4 Del ete Street.
+Ms. Ctrlaltname, #4 Delete Street.
 Ms. Altname, #3 Alt Street.
 OptiPizza, #1 Mozzarella Road.
 2
-24
-OptiPizza, #1 Mozzarella Road.
-Mr. Someothername, #2 Someother Street.
-Mr. Somename, #1 Some Street.
-Ms. Ctrlaltname, #4 Del ete Street.
+30
+OptiPizza, #11 Ride Road.
+Mr. Ade, #9 Bimi Street.
+Mr. Bola, #7 Tare Street.
+Ms. Tope, #10 Palemo Street.
+Ms. Salewa, #4 Lolade Street.
+OptiPizza, #11 Ride Road.
+3
+113
+OptiPizza, #11 Ride Road.
+Mr. Ade, #9 Bimi Street.
+OptiPizza, #11 Ride Road.
+4
+20
+OptiPizza, #11 Ride Road.
 Ms. Altname, #3 Alt Street.
-OptiPizza, #1 Mozzarella Road.
+Ms. Ctrlaltname, #4 Delete Street.
+Mr. Ade, #9 Bimi Street.
+OptiPizza, #11 Ride Road.
+5
+94
+OptiPizza, #11 Ride Road.
+Ms. Salewa, #4 Lola Street.
+Ms. Tope, #10 Palemo Street.
+Ms. Salewa, #4 Lolade Street.
+Mr. Bola, #7 Tare Street.
+OptiPizza, #11 Ride Road.
+6
+35
+OptiPizza, #11 Ride Road.
+Mr. Somename, #1 Some Street.
+Mr. Ade, #9 Bimi Street.
+Mr. Bola, #7 Tare Street.
+Ms. Salewa, #4 Lolade Street.
+Ms. Ctrlaltname, #4 Delete Street.
+Ms. Salewa, #4 Lola Street.
+Mr. Someothername, #2 Someother Street.
+Ms. Altname, #3 Alt Street.
+Ms. Tope, #8 Palemo Street.
+Ms. Tope, #10 Palemo Street.
+OptiPizza, #11 Ride Road.

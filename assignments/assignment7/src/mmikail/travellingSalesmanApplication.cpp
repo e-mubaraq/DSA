@@ -104,6 +104,18 @@
    Instead of enumerating permutations of the location names and addresses 
    we associate an integer key with each location and form permutations of these keys.
 
+   Pruning was implemented in the backtracking function by checking after each call to construct_candidates
+   that the current distance which was calculated incrementally was greater than the current minimum distance.
+   If it is we stop building the permutations by immediately returning out of that function.
+
+   Test Strategy
+   -------------
+   The program has been tested with a variety of test data sets that reflect all valid conditions, including boundary conditions:
+   1. Test with data where there is just one minimum distance path between the pizza restaurant and delivery locations.
+   2. Test with data where there is more than one minimum distance path between the pizza restaurant and delivery locations.
+   3. Test with data where there is only on delivery location.
+   4. Test with data where there are more than 4 delivery location.
+
    David Vernon
    15 April 2020
 
@@ -142,7 +154,6 @@ int main() {
    }
 
    fprintf(fp_out,"mmikail (pruning)\n");
-   //fprintf(fp_out,"mmikail \n");
 
    /* read the number of test cases */
 
@@ -212,13 +223,10 @@ int main() {
 
 	  backtrack_dist(distances, a, 0, n);
 	  write_output_to_file(fp_out, n, record);
- 
-      //if (debug) prompt_and_exit(1);
-
    }
 
    fclose(fp_in);
    fclose(fp_out);   
 
-   if (debug) prompt_and_exit(1);
+   //if (debug) prompt_and_exit(1);
 }
